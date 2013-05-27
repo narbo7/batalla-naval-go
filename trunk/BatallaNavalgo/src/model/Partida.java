@@ -1,6 +1,8 @@
 package model;
 
-public class Partida {
+import junit.framework.TestCase;
+
+public class Partida extends TestCase{
 
 	/**
 	 * @param args
