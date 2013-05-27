@@ -1,36 +1,44 @@
 package model;
 
-import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
 
 
 public class Tablero {
 	
+	static final int maxFila = 10;
+	static final int maxColumna = 10;	
 	
-	private ArrayList<ElementoDelJuego> casilleros;
+	private LinkedList<ElementoDelJuego> elementos;
 	
-	public Tablero(int tamanio){
-		
-		this.casilleros = new ArrayList<ElementoDelJuego>(tamanio);
-		
+	public Tablero(){
+		this.elementos = new LinkedList<ElementoDelJuego>();
 	}
 	
-	public void agregarElemento(ElementoDelJuego elemento, Posicion posicion) {
-		
-		int valor = posicion.convertirPosicion(posicion);
-		this.casilleros.add(valor, elemento);
-		
+	static int getMaxFila(){
+		return Tablero.maxFila;
+	}
+	
+	static int getMaxColumna(){
+		return Tablero.maxColumna;
+	}
+	
+	public void agregarElemento(ElementoDelJuego elemento) {
+		this.elementos.add(elemento);
 	}
 	
 	public void quitarElemento(Posicion posicion) {
-		
-		int valor = posicion.convertirPosicion(posicion);
-		this.casilleros.add(valor, null);
+		for (Iterator<ElementoDelJuego> i = this.elementos.iterator(); i.hasNext();) {
+			ElementoDelJuego unElemento = i.next();
+			if (unElemento.getPosicion().esIgualA(posicion)){this.elementos.remove(unElemento);} 
+		}
 	}
 	
-	public ArrayList<ElementoDelJuego> getCasilleros(){
-		
-		return casilleros;
-		
+	public int getCantidadDeElementos(){
+		return this.elementos.size();
+	}
+	public LinkedList<ElementoDelJuego> getElementos(){
+		return this.elementos;
 	}
 
 }
