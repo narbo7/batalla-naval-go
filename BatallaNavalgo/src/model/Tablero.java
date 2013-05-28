@@ -28,10 +28,12 @@ public class Tablero {
 	}
 	
 	public void quitarElemento(Posicion posicion) {
-		for (Iterator<ElementoDelJuego> i = this.elementos.iterator(); i.hasNext();) {
-			ElementoDelJuego unElemento = i.next();
-			if (unElemento.getPosicion().esIgualA(posicion)){this.elementos.remove(unElemento);} 
-		}
+
+		Iterator<ElementoDelJuego> i = this.elementos.iterator();
+		while (i.hasNext()) {
+			ElementoDelJuego elemento = i.next();
+			if (elemento.getPosicion().esIgualA(posicion)){this.elementos.remove(elemento);}
+		}		
 	}
 	
 	public int getCantidadDeElementos(){
