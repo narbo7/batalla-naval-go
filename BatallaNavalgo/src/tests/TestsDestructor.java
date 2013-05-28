@@ -13,9 +13,7 @@ public class TestsDestructor extends TestCase {
 	public void testUnDestructorDeberiaCrearseConTresPosiciones() throws ErrorFueraDeRango {
 		
 		Destructor destructor = new Destructor();
-		
-		destructor.determinarPosiciones();
-		
+	
 		assertTrue(destructor.getCantidadDePosiciones() == 3);
 		
 	}
