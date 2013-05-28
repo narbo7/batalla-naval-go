@@ -12,7 +12,11 @@ public class Posicion {
 		this.columna = this.generarCoordenadaEntre(1,Tablero.getMaxColumna());
 	}
 	
-	public Posicion(int fila, int columna){
+	public Posicion(int fila, int columna) throws ErrorFueraDeRango{
+		
+		if ((fila > Tablero.getMaxFila()) || (columna > Tablero.getMaxColumna()))
+			throw new ErrorFueraDeRango();
+		
 		this.fila = fila;
 		this.columna = columna;
 	}
