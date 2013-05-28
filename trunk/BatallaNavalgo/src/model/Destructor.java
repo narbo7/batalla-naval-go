@@ -16,19 +16,18 @@ public class Destructor extends Nave {
 	@Override
 	public void determinarPosiciones() throws ErrorFueraDeRango {
 		
-		Posicion miPosicion = getPosicion(); 
-		Posicion proa = miPosicion;
-		Posicion popa = miPosicion;
+		Posicion proa = new Posicion(getPosicion().getFila(), getPosicion().getColumna());
+		Posicion popa = new Posicion(getPosicion().getFila(), getPosicion().getColumna());
 		
 		
 		switch (getUbicacion()){		
 		case 1: //Horizontal
-				proa.setColumna(miPosicion.getColumna() + 1);
-				popa.setColumna(miPosicion.getColumna() - 1);
+				proa.setColumna(proa.getColumna() + 1);
+				popa.setColumna(popa.getColumna() - 1);
 				break;
 		case 2: //Vertical
-				proa.setFila(miPosicion.getFila() + 1);
-				popa.setFila(miPosicion.getFila() - 1);
+				proa.setFila(proa.getFila() + 1);
+				popa.setFila(popa.getFila() - 1);
 				break;
 		}
 		

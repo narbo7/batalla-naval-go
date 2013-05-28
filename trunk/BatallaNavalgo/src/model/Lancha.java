@@ -15,15 +15,14 @@ public class Lancha extends Nave {
 	@Override
 	public void determinarPosiciones() throws ErrorFueraDeRango {
 		
-		Posicion miPosicion = getPosicion();
-		Posicion popa = miPosicion;
+		Posicion popa = new Posicion(getPosicion().getFila(), getPosicion().getColumna());
 		
 		switch(getUbicacion()){
 		case 1: //Horizontal
-				popa.setColumna(miPosicion.getColumna() - 1);
+				popa.setColumna(popa.getColumna() - 1);
 				break;
 		case 2: //Vertical
-				popa.setFila(miPosicion.getFila() - 1);
+				popa.setFila(popa.getFila() - 1);
 				break;			
 		}
 		
