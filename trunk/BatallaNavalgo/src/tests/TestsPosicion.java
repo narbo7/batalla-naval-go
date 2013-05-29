@@ -37,6 +37,7 @@ public class TestsPosicion {
 		
 		try {			
 			
+			@SuppressWarnings("unused")
 			Posicion unaPosicion = new Posicion(11,3);		
 			
 		} catch (ErrorFueraDeRango e){
