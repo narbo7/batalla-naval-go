@@ -49,22 +49,24 @@ public class TestsTablero extends TestCase{
 		//Quito todos los elementos en la posicion1 y cuento
 		miTablero.quitarElemento(posicion1);
 		assertTrue(miTablero.getCantidadDeElementos() == 1);
-/*
+
 		//Quito todos los elementos en posicion2 y cuento
 		miTablero.quitarElemento(posicion2);
 		assertTrue(miTablero.getCantidadDeElementos() == 0);
-*/
-/*
-		//Agrego dos elementos con posicion1 y cuento
+
+
+		//Agrego tres elementos con posicion1 y un elemento en posicion2 y cuento
 		miTablero.agregarElemento(elemento);
 		miTablero.agregarElemento(elemento);
-		assertTrue(miTablero.getCantidadDeElementos() == 2);
-*/	
-/*		
+		miTablero.agregarElemento(elemento);
+		miTablero.agregarElemento(otroelemento);
+		assertTrue(miTablero.getCantidadDeElementos() == 4);
+	
+		
 		//Quito todos los elementos en la posicion1 y cuento
 		miTablero.quitarElemento(posicion1);
-		assertTrue(miTablero.getCantidadDeElementos() == 0);
-*/
+		assertTrue(miTablero.getCantidadDeElementos() == 1);
+
 		}
 	
 

@@ -1,6 +1,5 @@
 package model;
 
-import java.util.Iterator;
 import java.util.LinkedList;
 
 
@@ -28,12 +27,16 @@ public class Tablero {
 	}
 	
 	public void quitarElemento(Posicion posicion) {
-
-		Iterator<ElementoDelJuego> i = this.elementos.iterator();
-		while (i.hasNext()) {
-			ElementoDelJuego elemento = i.next();
-			if (elemento.getPosicion().esIgualA(posicion)){this.elementos.remove(elemento);}
-		}		
+		LinkedList<ElementoDelJuego> lista = new LinkedList<ElementoDelJuego>();
+		
+		for(ElementoDelJuego elemento : this.elementos){
+			if (elemento.getPosicion().esIgualA(posicion)){lista.add(elemento);}
+		}
+		
+		for(ElementoDelJuego elemento : lista){
+			this.elementos.remove(elemento);
+		}
+		
 	}
 	
 	public int getCantidadDeElementos(){
