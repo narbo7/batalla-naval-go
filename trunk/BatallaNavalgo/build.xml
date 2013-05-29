@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<project name="BatallaNavalGo" default="ayuda" basedir=".">
+    
+	<property name="lib.dir" location="${basedir}/lib" />
+    <property name="src.dir" location="${basedir}/src" />
+    <property name="bin.dir" location="${basedir}/bin" />
+    <property name="html.dir" location="${basedir}/html" />  
+    
+	<property name="cobertura.home.dir" value="${basedir}/lib/cobertura-1.9.4.1" />
+	<property name="junit.dir" value="${basedir}/lib/junit-4.10.jar"/>
+	<property name="titiritero.dir" value="${basedir}/lib/titiritero.jar"/>
+    
+	<property name="report.temp.dir" location="${report.dir}/temp" />
+    <property name="report.dir" location="${basedir}/report" />
+    <property name="report.junit.dir" location="${report.dir}/junit" />
+    <property name="report.cobertura.dir" location="${report.dir}/cobertura" />
+	<property name="cobertura.ser.file" location="${report.temp.dir}/cobertura.ser" />
+
+    <property name="instrumented.dir" location="${basedir}/instrumented" />
+	<property name="jar.dir" location="${basedir}" />
+		
+  	<property name="doc.dir" value="documentacion/javadoc" />
+  	<property name="zip.name" value="Entrega.zip" />
+
+	<path id="run.classpath">
+        <pathelement path="${bin.dir}" />
+        <pathelement path="${junit.dir}" />
+    	<pathelement path="${titiritero.dir}" />
+    </path>
+
+    <path id="cobertura.classpath">
+        <path refid="run.classpath" />
+        <fileset dir="${cobertura.home.dir}">
+            <include name="cobertura.jar" />
+            <include name="lib/**/*.jar" />
+        </fileset>
+    </path>
+    <taskdef classpathref="cobertura.classpath" resource="tasks.properties" />
+
+	<target name="limpiar" description="Borra todos los resultados para empezar nuevamente.">
+		<delete dir = "${bin.dir}" />
+		<delete dir = "${doc.dir}" />
+		<delete file= "${zip.name}" />
+	    <delete dir="${report.junit.dir}" />		
+        <delete dir="${report.cobertura.dir}" />  
+        <delete dir="${report.temp.dir}" />
+	</target>
+		
+	<target name="compilar" depends="limpiar">
+  		<mkdir dir="${bin.dir}" /> 
+		<javac srcdir="${src.dir}" classpath="${lib.dir}" destdir="${bin.dir}" >
+			<classpath>
+				<pathelement path="${bin.dir}" />
+				<fileset dir="${lib.dir}">
+					<include name="**/*.jar" />
+				</fileset>
+			</classpath>
+		</javac>
+ 	</target>
+
+	<target name="correr" depends="compilar">
+		<java fork="yes" classname="Principal">
+			<classpath>	
+				<pathelement path="${bin.dir}" />
+				<pathelement path="${junit.dir}" />
+				<pathelement path="${titiritero.dir}" />
+				<fileset dir="lib">
+					<include name="**/*.jar"/>
+				</fileset>
+			</classpath>
+		</java>
+  	</target>
+	
+	<!-- PREPARA LA CARPETA DE REPORTES -->
+	<target name="prepare.report.dir" description="Prepares the reports folder">
+		<mkdir dir="${html.dir}" />
+        <copy todir="${report.dir}">
+            <fileset dir="${html.dir}">
+                <include name="*.htm" />
+            </fileset>
+        </copy>
+    </target>
+	
+	<!-- PASO ANTERIOR NECESARIO PARA COBERTURA -->
+    <target name="cobertura.instrument" depends="compilar" description="Instrument the project for code coverage.">
+        <mkdir dir="${report.temp.dir}" />
+        <cobertura-instrument todir="${instrumented.dir}" datafile="${cobertura.ser.file}">
+            <ignore regex="org.apache.log4j.*" />
+            <fileset dir="${bin.dir}">
+                <include name="**/*.class" />
+                <exclude name="**/*Test.class" />
+            </fileset>
+        </cobertura-instrument>
+    </target>
+	 
+    <target name="corrertests" depends="compilar, cobertura.instrument,prepare.report.dir" description="Run all junit test cases.">
+        <mkdir dir="${report.cobertura.dir}" />
+        <mkdir dir="${report.temp.dir}" />
+
+        <junit printsummary="yes" fork="yes" haltonfailure="no">
+            <sysproperty key="net.sourceforge.cobertura.datafile" file="${cobertura.ser.file}" />
+
+            <!-- Note the classpath order: instrumented classes are before 
+                 the original (uninstrumented) classes.  This is important. -->
+            <classpath location="${instrumented.dir}" />
+            <classpath location="${bin.dir}" />
+            <classpath location="${junit.dir}" />
+
+            <!-- The instrumented classes reference classes used by the
+                 Cobertura runtime, so Cobertura and its dependencies
+                 must be on your classpath. -->
+            <classpath refid="cobertura.classpath" />
+
+            <formatter type="plain" />
+            <formatter type="xml" />
+
+            <batchtest todir="${report.temp.dir}">
+                <fileset dir="${src.dir}">
+                    <include name="**/*Test.java" />
+                </fileset>
+            </batchtest>
+        </junit>
+    </target>
+	
+	<!-- REPORTES COBERTURA -->
+	<target name="report.cobertura" depends="corrertests, prepare.report.dir" description="Generate an HTML report on Cobertura.">
+        <cobertura-report format="html" datafile="${cobertura.ser.file}" destdir="${report.cobertura.dir}">
+            <fileset dir="${src.dir}">
+                <include name="**/*.java" />
+            </fileset>
+        </cobertura-report>
+    </target>
+	
+	<!-- REPORTES JUNIT-->
+    <target name="report.junit" depends="corrertests, prepare.report.dir" 
+        description="Create a report for the test result.">
+        <delete dir="${report.junit.dir}" />
+        <mkdir dir="${report.junit.dir}" />
+        <junitreport todir="${report.junit.dir}">
+            <fileset dir="${report.temp.dir}">
+                <include name="*.xml" />
+            </fileset>
+            <report format="frames" todir="${report.junit.dir}" />
+        </junitreport>
+    </target>
+
+	<target name="generarjavadocs" depends="limpiar">	
+	  <javadoc packagenames="*"
+	           sourcepath="${src.dir}"
+	           defaultexcludes="yes"
+	           destdir="${doc.dir}"
+	           author="true"
+	           version="true"
+	           use="true"
+	           windowtitle="Batalla Naval Go">
+	    <doctitle><![CDATA[<h1>Batalla Naval Go</h1>]]></doctitle>
+	  </javadoc>
+	</target>
+	
+	<target name="generarentrega" depends="generarjavadocs">
+		<zip destfile="${zip.name}" basedir="."/>
+		<echo>Archivo ${zip.name} generado.</echo>
+	</target>
+	
+	<target name="ayuda">
+		<echo>ant compilar : Compila el programa.</echo>
+		<echo>ant corrertests : Compila el programa y corre los tests.</echo>
+		<echo>ant correr : Compila el programa y ejecuta el programa.</echo>
+		<echo>ant generarjavadocs : Generar los javadocs.</echo>
+		<echo>ant generarentrega : Genera un zip listo para entregar.</echo>
+		<echo>ant reportes : Genera los reportes de los tests.</echo>
+	</target> 
+</project>
