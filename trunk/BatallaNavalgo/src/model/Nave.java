@@ -4,7 +4,8 @@ import java.util.LinkedList;
 
 public abstract class Nave extends ElementoDelJuego {
 	
-	int ubicacion;
+	protected int resistencia;
+	protected int ubicacion;
 	LinkedList<Posicion> posiciones;
 	
 	public Nave(){
@@ -15,6 +16,12 @@ public abstract class Nave extends ElementoDelJuego {
 		this.posiciones.add(getPosicion());
 	}
 
+	public int getResistencia(){
+		return this.resistencia;
+	}
+	public void reducirResistencia(int valor){
+		this.resistencia -= valor;
+	}
 	public int getUbicacion(){		
 		return this.ubicacion;		
 	}
@@ -34,6 +41,10 @@ public abstract class Nave extends ElementoDelJuego {
 	}
 	
 	public abstract void determinarPosiciones() throws ErrorFueraDeRango;
+	
+	public abstract void serAtacadoPor(Disparo disparo);
+	
+	
 		
 	
 

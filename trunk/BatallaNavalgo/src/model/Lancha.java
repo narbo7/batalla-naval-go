@@ -1,10 +1,14 @@
 package model;
 
+import java.util.Iterator;
+
 public class Lancha extends Nave {
 	
+	static final int MAXIMA_RESISTENCIA = 2;
 	
 	public Lancha(){		
 		super();
+		this.resistencia = MAXIMA_RESISTENCIA;
 		try {
 			determinarPosiciones();
 		} catch (ErrorFueraDeRango e) {
@@ -28,6 +32,14 @@ public class Lancha extends Nave {
 		
 		agregarPosicion(popa);
 		
+	}
+	
+	@Override
+	public void serAtacadoPor(Disparo disparo) {	
+			
+		for (Iterator<Posicion> it = getPosiciones().iterator(); it.hasNext();)
+			if ((disparo.getPosicion().esIgualA(it.next())))
+					reducirResistencia(1);
 	}
 	
 	
