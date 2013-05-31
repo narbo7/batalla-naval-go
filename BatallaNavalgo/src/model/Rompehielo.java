@@ -2,11 +2,11 @@ package model;
 
 import java.util.Iterator;
 
-public class Buque extends Nave{
+public class Rompehielo extends Nave {
 
-	static final int MAXIMA_RESISTENCIA = 4;
+	static final int MAXIMA_RESISTENCIA = 6;
 	
-	public Buque(){
+	public Rompehielo(){
 		super();
 		this.resistencia = MAXIMA_RESISTENCIA;
 		try {
@@ -14,6 +14,7 @@ public class Buque extends Nave{
 		} catch (ErrorFueraDeRango e) {
 			e.printStackTrace();
 		}
+		
 	}
 	
 	@Override
@@ -21,32 +22,30 @@ public class Buque extends Nave{
 		
 		Posicion proa = new Posicion(getPosicion().getFila(), getPosicion().getColumna());
 		Posicion popa = new Posicion(getPosicion().getFila(), getPosicion().getColumna());
-		Posicion medio = new Posicion(getPosicion().getFila(), getPosicion().getColumna());
+		
 		
 		switch (getUbicacion()){		
 		case 1: //Horizontal
-				proa.setColumna(proa.getColumna() + 2);
-				medio.setColumna(medio.getColumna() + 1);
+				proa.setColumna(proa.getColumna() + 1);
 				popa.setColumna(popa.getColumna() - 1);
 				break;
 		case 2: //Vertical
-				proa.setFila(proa.getFila() + 2);
-				medio.setFila(medio.getFila() + 1);
+				proa.setFila(proa.getFila() + 1);
 				popa.setFila(popa.getFila() - 1);
 				break;
 		}
 		
 		agregarPosicion(proa);
 		agregarPosicion(popa);
-		agregarPosicion(medio);
+		
 	}
 
 	@Override
 	public void serAtacadoPor(Disparo disparo) {
+		
 		for (Iterator<Posicion> it = getPosiciones().iterator(); it.hasNext();)
 			if ((disparo.getPosicion().esIgualA(it.next())))
-					reducirResistencia(MAXIMA_RESISTENCIA);
-		
+					reducirResistencia(1);	
 	}
 
 }
