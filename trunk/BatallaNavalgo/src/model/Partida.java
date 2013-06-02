@@ -8,9 +8,14 @@ public class Partida{
 	
 	public Partida(){
 		this.tablero = new Tablero();
-		for (int i=0; i < 10; i++) {
-			tablero.agregarElemento(new ElementoDelJuego());
-		}
+		tablero.agregarElemento(new Lancha());
+		tablero.agregarElemento(new Lancha());
+		tablero.agregarElemento(new Destructor());
+		tablero.agregarElemento(new Destructor());
+		tablero.agregarElemento(new Buque());
+		tablero.agregarElemento(new Rompehielo());
+		tablero.agregarElemento(new Portaavion());
+		
 	}
 	
 	public int getCantidadDeElementosEnTablero(){
@@ -20,7 +25,7 @@ public class Partida{
 	public static void main(String[] args) {
 		Partida miPartida = new Partida();
 		
-		System.out.printf("Partida creada con un tablero y", miPartida.getCantidadDeElementosEnTablero(), "elementos");
+		System.out.println("Partida creada con un tablero y " + miPartida.getCantidadDeElementosEnTablero() + " elementos");
 
 	}
 
