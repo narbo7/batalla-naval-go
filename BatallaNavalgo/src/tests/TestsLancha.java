@@ -19,6 +19,7 @@ public class TestsLancha extends TestCase{
 
 	}
 
+
 	@Test
 	public void testAlSerAtacadoPorUnDisparoDeberiaReducirSuResistencia(){
 		
