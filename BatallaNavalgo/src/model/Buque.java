@@ -2,7 +2,7 @@ package model;
 
 import java.util.Iterator;
 
-public class Buque extends Nave{
+public class Buque extends Nave implements Atacable{
 
 	static final int MAXIMA_RESISTENCIA = 4;
 	
@@ -48,5 +48,26 @@ public class Buque extends Nave{
 					reducirResistencia(MAXIMA_RESISTENCIA);
 		
 	}
+
+	public void serAtacadoPor(MinaConRetardo minaConRetardo) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void serAtacadoPor(MinaDobleConRetardo minaDobleConRetardo) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void serAtacadoPor(MinaTripleConRetardo minaTripleConRetardo) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	public void serAtacadoPor(MinaPorContacto minaPorContacto) {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }

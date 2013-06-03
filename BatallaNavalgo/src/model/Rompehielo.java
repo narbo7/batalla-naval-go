@@ -2,7 +2,7 @@ package model;
 
 import java.util.Iterator;
 
-public class Rompehielo extends Nave {
+public class Rompehielo extends Nave implements Atacable{
 
 	static final int MAXIMA_RESISTENCIA = 6;
 	
@@ -46,6 +46,26 @@ public class Rompehielo extends Nave {
 		for (Iterator<Posicion> it = getPosiciones().iterator(); it.hasNext();)
 			if ((disparo.getPosicion().esIgualA(it.next())))
 					reducirResistencia(1);	
+	}
+
+	public void serAtacadoPor(MinaConRetardo minaConRetardo) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void serAtacadoPor(MinaDobleConRetardo minaDobleConRetardo) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void serAtacadoPor(MinaTripleConRetardo minaTripleConRetardo) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void serAtacadoPor(MinaPorContacto minaPorContacto) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
