@@ -4,6 +4,8 @@ import junit.framework.TestCase;
 
 import model.Destructor;
 import model.Disparo;
+import model.ErrorFueraDeRango;
+import model.Posicion;
 
 
 
@@ -31,4 +33,55 @@ public class TestsDestructor extends TestCase {
 		assertTrue((destructor.getResistencia()) == 2);
 	}
 
+	@Test
+	public void testBordeSuperiorIzquierdo() throws ErrorFueraDeRango{
+		
+		Posicion posicion = new Posicion(1,1);
+		Destructor destructor = new Destructor(posicion);
+		
+		int fila = destructor.getPosicion().getFila();
+		int columna = destructor.getPosicion().getColumna();
+		
+		assertTrue((fila == 2) && (columna == 2));
+			
+	}
+	
+	@Test
+	public void testBordeSuperiorDerecho() throws ErrorFueraDeRango{
+		
+		Posicion posicion = new Posicion(1,10);
+		Destructor destructor = new Destructor(posicion);
+		
+		int fila = destructor.getPosicion().getFila();
+		int columna = destructor.getPosicion().getColumna();
+		
+		assertTrue((fila == 2) && (columna == 9));
+			
+	}
+	
+	@Test
+	public void testBordeInferiorIzquierdo() throws ErrorFueraDeRango{
+		
+		Posicion posicion = new Posicion(10,1);
+		Destructor lancha = new Destructor(posicion);
+		
+		int fila = lancha.getPosicion().getFila();
+		int columna = lancha.getPosicion().getColumna();
+		
+		assertTrue((fila == 9) && (columna == 2));
+			
+	}
+	
+	@Test
+	public void testBordeInferiorDerecho() throws ErrorFueraDeRango{
+		
+		Posicion posicion = new Posicion(10,10);
+		Destructor lancha = new Destructor(posicion);
+		
+		int fila = lancha.getPosicion().getFila();
+		int columna = lancha.getPosicion().getColumna();
+		
+		assertTrue((fila == 9) && (columna == 9));
+			
+	}
 }
