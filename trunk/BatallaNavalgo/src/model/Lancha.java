@@ -15,11 +15,23 @@ public class Lancha extends Nave implements Atacable{
 			e.printStackTrace();
 		}
 	}
-
+	
+	//Solo para test
+	public Lancha(Posicion posicion){		
+		super(posicion);
+		this.resistencia = MAXIMA_RESISTENCIA;
+		try {
+			determinarPosiciones();
+		} catch (ErrorFueraDeRango e) {
+			e.printStackTrace();
+		}
+	}
+	
 	@Override
 	public void determinarPosiciones() throws ErrorFueraDeRango {
 		
-		Posicion popa = new Posicion(getPosicion().getFila(), getPosicion().getColumna());
+		Posicion miPosicion = evaluarPosicion(getPosicion());
+		Posicion popa = new Posicion(miPosicion.getFila(), miPosicion.getColumna());
 		
 		switch(getUbicacion()){
 		case 1: //Horizontal
@@ -60,6 +72,32 @@ public class Lancha extends Nave implements Atacable{
 	public void serAtacadoPor(MinaPorContacto minaPorContacto) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public Posicion evaluarPosicion(Posicion posicion) throws ErrorFueraDeRango {
+		
+		Posicion nuevaPos = new Posicion(posicion.getFila(), posicion.getColumna());
+		int miFila = nuevaPos.getFila();
+		int miColumna = nuevaPos.getColumna();
+		
+		if ((miFila) == 1){
+			nuevaPos.setFila(miFila + 1);
+		} else {
+			if ((miFila) == Tablero.maxFila)
+				nuevaPos.setFila(miFila - 1);
+		}
+		
+		if ((miColumna) == 1){
+			nuevaPos.setColumna(miColumna + 1);
+		} else {
+			if((miColumna) == Tablero.maxColumna)
+				nuevaPos.setColumna(miColumna - 1);
+		}
+		
+		setPosicion(nuevaPos);
+		
+		return nuevaPos;
 	}
 	
 	

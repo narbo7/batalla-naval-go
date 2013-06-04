@@ -18,6 +18,16 @@ public abstract class Nave extends ElementoDelJuego {
 		this.posiciones.add(getPosicion());
 		this.generarDireccion();
 	}
+	
+	//Solo para tests
+	public Nave(Posicion posicion){
+		
+		super(posicion);
+		this.ubicacion = RandomInt.generarRandomEntre(1, 2);
+		this.posiciones = new LinkedList<Posicion>();
+		this.posiciones.add(getPosicion());
+		this.generarDireccion();
+	}
 
 	private void generarDireccion() {
 		Random random = new Random();
@@ -90,6 +100,7 @@ public abstract class Nave extends ElementoDelJuego {
 	
 	public void setDirIzquierda(boolean x) { this.dirIzquierda = x;}
 	
+	public abstract Posicion evaluarPosicion(Posicion posicion) throws ErrorFueraDeRango;
 		
 	
 

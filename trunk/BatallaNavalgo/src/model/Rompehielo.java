@@ -68,4 +68,10 @@ public class Rompehielo extends Nave implements Atacable{
 		
 	}
 
+	@Override
+	public Posicion evaluarPosicion(Posicion posicion) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
