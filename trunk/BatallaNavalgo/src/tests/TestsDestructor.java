@@ -63,10 +63,10 @@ public class TestsDestructor extends TestCase {
 	public void testBordeInferiorIzquierdo() throws ErrorFueraDeRango{
 		
 		Posicion posicion = new Posicion(10,1);
-		Destructor lancha = new Destructor(posicion);
+		Destructor destructor = new Destructor(posicion);
 		
-		int fila = lancha.getPosicion().getFila();
-		int columna = lancha.getPosicion().getColumna();
+		int fila = destructor.getPosicion().getFila();
+		int columna = destructor.getPosicion().getColumna();
 		
 		assertTrue((fila == 9) && (columna == 2));
 			
@@ -76,10 +76,10 @@ public class TestsDestructor extends TestCase {
 	public void testBordeInferiorDerecho() throws ErrorFueraDeRango{
 		
 		Posicion posicion = new Posicion(10,10);
-		Destructor lancha = new Destructor(posicion);
+		Destructor destructor = new Destructor(posicion);
 		
-		int fila = lancha.getPosicion().getFila();
-		int columna = lancha.getPosicion().getColumna();
+		int fila = destructor.getPosicion().getFila();
+		int columna = destructor.getPosicion().getColumna();
 		
 		assertTrue((fila == 9) && (columna == 9));
 			
