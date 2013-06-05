@@ -77,7 +77,7 @@
 	
 	<!-- PREPARA LA CARPETA DE REPORTES -->
 	<target name="prepare.report.dir" description="Prepares the reports folder">
-		<mkdir dir="${html.dir}" />
+	<mkdir dir="${html.dir}" />
         <copy todir="${report.dir}">
             <fileset dir="${html.dir}">
                 <include name="*.htm" />
@@ -92,15 +92,12 @@
             <ignore regex="org.apache.log4j.*" />
             <fileset dir="${bin.dir}">
                 <include name="**/*.class" />
-                <exclude name="**/*Test.class" />
+                <exclude name="**/Tests*.class" />
             </fileset>
         </cobertura-instrument>
-    </target>
-	 
+	</target>
     <target name="corrertests" depends="compilar, cobertura.instrument,prepare.report.dir" description="Run all junit test cases.">
         <mkdir dir="${report.cobertura.dir}" />
-        <mkdir dir="${report.temp.dir}" />
-
         <junit printsummary="yes" fork="yes" haltonfailure="no">
             <sysproperty key="net.sourceforge.cobertura.datafile" file="${cobertura.ser.file}" />
 
@@ -110,6 +107,11 @@
             <classpath location="${bin.dir}" />
             <classpath location="${junit.dir}" />
 
+	    <classpath>
+	   	 <pathelement location="${bin.dir}"/>
+	    </classpath>
+
+
             <!-- The instrumented classes reference classes used by the
                  Cobertura runtime, so Cobertura and its dependencies
                  must be on your classpath. -->
@@ -117,10 +119,9 @@
 
             <formatter type="plain" />
             <formatter type="xml" />
-
-            <batchtest todir="${report.temp.dir}">
+	    <batchtest todir="${report.temp.dir}">
                 <fileset dir="${src.dir}">
-                    <include name="**/*Test.java" />
+                    <include name="**/Tests*.java" />
                 </fileset>
             </batchtest>
         </junit>
