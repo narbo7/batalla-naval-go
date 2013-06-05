@@ -3,7 +3,7 @@ package model;
 import java.util.LinkedList;
 import java.util.Random;
 
-public abstract class Nave extends ElementoDelJuego {
+public abstract class Nave extends ElementoDelJuego implements ObjetoMovil{
 	
 	protected int resistencia;
 	protected int ubicacion;
@@ -81,7 +81,43 @@ public abstract class Nave extends ElementoDelJuego {
 	public abstract void serAtacadoPor(Disparo disparo);
 	
 	public void mover(){
-		
+		for (Posicion posicion : this.posiciones) {
+			if(this.getDirArriba()) {
+				if(posicion.getFila() == 1) {
+					this.setDirArriba(false);
+					this.setDirAbajo(true);
+					} else {
+						posicion.setFila(posicion.getFila()-1);
+					}
+			}
+			
+			if(this.getDirAbajo()) {
+				if(posicion.getFila() == Tablero.getMaxFila()) {
+					this.setDirArriba(true);
+					this.setDirAbajo(false);
+				} else {
+					posicion.setFila(posicion.getFila()+1);
+				}
+			}
+			
+			if(this.getDirDerecha()){
+				if(posicion.getColumna() == Tablero.getMaxColumna()) {
+					this.setDirDerecha(false);
+					this.setDirIzquierda(true);
+				} else {
+					posicion.setColumna(posicion.getColumna()+1);
+				}
+			}
+			
+			if(this.getDirIzquierda()){
+				if(posicion.getColumna() == 1) {
+					this.setDirDerecha(true);
+					this.setDirIzquierda(false);
+				} else {
+					posicion.setColumna(posicion.getColumna()-1);
+				}
+			}
+		}
 	}
 	
 	public boolean getDirArriba() { return this.dirArriba;}
