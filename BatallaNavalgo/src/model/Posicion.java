@@ -1,6 +1,5 @@
 package model;
 
-import java.util.Random;
 
 public class Posicion {
 	
@@ -35,21 +34,11 @@ public class Posicion {
 	}
 	
 	public int generarCoordenadaEntre(int valorInicial, int valorFinal){
-		return (int)((new Random().nextDouble()*valorFinal)+valorInicial);
+		return (RandomInt.generarRandomEntre(valorInicial, valorFinal));
 	}
 	
 	public boolean esIgualA(Posicion otraPosicion){
 		return ((this.getFila() == otraPosicion.getFila()) && (this.getColumna() == otraPosicion.getColumna())); 
-	}
-	
-	/*Convierte las coordenadas de una posicion 
-	 * para poder almarcernarlas en una lista*/
-	public int convertirPosicion(Posicion posicion) {
-		
-		int fila = posicion.getFila();
-		int columna = posicion.getColumna();
-				
-		return ((fila + columna) - 1);
 	}
 
 }

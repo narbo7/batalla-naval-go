@@ -14,11 +14,11 @@ public class Tablero {
 		this.elementos = new LinkedList<ElementoDelJuego>();
 	}
 	
-	static int getMaxFila(){
+	public static int getMaxFila(){
 		return Tablero.maxFila;
 	}
 	
-	static int getMaxColumna(){
+	public static int getMaxColumna(){
 		return Tablero.maxColumna;
 	}
 	
