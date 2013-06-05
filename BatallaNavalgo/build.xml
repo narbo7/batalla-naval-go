@@ -52,7 +52,7 @@
 		
     <target name="compilar" depends="limpiar">
     <mkdir dir="${bin.dir}" /> 
-    <javac srcdir="${src.dir}" classpath="${lib.dir}" destdir="${bin.dir}" >
+    <javac srcdir="${src.dir}" classpath="${lib.dir}" destdir="${bin.dir}" debug="true" debuglevel="vars,lines,source" >
     	<classpath>
 		<pathelement path="${bin.dir}" />
 		<fileset dir="${lib.dir}">
@@ -127,7 +127,7 @@
     </target>
 	
 	<!-- REPORTES COBERTURA -->
-	<target name="report.cobertura" depends="corrertests, prepare.report.dir" description="Generate an HTML report on Cobertura.">
+	<target name="reporte.cobertura" depends="corrertests, prepare.report.dir" description="Generate an HTML report on Cobertura.">
         <cobertura-report format="html" datafile="${cobertura.ser.file}" destdir="${report.cobertura.dir}">
             <fileset dir="${src.dir}">
                 <include name="**/*.java" />
@@ -136,7 +136,7 @@
     </target>
 	
 	<!-- REPORTES JUNIT-->
-    <target name="report.junit" depends="corrertests, prepare.report.dir" 
+    <target name="reporte.junit" depends="corrertests, prepare.report.dir" 
         description="Create a report for the test result.">
         <delete dir="${report.junit.dir}" />
         <mkdir dir="${report.junit.dir}" />
@@ -172,6 +172,7 @@
 		<echo>ant correr : Compila el programa y ejecuta el programa.</echo>
 		<echo>ant generarjavadocs : Generar los javadocs.</echo>
 		<echo>ant generarentrega : Genera un zip listo para entregar.</echo>
-		<echo>ant reportes : Genera los reportes de los tests.</echo>
+		<echo>ant reporte.cobertura : Genera los reportes de los tests.</echo>
+		<echo>ant reporte.junit :  General los reportes en junit. </echo>
 	</target> 
 </project>
