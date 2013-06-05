@@ -2,35 +2,35 @@
 
 <project name="BatallaNavalGo" default="ayuda" basedir=".">
     
-	<property name="lib.dir" location="${basedir}/lib" />
+    <property name="lib.dir" location="${basedir}/lib" />
     <property name="src.dir" location="${basedir}/src" />
     <property name="bin.dir" location="${basedir}/bin" />
     <property name="html.dir" location="${basedir}/html" />  
-    
-	<property name="cobertura.home.dir" value="${basedir}/lib/cobertura-1.9.4.1" />
-	<property name="junit.dir" value="${basedir}/lib/junit-4.10.jar"/>
-	<property name="titiritero.dir" value="${basedir}/lib/titiritero.jar"/>
-    
-	<property name="report.temp.dir" location="${report.dir}/temp" />
     <property name="report.dir" location="${basedir}/report" />
+    <property name="instrumented.dir" location="${basedir}/instrumented" />
+    
+    <property name="cobertura.home.dir" value="${lib.dir}/cobertura-1.9.4.1" />
+    <property name="junit.dir" value="${lib.dir}/junit-4.10.jar"/>
+    <property name="titiritero.dir" value="${lib.dir}/titiritero.jar"/>
+    
+    <property name="report.temp.dir" location="${report.dir}/temp" />
     <property name="report.junit.dir" location="${report.dir}/junit" />
     <property name="report.cobertura.dir" location="${report.dir}/cobertura" />
-	<property name="cobertura.ser.file" location="${report.temp.dir}/cobertura.ser" />
+    <property name="cobertura.ser.file" location="${report.temp.dir}/cobertura.ser" />
 
-    <property name="instrumented.dir" location="${basedir}/instrumented" />
-	<property name="jar.dir" location="${basedir}" />
+    <property name="jar.dir" location="${basedir}" />
 		
-  	<property name="doc.dir" value="documentacion/javadoc" />
-  	<property name="zip.name" value="Entrega.zip" />
+    <property name="doc.dir" value="documentacion/javadoc" />
+    <property name="zip.name" value="Entrega.zip" />
 
-	<path id="run.classpath">
-        <pathelement path="${bin.dir}" />
-        <pathelement path="${junit.dir}" />
-    	<pathelement path="${titiritero.dir}" />
+    <path id="run.classpath">
+    <pathelement path="${bin.dir}" />
+    <pathelement path="${junit.dir}" />
+    <pathelement path="${titiritero.dir}" />
     </path>
 
     <path id="cobertura.classpath">
-        <path refid="run.classpath" />
+    <path refid="run.classpath" />
         <fileset dir="${cobertura.home.dir}">
             <include name="cobertura.jar" />
             <include name="lib/**/*.jar" />
@@ -38,39 +38,39 @@
     </path>
     <taskdef classpathref="cobertura.classpath" resource="tasks.properties" />
 
-	<target name="limpiar" description="Borra todos los resultados para empezar nuevamente.">
-		<delete dir = "${bin.dir}" />
-		<delete dir = "${doc.dir}" />
-		<delete file= "${zip.name}" />
-	    <delete dir="${report.junit.dir}" />		
+    <target name="limpiar" description="Borra todos los resultados para empezar nuevamente.">
+	<delete dir = "${bin.dir}" />
+	<delete dir = "${doc.dir}" />
+	<delete file= "${zip.name}" />
+        <delete dir="${report.junit.dir}" />		
         <delete dir="${report.cobertura.dir}" />  
         <delete dir="${report.temp.dir}" />
-	</target>
+    </target>
 		
-	<target name="compilar" depends="limpiar">
-  		<mkdir dir="${bin.dir}" /> 
-		<javac srcdir="${src.dir}" classpath="${lib.dir}" destdir="${bin.dir}" >
-			<classpath>
-				<pathelement path="${bin.dir}" />
-				<fileset dir="${lib.dir}">
-					<include name="**/*.jar" />
-				</fileset>
-			</classpath>
-		</javac>
- 	</target>
+    <target name="compilar" depends="limpiar">
+    <mkdir dir="${bin.dir}" /> 
+    <javac srcdir="${src.dir}" classpath="${lib.dir}" destdir="${bin.dir}" >
+    	<classpath>
+		<pathelement path="${bin.dir}" />
+		<fileset dir="${lib.dir}">
+			<include name="**/*.jar" />
+		</fileset>
+    	</classpath>
+     </javac>
+     </target>
 
-	<target name="correr" depends="compilar">
-		<java fork="yes" classname="Principal">
-			<classpath>	
-				<pathelement path="${bin.dir}" />
-				<pathelement path="${junit.dir}" />
-				<pathelement path="${titiritero.dir}" />
-				<fileset dir="lib">
-					<include name="**/*.jar"/>
-				</fileset>
-			</classpath>
-		</java>
-  	</target>
+     <target name="correr" depends="compilar">
+     <java fork="yes" classname="Principal">
+     	<classpath>	
+		<pathelement path="${bin.dir}" />
+		<pathelement path="${junit.dir}" />
+		<pathelement path="${titiritero.dir}" />
+		<fileset dir="lib">
+			<include name="**/*.jar"/>
+		</fileset>
+	</classpath>
+     </java>
+     </target>
 	
 	<!-- PREPARA LA CARPETA DE REPORTES -->
 	<target name="prepare.report.dir" description="Prepares the reports folder">
