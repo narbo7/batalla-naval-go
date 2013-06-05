@@ -1,21 +1,21 @@
 package model;
 
 
-public abstract class ElementoDelJuego {
-
-
+public class ElementoDelJuego {
+	
+	
 	private Posicion posicion;
-
+	
 	public ElementoDelJuego(){
-
+		
 		this.posicion = new Posicion();
 	}
-
+	
 	public ElementoDelJuego(Posicion unaPosicion){
-
+		
 		this.posicion = unaPosicion;
 	}
-
+	
 	public Posicion getPosicion() {
 		return posicion;
 	}
@@ -23,7 +23,5 @@ public abstract class ElementoDelJuego {
 	public void setPosicion(Posicion posicion) {
 		this.posicion = posicion;
 	}
-
-    public abstract void pasarTurno();
 
 }
