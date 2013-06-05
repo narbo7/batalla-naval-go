@@ -5,15 +5,14 @@
     <property name="lib.dir" location="${basedir}/lib" />
     <property name="src.dir" location="${basedir}/src" />
     <property name="bin.dir" location="${basedir}/bin" />
-    <property name="html.dir" location="${basedir}/html" />  
-    <property name="report.dir" location="${basedir}/report" />
+    <property name="report.dir" location="${basedir}/reports" />
     <property name="instrumented.dir" location="${basedir}/instrumented" />
     
     <property name="cobertura.home.dir" value="${lib.dir}/cobertura-1.9.4.1" />
     <property name="junit.dir" value="${lib.dir}/junit-4.10.jar"/>
     <property name="titiritero.dir" value="${lib.dir}/titiritero.jar"/>
     
-    <property name="report.temp.dir" location="${report.dir}/temp" />
+    <property name="report.temp.dir" location="${report.dir}/tmp" />
     <property name="report.junit.dir" location="${report.dir}/junit" />
     <property name="report.cobertura.dir" location="${report.dir}/cobertura" />
     <property name="cobertura.ser.file" location="${report.temp.dir}/cobertura.ser" />
@@ -46,13 +45,12 @@
         <delete dir="${report.cobertura.dir}" />  
         <delete dir="${report.temp.dir}" />
 	<delete dir="${instrumented.dir}"/>
-	<delete dir="${html.dir}"/>
 	<delete dir="${report.dir}"/>
     </target>
 		
     <target name="compilar" depends="limpiar">
     <mkdir dir="${bin.dir}" /> 
-    <javac srcdir="${src.dir}" classpath="${lib.dir}" destdir="${bin.dir}" debug="true" debuglevel="vars,lines,source" >
+    <javac srcdir="${src.dir}" classpath="${lib.dir}" destdir="${bin.dir}" debug="true">
     	<classpath>
 		<pathelement path="${bin.dir}" />
 		<fileset dir="${lib.dir}">
@@ -75,17 +73,7 @@
      </java>
      </target>
 	
-	<!-- PREPARA LA CARPETA DE REPORTES -->
-	<target name="prepare.report.dir" description="Prepares the reports folder">
-	<mkdir dir="${html.dir}" />
-        <copy todir="${report.dir}">
-            <fileset dir="${html.dir}">
-                <include name="*.htm" />
-            </fileset>
-        </copy>
-    </target>
-	
-	<!-- PASO ANTERIOR NECESARIO PARA COBERTURA -->
+    <!-- PASO ANTERIOR NECESARIO PARA COBERTURA -->
     <target name="cobertura.instrument" depends="compilar" description="Instrument the project for code coverage.">
         <mkdir dir="${report.temp.dir}" />
         <cobertura-instrument todir="${instrumented.dir}" datafile="${cobertura.ser.file}">
@@ -96,7 +84,7 @@
             </fileset>
         </cobertura-instrument>
 	</target>
-    <target name="corrertests" depends="compilar, cobertura.instrument,prepare.report.dir" description="Run all junit test cases.">
+    <target name="corrertests" depends="compilar, cobertura.instrument" description="Run all junit test cases.">
         <mkdir dir="${report.cobertura.dir}" />
         <junit printsummary="yes" fork="yes" haltonfailure="no">
             <sysproperty key="net.sourceforge.cobertura.datafile" file="${cobertura.ser.file}" />
@@ -106,11 +94,6 @@
             <classpath location="${instrumented.dir}" />
             <classpath location="${bin.dir}" />
             <classpath location="${junit.dir}" />
-
-	    <classpath>
-	   	 <pathelement location="${bin.dir}"/>
-	    </classpath>
-
 
             <!-- The instrumented classes reference classes used by the
                  Cobertura runtime, so Cobertura and its dependencies
@@ -128,7 +111,7 @@
     </target>
 	
 	<!-- REPORTES COBERTURA -->
-	<target name="reporte.cobertura" depends="corrertests, prepare.report.dir" description="Generate an HTML report on Cobertura.">
+	<target name="reporte.cobertura" depends="corrertests" description="Generate an HTML report on Cobertura.">
         <cobertura-report format="html" datafile="${cobertura.ser.file}" destdir="${report.cobertura.dir}">
             <fileset dir="${src.dir}">
                 <include name="**/*.java" />
@@ -137,8 +120,7 @@
     </target>
 	
 	<!-- REPORTES JUNIT-->
-    <target name="reporte.junit" depends="corrertests, prepare.report.dir" 
-        description="Create a report for the test result.">
+    <target name="reporte.junit" depends="corrertests" description="Create a report for the test result.">
         <delete dir="${report.junit.dir}" />
         <mkdir dir="${report.junit.dir}" />
         <junitreport todir="${report.junit.dir}">
@@ -174,6 +156,6 @@
 		<echo>ant generarjavadocs : Generar los javadocs.</echo>
 		<echo>ant generarentrega : Genera un zip listo para entregar.</echo>
 		<echo>ant reporte.cobertura : Genera los reportes de los tests.</echo>
-		<echo>ant reporte.junit :  General los reportes en junit. </echo>
+		<echo>ant reporte.junit : Corre los tests y  genera los reportes en junit. </echo>
 	</target> 
 </project>
