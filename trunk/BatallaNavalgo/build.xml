@@ -45,6 +45,9 @@
         <delete dir="${report.junit.dir}" />		
         <delete dir="${report.cobertura.dir}" />  
         <delete dir="${report.temp.dir}" />
+	<delete dir="${instrumented.dir}"/>
+	<delete dir="${html.dir}"/>
+	<delete dir="${report.dir}"/>
     </target>
 		
     <target name="compilar" depends="limpiar">
