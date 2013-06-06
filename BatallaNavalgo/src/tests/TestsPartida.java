@@ -14,8 +14,5 @@ public class TestsPartida {
 		assertTrue(unaPartida.getCantidadDeElementosEnTablero() == 7);
 	}
 	
-	@Test
-	public void testEstoEsUnTestQueVaAFallar() {
-		assertTrue (1==0);
-	}
+
 }
