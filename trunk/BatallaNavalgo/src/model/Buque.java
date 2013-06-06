@@ -8,13 +8,13 @@ public class Buque extends Nave implements Atacable{
 	
 	public Buque(){
 		super();
-		this.resistencia = MAXIMA_RESISTENCIA;
+		//this.resistencia = MAXIMA_RESISTENCIA;
 		determinarPosiciones();
 	}
 	
 	public Buque(Posicion posicion){
 		super(posicion);
-		this.resistencia = MAXIMA_RESISTENCIA;
+		//this.resistencia = MAXIMA_RESISTENCIA;
 		determinarPosiciones();
 	}
 	
@@ -40,18 +40,20 @@ public class Buque extends Nave implements Atacable{
 				break;
 		}
 		
-		agregarPosicion(pos1);
-		agregarPosicion(pos2);
-		agregarPosicion(pos3);
+		ParteDeNave parte1 = new ParteDeNave(pos1, 1);
+		ParteDeNave parte2 = new ParteDeNave(pos2, 1);
+		ParteDeNave parte3 = new ParteDeNave(pos3, 1);
+		agregarParte(parte1);
+		agregarParte(parte2);
+		agregarParte(parte3);
 
 	}
 
 	@Override
 	public void serAtacadoPor(Disparo disparo) {
-		for (Iterator<Posicion> it = getPosiciones().iterator(); it.hasNext();)
-			if ((disparo.getPosicion().esIgualA(it.next())))
-					reducirResistencia(MAXIMA_RESISTENCIA);
-		
+		for (Iterator<ParteDeNave> it = getPartes().iterator(); it.hasNext();)
+			if ((disparo.getPosicion().esIgualA(it.next().getPosicion())))
+				it.next().reducirResistencia(MAXIMA_RESISTENCIA);
 	}
 
 	public void serAtacadoPor(MinaConRetardo minaConRetardo) {

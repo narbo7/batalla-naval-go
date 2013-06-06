@@ -13,11 +13,11 @@ import org.junit.Test;
 public class TestsDestructor extends TestCase {
 
 	@Test
-	public void testUnDestructorDeberiaCrearseConTresPosiciones(){
+	public void testUnDestructorDeberiaCrearseConTresPartes(){
 		
 		Destructor destructor = new Destructor();
 	
-		assertTrue(destructor.getCantidadDePosiciones() == 3);
+		assertTrue(destructor.getCantidadDePartes() == 3);
 		
 	}
 	
@@ -29,7 +29,7 @@ public class TestsDestructor extends TestCase {
 		
 		disparo.atacar(destructor);
 		
-		assertTrue((destructor.getResistencia()) == 2);
+		assertTrue((destructor.getResistenciaTotal()) == 2);
 	}
 
 	@Test

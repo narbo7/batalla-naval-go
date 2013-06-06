@@ -25,5 +25,9 @@ public class ParteDeNave {
 	public void setResistencia(int resistencia){
 		this.resistencia = resistencia;
 	}
+	
+	public void reducirResistencia(int resistencia){
+		this.resistencia -= resistencia;
+	}
 
 }

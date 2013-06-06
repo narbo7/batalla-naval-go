@@ -11,11 +11,11 @@ import org.junit.Test;
 public class TestsRompehielo extends TestCase {
 
 	@Test
-	public void testUnRompehieloDeberiaCrearseConTresPosiciones() {
+	public void testUnRompehieloDeberiaCrearseConTresPartes() {
 		
 		Rompehielo rompehielo = new Rompehielo();
 		
-		assertTrue((rompehielo.getCantidadDePosiciones()) == 3);
+		assertTrue((rompehielo.getCantidadDePartes()) == 3);
 			
 	}
 	
@@ -27,7 +27,7 @@ public class TestsRompehielo extends TestCase {
 		
 		disparo.atacar(rompehielo);
 		
-		assertTrue((rompehielo.getResistencia()) == 5);
+		assertTrue((rompehielo.getResistenciaTotal()) == 5);
 	}
 
 	

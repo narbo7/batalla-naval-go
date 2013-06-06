@@ -8,7 +8,7 @@ public class Destructor extends Nave implements Atacable{
 	
 	public Destructor(){		
 		super();		
-		this.resistencia = RESISTENCIA_MAXIMA;
+		//this.resistencia = RESISTENCIA_MAXIMA;
 		determinarPosiciones();
 
 	}
@@ -16,7 +16,7 @@ public class Destructor extends Nave implements Atacable{
 	//Solo para tests
 	public Destructor(Posicion posicion){		
 		super(posicion);		
-		this.resistencia = RESISTENCIA_MAXIMA;
+		//this.resistencia = RESISTENCIA_MAXIMA;
 		determinarPosiciones();
 
 	}
@@ -40,17 +40,19 @@ public class Destructor extends Nave implements Atacable{
 				break;
 		}
 		
-		agregarPosicion(pos1);
-		agregarPosicion(pos2);
+		ParteDeNave parte1 = new ParteDeNave(pos1, 1);
+		ParteDeNave parte2 = new ParteDeNave(pos2, 1);
+		agregarParte(parte1);
+		agregarParte(parte2);
 		
 	}
 
 	@Override
 	public void serAtacadoPor(Disparo disparo) {
 		
-		for (Iterator<Posicion> it = getPosiciones().iterator(); it.hasNext();)
-			if ((disparo.getPosicion().esIgualA(it.next())))
-				reducirResistencia(1);
+		for (Iterator<ParteDeNave> it = getPartes().iterator(); it.hasNext();)
+			if ((disparo.getPosicion().esIgualA(it.next().getPosicion())))
+				it.next().reducirResistencia(1);
 	}
 
 	public void serAtacadoPor(MinaConRetardo minaConRetardo) {

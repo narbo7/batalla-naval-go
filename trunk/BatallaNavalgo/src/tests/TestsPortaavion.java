@@ -12,11 +12,11 @@ import org.junit.Test;
 public class TestsPortaavion extends TestCase {
 
 	@Test
-	public void testUnPortaavionesDeberiaCrearseConCincoPosiciones() {
+	public void testUnPortaavionesDeberiaCrearseConCincoPartes() {
 		
 		Portaavion portaavion = new Portaavion();
 		
-		assertTrue((portaavion.getCantidadDePosiciones()) == 5);
+		assertTrue((portaavion.getCantidadDePartes()) == 5);
 		
 	}
 
@@ -28,7 +28,7 @@ public class TestsPortaavion extends TestCase {
 		
 		disparo.atacar(portaavion);
 		
-		assertTrue((portaavion.getResistencia()) == 4);
+		assertTrue((portaavion.getResistenciaTotal()) == 4);
 	}
 	
 	

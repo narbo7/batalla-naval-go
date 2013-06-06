@@ -8,14 +8,12 @@ public class Rompehielo extends Nave implements Atacable{
 	
 	public Rompehielo(){
 		super();
-		this.resistencia = MAXIMA_RESISTENCIA;
 		determinarPosiciones();
 		
 	}
 	
 	public Rompehielo(Posicion posicion){
 		super(posicion);
-		this.resistencia = MAXIMA_RESISTENCIA;
 		determinarPosiciones();
 		
 	}
@@ -26,7 +24,8 @@ public class Rompehielo extends Nave implements Atacable{
 		Posicion miPosicion = evaluarPosicion(getPosicion());
 		Posicion pos1 = new Posicion(miPosicion.getFila(), miPosicion.getColumna());
 		Posicion pos2 = new Posicion(miPosicion.getFila(), miPosicion.getColumna());
-		
+		//Modifico la resitencia de la parte por defaul ya que vale 2
+		getPartes().getFirst().setResistencia(2);
 		
 		switch (getUbicacion()){		
 		case 1: //Horizontal
@@ -39,17 +38,18 @@ public class Rompehielo extends Nave implements Atacable{
 				break;
 		}
 		
-		agregarPosicion(pos1);
-		agregarPosicion(pos2);
+		ParteDeNave parte1 = new ParteDeNave(pos1, 2);
+		ParteDeNave parte2 = new ParteDeNave(pos2, 2);
+		agregarParte(parte1);
+		agregarParte(parte2);
 		
 	}
 
 	@Override
-	public void serAtacadoPor(Disparo disparo) {
-		
-		for (Iterator<Posicion> it = getPosiciones().iterator(); it.hasNext();)
-			if ((disparo.getPosicion().esIgualA(it.next())))
-					reducirResistencia(1);	
+	public void serAtacadoPor(Disparo disparo) {		
+		for (Iterator<ParteDeNave> it = getPartes().iterator(); it.hasNext();)
+			if ((disparo.getPosicion().esIgualA(it.next().getPosicion())))
+				it.next().reducirResistencia(1);
 	}
 
 	public void serAtacadoPor(MinaConRetardo minaConRetardo) {

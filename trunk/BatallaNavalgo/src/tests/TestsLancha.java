@@ -12,15 +12,14 @@ import org.junit.Test;
 public class TestsLancha extends TestCase{
 
 	@Test
-	public void testUnaLanchaDeberiaCrearseConDosPosiciones() {
+	public void testUnaLanchaDeberiaCrearseConDosPartes() {
 		
 		Lancha lancha = new Lancha();
 		
-		assertTrue((lancha.getCantidadDePosiciones()) == 2);
+		assertTrue((lancha.getCantidadDePartes()) == 2);
 
 	}
-
-
+	
 	@Test
 	public void testAlSerAtacadoPorUnDisparoDeberiaReducirSuResistencia(){
 		
@@ -28,8 +27,8 @@ public class TestsLancha extends TestCase{
 		Disparo disparo = new Disparo(lancha.getPosicion());
 		
 		disparo.atacar(lancha);
-		
-		assertTrue((lancha.getResistencia()) == 1);
+	
+		assertTrue((lancha.getResistenciaTotal()) == 1);
 		
 	}
 	

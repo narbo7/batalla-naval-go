@@ -1,21 +1,26 @@
 package model;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Random;
 
 public abstract class Nave extends ElementoDelJuego implements ObjetoMovil{
 	
-	protected int resistencia;
+	//protected int resistencia;
 	protected int ubicacion;
-	LinkedList<Posicion> posiciones;
+	//LinkedList<Posicion> posiciones;
+	LinkedList<ParteDeNave> partes;
 	private boolean dirArriba, dirAbajo, dirIzquierda, dirDerecha;
 	
 	public Nave(){
 		
 		super();
 		this.ubicacion = RandomInt.generarRandomEntre(1, 2);
-		this.posiciones = new LinkedList<Posicion>();
-		this.posiciones.add(getPosicion());
+		this.partes = new LinkedList<ParteDeNave>();
+		//Por defecto cada ParteDeNave tiene resisntecia 1
+		this.partes.add(new ParteDeNave(getPosicion(), 1));
+		//this.posiciones = new LinkedList<Posicion>();
+		//this.posiciones.add(getPosicion());
 		this.generarDireccion();
 	}
 	
@@ -24,8 +29,11 @@ public abstract class Nave extends ElementoDelJuego implements ObjetoMovil{
 		
 		super(posicion);
 		this.ubicacion = RandomInt.generarRandomEntre(1, 2);
-		this.posiciones = new LinkedList<Posicion>();
-		this.posiciones.add(getPosicion());
+		this.partes = new LinkedList<ParteDeNave>();
+		//Por defecto cada ParteDeNave tiene resisntecia 1
+		this.partes.add(new ParteDeNave(posicion, 1));
+		//this.posiciones = new LinkedList<Posicion>();
+		//this.posiciones.add(getPosicion());
 		this.generarDireccion();
 	}
 
@@ -52,17 +60,31 @@ public abstract class Nave extends ElementoDelJuego implements ObjetoMovil{
 		}
 	}
 
-	public int getResistencia(){
-		return this.resistencia;
+	public int getResistenciaTotal(){
+		
+		int resistenciaTotal = 0;
+		for (Iterator<ParteDeNave> it = getPartes().iterator(); it.hasNext();)
+			resistenciaTotal += it.next().getResistencia();
+		
+		return resistenciaTotal;
 	}
-	public void reducirResistencia(int valor){
-		this.resistencia -= valor;
-	}
-	public int getUbicacion(){		
+		public int getUbicacion(){		
 		return this.ubicacion;		
 	}
 	
-	public LinkedList<Posicion> getPosiciones(){
+	public LinkedList<ParteDeNave> getPartes(){
+		return this.partes;
+	}
+	
+	public void agregarParte(ParteDeNave parte){
+		this.partes.add(parte);
+	}
+	
+	public int getCantidadDePartes(){
+		return this.partes.size();
+	}
+	
+	/*public LinkedList<Posicion> getPosiciones(){
 		return this.posiciones;
 	}
 	
@@ -74,11 +96,12 @@ public abstract class Nave extends ElementoDelJuego implements ObjetoMovil{
 	public int getCantidadDePosiciones(){
 		
 		return this.posiciones.size();
-	}
+	}*/
 	
 	public abstract void determinarPosiciones();
 	
 	public abstract void serAtacadoPor(Disparo disparo);
+	
 	
 	public void mover(){
 		for (Posicion posicion : this.posiciones) {
@@ -163,9 +186,10 @@ public abstract class Nave extends ElementoDelJuego implements ObjetoMovil{
 		}
 		
 		if ((huboCambioFil) || (huboCambioCol)){
-			agregarPosicion(nuevaPos);
+			this.partes.removeFirst();
+			ParteDeNave parte = new ParteDeNave(nuevaPos, 1);
+			agregarParte(parte);
 			setPosicion(nuevaPos);
-			this.posiciones.remove(posicion);
 		}	
 		
 		return nuevaPos;
