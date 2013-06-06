@@ -104,40 +104,40 @@ public abstract class Nave extends ElementoDelJuego implements ObjetoMovil{
 	
 	
 	public void mover(){
-		for (Posicion posicion : this.posiciones) {
+		for(ParteDeNave parteDeNave: this.partes){
 			if(this.getDirArriba()) {
-				if(posicion.getFila() == 1) {
+				if(parteDeNave.getPosicion().getFila() == 1) {
 					this.setDirArriba(false);
 					this.setDirAbajo(true);
 					} else {
-						posicion.setFila(posicion.getFila()-1);
+						parteDeNave.getPosicion().setFila(parteDeNave.getPosicion().getFila()-1);
 					}
 			}
 			
 			if(this.getDirAbajo()) {
-				if(posicion.getFila() == Tablero.getMaxFila()) {
+				if(parteDeNave.getPosicion().getFila() == Tablero.getMaxFila()) {
 					this.setDirArriba(true);
 					this.setDirAbajo(false);
 				} else {
-					posicion.setFila(posicion.getFila()+1);
+					parteDeNave.getPosicion().setFila(parteDeNave.getPosicion().getFila()+1);
 				}
 			}
 			
 			if(this.getDirDerecha()){
-				if(posicion.getColumna() == Tablero.getMaxColumna()) {
+				if(parteDeNave.getPosicion().getColumna() == Tablero.getMaxColumna()) {
 					this.setDirDerecha(false);
 					this.setDirIzquierda(true);
 				} else {
-					posicion.setColumna(posicion.getColumna()+1);
+					parteDeNave.getPosicion().setColumna(parteDeNave.getPosicion().getColumna()+1);
 				}
 			}
 			
 			if(this.getDirIzquierda()){
-				if(posicion.getColumna() == 1) {
+				if(parteDeNave.getPosicion().getColumna() == 1) {
 					this.setDirDerecha(true);
 					this.setDirIzquierda(false);
 				} else {
-					posicion.setColumna(posicion.getColumna()-1);
+					parteDeNave.getPosicion().setColumna(parteDeNave.getPosicion().getColumna()-1);
 				}
 			}
 		}
