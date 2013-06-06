@@ -76,7 +76,7 @@ public abstract class Nave extends ElementoDelJuego implements ObjetoMovil{
 		return this.posiciones.size();
 	}
 	
-	public abstract void determinarPosiciones() throws ErrorFueraDeRango;
+	public abstract void determinarPosiciones();
 	
 	public abstract void serAtacadoPor(Disparo disparo);
 	
@@ -136,7 +136,40 @@ public abstract class Nave extends ElementoDelJuego implements ObjetoMovil{
 	
 	public void setDirIzquierda(boolean x) { this.dirIzquierda = x;}
 	
-	public abstract Posicion evaluarPosicion(Posicion posicion) throws ErrorFueraDeRango;
+	public Posicion evaluarPosicion(Posicion posicion){
+		
+		Posicion nuevaPos = new Posicion(posicion.getFila(), posicion.getColumna());
+		boolean huboCambioFil = false;
+		boolean huboCambioCol = false;
+		int miFila = nuevaPos.getFila();
+		int miColumna = nuevaPos.getColumna();
+		
+		if ((miFila) == 1){
+			nuevaPos.setFila(miFila + 2);
+			huboCambioFil = true;
+		} else {
+			if ((miFila) == Tablero.maxFila)
+				nuevaPos.setFila(miFila - 2);
+				huboCambioFil = true;
+		}
+		
+		if ((miColumna) == 1){
+			nuevaPos.setColumna(miColumna + 2);
+			huboCambioCol = true;
+		} else {
+			if((miColumna) == Tablero.maxColumna)
+				nuevaPos.setColumna(miColumna - 2);
+				huboCambioCol = true;
+		}
+		
+		if ((huboCambioFil) || (huboCambioCol)){
+			agregarPosicion(nuevaPos);
+			setPosicion(nuevaPos);
+			this.posiciones.remove(posicion);
+		}	
+		
+		return nuevaPos;
+	}
 		
 	
 

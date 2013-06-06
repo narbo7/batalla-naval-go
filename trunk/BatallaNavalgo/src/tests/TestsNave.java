@@ -2,7 +2,6 @@ package tests;
 
 import static org.junit.Assert.*;
 
-import model.ErrorFueraDeRango;
 import model.Lancha;
 import model.Nave;
 import model.Posicion;
@@ -34,7 +33,7 @@ public class TestsNave {
 	}
 	
 	@Test
-	public void testUnaNaveQueSeMueveParaArribaYLlegaALaFilaUnoDebeDarLaVuelta() throws ErrorFueraDeRango{
+	public void testUnaNaveQueSeMueveParaArribaYLlegaALaFilaUnoDebeDarLaVuelta(){
 		
 		Posicion unaPosicion = new Posicion(1,6);
 		Nave unaNave = new Lancha(unaPosicion);
@@ -48,7 +47,7 @@ public class TestsNave {
 	}
 	
 	@Test
-	public void testUnaNaveQueSeMueveParaAbajoYLlegaALaUltimaFilaDebeDarLaVuelta() throws ErrorFueraDeRango{
+	public void testUnaNaveQueSeMueveParaAbajoYLlegaALaUltimaFilaDebeDarLaVuelta(){
 		
 		Posicion unaPosicion = new Posicion(10,4);
 		Nave unaNave = new Lancha(unaPosicion);
@@ -63,7 +62,7 @@ public class TestsNave {
 	}
 	
 	@Test
-	public void testUnaNaveQueSeMueveParaLaDerechaYLlegaALaUltimaColumnaDebeDarLaVuelta() throws ErrorFueraDeRango{
+	public void testUnaNaveQueSeMueveParaLaDerechaYLlegaALaUltimaColumnaDebeDarLaVuelta(){
 		
 		Posicion unaPosicion = new Posicion(5,10);
 		Nave unaNave = new Lancha(unaPosicion);
@@ -78,7 +77,7 @@ public class TestsNave {
 	}
 	
 	@Test
-	public void testUnaNaveQueSeMueveParaLaIzquierdaYLlegaALaColumnaUnoDebeDarLaVuelta() throws ErrorFueraDeRango{
+	public void testUnaNaveQueSeMueveParaLaIzquierdaYLlegaALaColumnaUnoDebeDarLaVuelta(){
 		
 		Posicion unaPosicion = new Posicion(9,1);
 		Nave unaNave = new Lancha(unaPosicion);

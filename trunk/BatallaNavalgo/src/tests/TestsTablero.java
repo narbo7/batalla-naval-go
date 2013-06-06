@@ -2,7 +2,6 @@ package tests;
 
 import junit.framework.TestCase;
 import model.ElementoDelJuego;
-import model.ErrorFueraDeRango;
 import model.Posicion;
 import model.Tablero;
 
@@ -30,7 +29,7 @@ public class TestsTablero extends TestCase{
 	}
 	
 	@Test
-	public void testQuitarElemento() throws ErrorFueraDeRango {
+	public void testQuitarElemento(){
 		
 		Tablero miTablero = new Tablero();
 		Posicion posicion1 = new Posicion(3,5);
