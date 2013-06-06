@@ -11,15 +11,16 @@ public class Jugador {
 	public Jugador(){
         this.puntaje = 10000;
 		this.bombas = new LinkedList<Bomba>();
-		Bomba unaBomba = new Disparo();
+		Posicion unaPosicion = new Posicion();
+		Bomba unaBomba = new Disparo(unaPosicion);
 		this.bombas.add(1,unaBomba);
-		unaBomba = new MinaConRetardo();
+		unaBomba = new MinaConRetardo(unaPosicion);
 		this.bombas.add(2,unaBomba);
-		unaBomba = new MinaDobleConRetardo();
+		unaBomba = new MinaDobleConRetardo(unaPosicion);
 		this.bombas.add(3,unaBomba);
-		unaBomba = new MinaTripleConRetardo();
+		unaBomba = new MinaTripleConRetardo(unaPosicion);
 		this.bombas.add(4,unaBomba);
-		unaBomba = new MinaPorContacto();
+		unaBomba = new MinaPorContacto(unaPosicion);
 		this.bombas.add(5,unaBomba);
 	}
 
