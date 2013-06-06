@@ -9,34 +9,38 @@ public class Rompehielo extends Nave implements Atacable{
 	public Rompehielo(){
 		super();
 		this.resistencia = MAXIMA_RESISTENCIA;
-		try {
-			determinarPosiciones();
-		} catch (ErrorFueraDeRango e) {
-			e.printStackTrace();
-		}
+		determinarPosiciones();
+		
+	}
+	
+	public Rompehielo(Posicion posicion){
+		super(posicion);
+		this.resistencia = MAXIMA_RESISTENCIA;
+		determinarPosiciones();
 		
 	}
 	
 	@Override
-	public void determinarPosiciones() throws ErrorFueraDeRango {
+	public void determinarPosiciones(){
 		
-		Posicion proa = new Posicion(getPosicion().getFila(), getPosicion().getColumna());
-		Posicion popa = new Posicion(getPosicion().getFila(), getPosicion().getColumna());
+		Posicion miPosicion = evaluarPosicion(getPosicion());
+		Posicion pos1 = new Posicion(miPosicion.getFila(), miPosicion.getColumna());
+		Posicion pos2 = new Posicion(miPosicion.getFila(), miPosicion.getColumna());
 		
 		
 		switch (getUbicacion()){		
 		case 1: //Horizontal
-				proa.setColumna(proa.getColumna() + 1);
-				popa.setColumna(popa.getColumna() - 1);
+				pos1.setColumna(pos1.getColumna() + 1);
+				pos2.setColumna(pos2.getColumna() - 1);
 				break;
 		case 2: //Vertical
-				proa.setFila(proa.getFila() + 1);
-				popa.setFila(popa.getFila() - 1);
+				pos1.setFila(pos1.getFila() + 1);
+				pos2.setFila(pos2.getFila() - 1);
 				break;
 		}
 		
-		agregarPosicion(proa);
-		agregarPosicion(popa);
+		agregarPosicion(pos1);
+		agregarPosicion(pos2);
 		
 	}
 
@@ -68,10 +72,6 @@ public class Rompehielo extends Nave implements Atacable{
 		
 	}
 
-	@Override
-	public Posicion evaluarPosicion(Posicion posicion) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 
 }

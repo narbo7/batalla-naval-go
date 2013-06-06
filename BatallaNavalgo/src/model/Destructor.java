@@ -9,45 +9,39 @@ public class Destructor extends Nave implements Atacable{
 	public Destructor(){		
 		super();		
 		this.resistencia = RESISTENCIA_MAXIMA;
-		try {
-			determinarPosiciones();
-		} catch (ErrorFueraDeRango e) {
-			e.printStackTrace();
-		}
+		determinarPosiciones();
+
 	}
 	
 	//Solo para tests
 	public Destructor(Posicion posicion){		
 		super(posicion);		
 		this.resistencia = RESISTENCIA_MAXIMA;
-		try {
-			determinarPosiciones();
-		} catch (ErrorFueraDeRango e) {
-			e.printStackTrace();
-		}
+		determinarPosiciones();
+
 	}
 	
 	@Override
-	public void determinarPosiciones() throws ErrorFueraDeRango {
+	public void determinarPosiciones(){
 		
 		Posicion miPosicion = evaluarPosicion(getPosicion());
-		Posicion proa = new Posicion(miPosicion.getFila(), miPosicion.getColumna());
-		Posicion popa = new Posicion(miPosicion.getFila(), miPosicion.getColumna());
+		Posicion pos1 = new Posicion(miPosicion.getFila(), miPosicion.getColumna());
+		Posicion pos2 = new Posicion(miPosicion.getFila(), miPosicion.getColumna());
 		
 		
 		switch (getUbicacion()){		
 		case 1: //Horizontal
-				proa.setColumna(proa.getColumna() + 1);
-				popa.setColumna(popa.getColumna() - 1);
+				pos1.setColumna(pos1.getColumna() + 1);
+				pos2.setColumna(pos2.getColumna() - 1);
 				break;
 		case 2: //Vertical
-				proa.setFila(proa.getFila() + 1);
-				popa.setFila(popa.getFila() - 1);
+				pos1.setFila(pos1.getFila() + 1);
+				pos2.setFila(pos2.getFila() - 1);
 				break;
 		}
 		
-		agregarPosicion(proa);
-		agregarPosicion(popa);
+		agregarPosicion(pos1);
+		agregarPosicion(pos2);
 		
 	}
 
@@ -79,30 +73,5 @@ public class Destructor extends Nave implements Atacable{
 		
 	}
 
-	@Override
-	public Posicion evaluarPosicion(Posicion posicion) throws ErrorFueraDeRango {
-		
-		Posicion nuevaPos = new Posicion(posicion.getFila(), posicion.getColumna());
-		int miFila = nuevaPos.getFila();
-		int miColumna = nuevaPos.getColumna();
-		
-		if ((miFila) == 1){
-			nuevaPos.setFila(miFila + 1);
-		} else {
-			if ((miFila) == Tablero.maxFila)
-				nuevaPos.setFila(miFila - 1);
-		}
-		
-		if ((miColumna) == 1){
-			nuevaPos.setColumna(miColumna + 1);
-		} else {
-			if((miColumna) == Tablero.maxColumna)
-				nuevaPos.setColumna(miColumna - 1);
-		}
-		
-		setPosicion(nuevaPos);
-		
-		return nuevaPos;
-	}
 
 }

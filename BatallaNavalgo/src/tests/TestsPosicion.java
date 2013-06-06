@@ -2,7 +2,7 @@ package tests;
 
 import static org.junit.Assert.*;
 
-import model.ErrorFueraDeRango;
+
 import model.Posicion;
 
 import org.junit.Test;
@@ -21,7 +21,7 @@ public class TestsPosicion {
 	}
 
 	@Test
-	public void testEsIgualA() throws ErrorFueraDeRango {
+	public void testEsIgualA(){
 		
 		Posicion unaPosicion = new Posicion(1,10);
 		Posicion otraPosicion = new Posicion(1,10);
@@ -32,17 +32,6 @@ public class TestsPosicion {
 		assertFalse(unaPosicion.esIgualA(otraPosicion));
 	}
 	
-	@Test
-	public void testPosicionFueraDeRangoDeberiaLanzarUnaExcepcion() throws ErrorFueraDeRango {
-		
-		try {			
-			
-			@SuppressWarnings("unused")
-			Posicion unaPosicion = new Posicion(11,3);		
-			
-		} catch (ErrorFueraDeRango e){
-			
-		}
-	}
+
 
 }

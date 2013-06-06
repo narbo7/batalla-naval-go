@@ -9,36 +9,41 @@ public class Buque extends Nave implements Atacable{
 	public Buque(){
 		super();
 		this.resistencia = MAXIMA_RESISTENCIA;
-		try {
-			determinarPosiciones();
-		} catch (ErrorFueraDeRango e) {
-			e.printStackTrace();
-		}
+		determinarPosiciones();
+	}
+	
+	public Buque(Posicion posicion){
+		super(posicion);
+		this.resistencia = MAXIMA_RESISTENCIA;
+		determinarPosiciones();
 	}
 	
 	@Override
-	public void determinarPosiciones() throws ErrorFueraDeRango {
+	public void determinarPosiciones(){
 		
-		Posicion proa = new Posicion(getPosicion().getFila(), getPosicion().getColumna());
-		Posicion popa = new Posicion(getPosicion().getFila(), getPosicion().getColumna());
-		Posicion medio = new Posicion(getPosicion().getFila(), getPosicion().getColumna());
+		Posicion miPosicion = evaluarPosicion(getPosicion());
+		Posicion pos1 = new Posicion(miPosicion.getFila(), miPosicion.getColumna());
+		Posicion pos2 = new Posicion(miPosicion.getFila(), miPosicion.getColumna());
+		Posicion pos3 = new Posicion(miPosicion.getFila(), miPosicion.getColumna());
+		
 		
 		switch (getUbicacion()){		
 		case 1: //Horizontal
-				proa.setColumna(proa.getColumna() + 2);
-				medio.setColumna(medio.getColumna() + 1);
-				popa.setColumna(popa.getColumna() - 1);
+				pos1.setColumna(pos1.getColumna() + 2);
+				pos2.setColumna(pos2.getColumna() + 1);
+				pos3.setColumna(pos3.getColumna() - 1);
 				break;
 		case 2: //Vertical
-				proa.setFila(proa.getFila() + 2);
-				medio.setFila(medio.getFila() + 1);
-				popa.setFila(popa.getFila() - 1);
+				pos1.setFila(pos1.getFila() + 2);
+				pos2.setFila(pos2.getFila() + 1);
+				pos3.setFila(pos3.getFila() - 1);
 				break;
 		}
 		
-		agregarPosicion(proa);
-		agregarPosicion(popa);
-		agregarPosicion(medio);
+		agregarPosicion(pos1);
+		agregarPosicion(pos2);
+		agregarPosicion(pos3);
+
 	}
 
 	@Override
@@ -67,12 +72,6 @@ public class Buque extends Nave implements Atacable{
 	public void serAtacadoPor(MinaPorContacto minaPorContacto) {
 		// TODO Auto-generated method stub
 		
-	}
-
-	@Override
-	public Posicion evaluarPosicion(Posicion posicion) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 

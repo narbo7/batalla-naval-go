@@ -9,40 +9,43 @@ public class Portaavion extends Nave implements Atacable{
 	public Portaavion(){
 		super();
 		this.resistencia = MAXIMA_RESISTENCIA;
-		try {
-			determinarPosiciones();
-		} catch (ErrorFueraDeRango e) {
-			e.printStackTrace();
-		}
+		determinarPosiciones();
+	}
+
+	public Portaavion(Posicion posicion){
+		super(posicion);
+		this.resistencia = MAXIMA_RESISTENCIA;
+		determinarPosiciones();
 	}
 
 	@Override
-	public void determinarPosiciones() throws ErrorFueraDeRango {
+	public void determinarPosiciones(){
 		
-		Posicion proa = new Posicion(getPosicion().getFila(), getPosicion().getColumna());
-		Posicion popa = new Posicion(getPosicion().getFila(), getPosicion().getColumna());
-		Posicion babor = new Posicion(getPosicion().getFila(), getPosicion().getColumna());
-		Posicion estribor = new Posicion(getPosicion().getFila(), getPosicion().getColumna());
+		Posicion miPosicion = evaluarPosicion(getPosicion());
+		Posicion pos1 = new Posicion(miPosicion.getFila(), miPosicion.getColumna());
+		Posicion pos2 = new Posicion(miPosicion.getFila(), miPosicion.getColumna());
+		Posicion pos3 = new Posicion(miPosicion.getFila(), miPosicion.getColumna());
+		Posicion pos4 = new Posicion(miPosicion.getFila(), miPosicion.getColumna());
 		
 		switch (getUbicacion()){		
 		case 1: //Horizontal
-				proa.setColumna(proa.getColumna() + 2);
-				babor.setColumna(babor.getColumna() + 1);
-				estribor.setColumna(estribor.getColumna() - 1);
-				popa.setColumna(popa.getColumna() - 2);
+				pos1.setColumna(pos1.getColumna() + 2);
+				pos2.setColumna(pos2.getColumna() + 1);
+				pos3.setColumna(pos3.getColumna() - 1);
+				pos4.setColumna(pos4.getColumna() - 2);
 				break;
 		case 2: //Vertical
-				proa.setFila(proa.getFila() + 2);
-				babor.setFila(babor.getFila() + 1);
-				estribor.setFila(estribor.getFila() - 1);
-				popa.setFila(popa.getFila() - 2);
+				pos1.setFila(pos1.getFila() + 2);
+				pos2.setFila(pos2.getFila() + 1);
+				pos3.setFila(pos3.getFila() - 1);
+				pos4.setFila(pos4.getFila() - 2);
 				break;
 		}
 		
-		agregarPosicion(proa);
-		agregarPosicion(popa);
-		agregarPosicion(babor);
-		agregarPosicion(estribor);
+		agregarPosicion(pos1);
+		agregarPosicion(pos2);
+		agregarPosicion(pos3);
+		agregarPosicion(pos4);
 	}
 
 	@Override
@@ -70,12 +73,6 @@ public class Portaavion extends Nave implements Atacable{
 	public void serAtacadoPor(MinaPorContacto minaPorContacto) {
 		// TODO Auto-generated method stub
 		
-	}
-
-	@Override
-	public Posicion evaluarPosicion(Posicion posicion) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 }
