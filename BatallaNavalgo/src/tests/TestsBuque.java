@@ -11,11 +11,11 @@ import org.junit.Test;
 public class TestsBuque extends TestCase{
 
 	@Test
-	public void testUnBuquerDeberiaCrearseConCuatroPosiciones() {
+	public void testUnBuquerDeberiaCrearseConCuatroPartes() {
 		
 		Buque buque = new Buque();
 		
-		assertTrue((buque.getCantidadDePosiciones()) == 4);		
+		assertTrue((buque.getCantidadDePartes()) == 4);		
 		
 	}
 	
@@ -27,7 +27,7 @@ public class TestsBuque extends TestCase{
 		
 		disparo.atacar(buque);
 		
-		assertTrue((buque.getResistencia()) == 0);	
+		assertTrue((buque.getResistenciaTotal()) == 0);	
 	}
 
 	@Test
