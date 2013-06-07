@@ -1,6 +1,7 @@
 package model;
 
 
+
 public class ElementoDelJuego {
 	
 	
@@ -22,6 +23,10 @@ public class ElementoDelJuego {
 
 	public void setPosicion(Posicion posicion) {
 		this.posicion = posicion;
+	}
+
+	public void vivir() {
+		
 	}
 
 }

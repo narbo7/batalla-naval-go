@@ -1,5 +1,7 @@
 package model;
 
+
+
 public class MinaConRetardo extends Bomba{
 
 	public MinaConRetardo(Posicion posicion) {

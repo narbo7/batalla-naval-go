@@ -3,6 +3,9 @@ package model;
 import java.util.Iterator;
 import java.util.Observable;
 
+import view.VistaDestructor;
+import view.VistaNave;
+
 public class Destructor extends Nave implements Atacable{
 
 	static final int RESISTENCIA_MAXIMA = 3;
@@ -77,27 +80,14 @@ public class Destructor extends Nave implements Atacable{
 	}
 
 	@Override
-	public void vivir() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public int getX() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int getY() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
 	public void update(Observable o, Object arg) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public VistaNave generarVista() {
+		return new VistaDestructor(this);
 	}
 
 

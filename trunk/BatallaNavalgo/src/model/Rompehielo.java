@@ -3,6 +3,9 @@ package model;
 import java.util.Iterator;
 import java.util.Observable;
 
+import view.VistaNave;
+import view.VistaRompehielo;
+
 public class Rompehielo extends Nave implements Atacable{
 
 	static final int MAXIMA_RESISTENCIA = 6;
@@ -74,27 +77,14 @@ public class Rompehielo extends Nave implements Atacable{
 	}
 
 	@Override
-	public void vivir() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public int getX() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int getY() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
 	public void update(Observable o, Object arg) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public VistaNave generarVista() {
+		return new VistaRompehielo(this);
 	}
 
 

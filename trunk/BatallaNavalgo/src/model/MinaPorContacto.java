@@ -1,5 +1,6 @@
 package model;
 
+
 public class MinaPorContacto extends Bomba{
 
 	public MinaPorContacto(Posicion posicion) {
@@ -36,4 +37,5 @@ public class MinaPorContacto extends Bomba{
 	public Bomba copy() {
         return new MinaPorContacto(this.getPosicion());
     }
+
 }
