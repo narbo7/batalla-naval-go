@@ -24,16 +24,13 @@ public class Jugador {
 		this.bombas.add(5,unaBomba);
 	}
 
-	/*
-	//Hay que definir el metodo clone() para bombas.
 
 	public Bomba dispararBomba(Posicion unaPosicion, int indice) {
-        //ElementoDelJuego unaBomba = (ElementoDelJuego) this.bombas.get(indice).clone();
-        //Bomba unaBomba = (Bomba) this.bombas.get(indice).clone();
+        Bomba unaBomba = this.bombas.get(indice).copy();
         unaBomba.setPosicion(unaPosicion);
         return unaBomba;
 	}
-	*/
+
 
 	public int getPuntaje() {
 		return puntaje;

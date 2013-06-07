@@ -6,7 +6,7 @@ public class MinaTripleConRetardo extends Bomba{
 		super(posicion);
 		this.costo = 125;
 	}
-	
+
 	@Override
 	public void atacar(Lancha lancha) {
 		lancha.serAtacadoPor(this);
@@ -31,4 +31,9 @@ public class MinaTripleConRetardo extends Bomba{
 	public void atacar(Rompehielo rompehielo) {
 		rompehielo.serAtacadoPor(this);
 	}
+
+	@Override
+	public Bomba copy() {
+        return new MinaTripleConRetardo(this.getPosicion());
+    }
 }

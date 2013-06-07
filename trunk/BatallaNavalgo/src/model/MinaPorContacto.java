@@ -6,7 +6,7 @@ public class MinaPorContacto extends Bomba{
 		super(posicion);
 		this.costo = 150;
 	}
-	
+
 	@Override
 	public void atacar(Lancha lancha) {
 		lancha.serAtacadoPor(this);
@@ -31,4 +31,9 @@ public class MinaPorContacto extends Bomba{
 	public void atacar(Rompehielo rompehielo) {
 		rompehielo.serAtacadoPor(this);
 	}
+
+	@Override
+	public Bomba copy() {
+        return new MinaPorContacto(this.getPosicion());
+    }
 }
