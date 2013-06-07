@@ -1,5 +1,6 @@
 package model;
 
+
 public class Disparo extends Bomba{
 
 
@@ -39,5 +40,6 @@ public class Disparo extends Bomba{
 	public Bomba copy() {
         return new Disparo(this.getPosicion());
     }
+
 
 }

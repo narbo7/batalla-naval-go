@@ -1,5 +1,6 @@
 package model;
 
+
 public class MinaDobleConRetardo extends Bomba{
 
 	public MinaDobleConRetardo(Posicion posicion){
@@ -36,4 +37,6 @@ public class MinaDobleConRetardo extends Bomba{
 	public Bomba copy() {
         return new MinaDobleConRetardo(this.getPosicion());
     }
+
+
 }

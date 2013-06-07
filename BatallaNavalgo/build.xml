@@ -61,7 +61,7 @@
      </target>
 
      <target name="correr" depends="compilar">
-     <java fork="yes" classname="model/Partida">
+     <java fork="yes" classname="view/VentanaPrincipal">
      	<classpath>	
 		<pathelement path="${bin.dir}" />
 		<pathelement path="${junit.dir}" />

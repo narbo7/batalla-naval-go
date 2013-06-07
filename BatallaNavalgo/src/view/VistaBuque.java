@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.Color;
 import java.util.Observable;
 
 import fiuba.algo3.titiritero.modelo.ObjetoPosicionable;
@@ -18,7 +19,7 @@ public class VistaBuque extends VistaNave{
 
 	@Override
 	public void setColor() {
-		// TODO Auto-generated method stub
+		this.setColor(Color.GRAY);
 		
 	}
 
