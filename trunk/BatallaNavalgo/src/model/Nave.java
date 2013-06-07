@@ -2,9 +2,13 @@ package model;
 
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.Observer;
 import java.util.Random;
 
-public abstract class Nave extends ElementoDelJuego implements ObjetoMovil{
+import fiuba.algo3.titiritero.modelo.ObjetoPosicionable;
+import fiuba.algo3.titiritero.modelo.ObjetoVivo;
+
+public abstract class Nave extends ElementoDelJuego implements ObjetoMovil, ObjetoVivo, ObjetoPosicionable,Observer{
 	
 	//protected int resistencia;
 	protected int ubicacion;
