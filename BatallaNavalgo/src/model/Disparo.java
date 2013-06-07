@@ -1,8 +1,8 @@
 package model;
 
 public class Disparo extends Bomba{
-	
-	
+
+
 
 	public Disparo(Posicion posicion) {
 		super(posicion);
@@ -32,9 +32,12 @@ public class Disparo extends Bomba{
 	@Override
 	public void atacar(Rompehielo rompehielo) {
 		rompehielo.serAtacadoPor(this);
-		
+
 	}
-	
-	
+
+	@Override
+	public Bomba copy() {
+        return new Disparo(this.getPosicion());
+    }
 
 }

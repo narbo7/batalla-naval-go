@@ -32,5 +32,10 @@ public class MinaConRetardo extends Bomba{
 	public void atacar(Rompehielo rompehielo) {
 		rompehielo.serAtacadoPor(this);
 	}
-		
+
+	@Override
+	public Bomba copy() {
+        return new MinaConRetardo(this.getPosicion());
+    }
+
 }
