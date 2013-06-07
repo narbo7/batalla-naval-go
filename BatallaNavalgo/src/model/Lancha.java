@@ -1,6 +1,7 @@
 package model;
 
 import java.util.Iterator;
+import java.util.Observable;
 
 public class Lancha extends Nave implements Atacable{
 	
@@ -64,6 +65,30 @@ public class Lancha extends Nave implements Atacable{
 	}
 
 	public void serAtacadoPor(MinaPorContacto minaPorContacto) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void vivir() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public int getX() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getY() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void update(Observable o, Object arg) {
 		// TODO Auto-generated method stub
 		
 	}
