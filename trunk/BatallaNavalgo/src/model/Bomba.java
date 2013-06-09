@@ -1,6 +1,6 @@
 package model;
 
-public abstract class Bomba extends ElementoDelJuego implements Cloneable {
+public abstract class Bomba extends ElementoDelJuego {
 
 
 		protected int costo;

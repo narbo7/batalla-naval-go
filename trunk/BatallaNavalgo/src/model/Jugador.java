@@ -28,6 +28,8 @@ public class Jugador {
 	public Bomba dispararBomba(Posicion unaPosicion, int indice) {
         Bomba unaBomba = this.bombas.get(indice).copy();
         unaBomba.setPosicion(unaPosicion);
+        this.puntaje = this.puntaje - unaBomba.getCosto();
+        //if (this.puntaje <=0) throw new PuntajeMenorOIgualACero();
         return unaBomba;
 	}
 
