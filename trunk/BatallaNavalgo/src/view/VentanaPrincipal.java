@@ -29,6 +29,9 @@ public class VentanaPrincipal implements ObservadorDeGameLoop{
 
         private JFrame frame;
         private GameLoop gameLoop;
+        static int aumento = 50;
+        static int relacionTableroVentanaX = (aumento*Tablero.getMaxColumna());
+        static int relacionTableroVentanaY = (aumento*Tablero.getMaxFila());
         
         /**
          * Launch the application.
@@ -86,6 +89,7 @@ public class VentanaPrincipal implements ObservadorDeGameLoop{
 
                 this.setComponentsFocus(btnIniciar, btnDetener);
 
+                
         }
 
         private void inicializarModelo() throws IOException {
@@ -93,12 +97,11 @@ public class VentanaPrincipal implements ObservadorDeGameLoop{
         	
                 Partida miPartida = new Partida();
                 this.gameLoop.agregar(miPartida);
-                
+
                 for (Nave nave : miPartida.getNaves()) {
-                	this.gameLoop.agregar(nave);
                 	this.gameLoop.agregar(nave.generarVista());
                 }
-                             
+                
         }
 
        
@@ -139,12 +142,13 @@ public class VentanaPrincipal implements ObservadorDeGameLoop{
         private JPanel addSuperficiePanel() {
                 JPanel panel = new SuperficiePanel();
                 panel.setBackground(new Color(0,0,0));
-                panel.setBounds(42, 53, Tablero.getMaxColumna(), Tablero.getMaxFila());
+                panel.setBounds(42, 53, relacionTableroVentanaX(),relacionTableroVentanaY());
                 frame.getContentPane().add(panel);
                 return panel;
         }
 
-        private JButton addBotonDetener() {
+
+		private JButton addBotonDetener() {
                 JButton btnDetener = new JButton("Detener");
                 btnDetener.addActionListener(new ActionListener() {
                         public void actionPerformed(ActionEvent e) {
@@ -172,5 +176,17 @@ public class VentanaPrincipal implements ObservadorDeGameLoop{
         public void notificarCicloFinalizado() {
                
         }
+
+		public static int relacionTableroVentanaX() {
+			return relacionTableroVentanaX;
+		}
     
+        public static int relacionTableroVentanaY() {
+			// TODO Auto-generated method stub
+			return relacionTableroVentanaY;
+		}
+        
+        public static int getAumentoVentana() {
+        	return aumento;
+        }
 }

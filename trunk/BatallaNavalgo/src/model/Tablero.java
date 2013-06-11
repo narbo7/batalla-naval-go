@@ -2,15 +2,13 @@ package model;
 
 import java.util.LinkedList;
 
-import view.VistaNave;
-
 import fiuba.algo3.titiritero.modelo.ObjetoVivo;
 
 
 public class Tablero implements ObjetoVivo{
 	
-	static final int maxFila = 500;
-	static final int maxColumna = 500;	
+	static final int maxFila = 10;
+	static final int maxColumna = 10;	
 	
 	private LinkedList<ElementoDelJuego> elementos;
 	private LinkedList<Nave> naves;
@@ -66,7 +64,7 @@ public class Tablero implements ObjetoVivo{
 
 	@Override
 	public void vivir() {
-		System.out.println("El tablero vive");
+		//System.out.println("El tablero vive");
 		for (ElementoDelJuego elemento: this.getElementos()){
 			elemento.vivir();
 		}

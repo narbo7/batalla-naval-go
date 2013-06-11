@@ -1,11 +1,12 @@
 package model;
 
+import fiuba.algo3.titiritero.modelo.ObjetoVivo;
 
 
-public class ElementoDelJuego {
+public class ElementoDelJuego implements ObjetoVivo{
 	
 	
-	private Posicion posicion;
+	protected Posicion posicion;
 	
 	public ElementoDelJuego(){
 		
