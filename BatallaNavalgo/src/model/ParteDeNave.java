@@ -3,12 +3,13 @@ package model;
 import java.util.Observable;
 import java.util.Observer;
 
+import view.VentanaPrincipal;
+
 import fiuba.algo3.titiritero.modelo.ObjetoPosicionable;
 import fiuba.algo3.titiritero.modelo.ObjetoVivo;
 
-public class ParteDeNave implements ObjetoVivo, ObjetoPosicionable,Observer{
+public class ParteDeNave extends ElementoDelJuego implements ObjetoVivo, ObjetoPosicionable,Observer{
 	
-	private Posicion posicion;
 	private int resistencia;
 	
 	public ParteDeNave(Posicion posicion, int resistencia){
@@ -16,13 +17,6 @@ public class ParteDeNave implements ObjetoVivo, ObjetoPosicionable,Observer{
 		this.resistencia = resistencia;
 	}
 	
-	public Posicion getPosicion(){
-		return this.posicion;
-	}
-	
-	public void setPosicion(Posicion posicion){
-		this.posicion = posicion;
-	}
 	
 	public int getResistencia(){
 		return this.resistencia;
@@ -38,26 +32,20 @@ public class ParteDeNave implements ObjetoVivo, ObjetoPosicionable,Observer{
 
 	@Override
 	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
 		
 	}
+
 
 	@Override
 	public int getX() {
-		// TODO Auto-generated method stub
-		return 0;
+		return (this.getPosicion().getColumna() + (this.getPosicion().getColumna()-1)*VentanaPrincipal.getAumentoVentana());
 	}
+
 
 	@Override
 	public int getY() {
-		// TODO Auto-generated method stub
-		return 0;
+		return (this.getPosicion().getFila() + (this.getPosicion().getFila()-1)*VentanaPrincipal.getAumentoVentana()); 
 	}
 
-	@Override
-	public void vivir() {
-		// TODO Auto-generated method stub
-		
-	}
 
 }

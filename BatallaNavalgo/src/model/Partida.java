@@ -43,7 +43,7 @@ public class Partida implements ObjetoVivo{
 	
 	@Override
 	public void vivir() {
-		System.out.println("La partida vive");
+		//System.out.println("La partida vive");
 		this.tablero.vivir();
 		//this.tablero.verificarSiHayExplosiones();
 	}

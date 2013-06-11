@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import java.util.Observer;
 import java.util.Random;
 
+import view.VentanaPrincipal;
 import view.VistaNave;
 
 import fiuba.algo3.titiritero.modelo.ObjetoPosicionable;
@@ -90,43 +91,52 @@ public abstract class Nave extends ElementoDelJuego implements ObjetoMovil, Obje
 	
 	
 	public void mover(){
+		
+		boolean darLaVuelta = false;
+		
 		for(ParteDeNave parteDeNave: this.partes){
+		
 			if(this.getDirArriba()) {
 				if(parteDeNave.getPosicion().getFila() == 1) {
+					darLaVuelta = true;
 					this.setDirArriba(false);
 					this.setDirAbajo(true);
 					} else {
-						parteDeNave.getPosicion().setFila(parteDeNave.getPosicion().getFila()-1);
+						if (!darLaVuelta)parteDeNave.getPosicion().setFila(parteDeNave.getPosicion().getFila()-1);
 					}
 			}
 			
 			if(this.getDirAbajo()) {
 				if(parteDeNave.getPosicion().getFila() == Tablero.getMaxFila()) {
+					darLaVuelta = true;
 					this.setDirArriba(true);
 					this.setDirAbajo(false);
 				} else {
-					parteDeNave.getPosicion().setFila(parteDeNave.getPosicion().getFila()+1);
+					if (!darLaVuelta) parteDeNave.getPosicion().setFila(parteDeNave.getPosicion().getFila()+1);
 				}
 			}
 			
 			if(this.getDirDerecha()){
 				if(parteDeNave.getPosicion().getColumna() == Tablero.getMaxColumna()) {
+					darLaVuelta = true;
 					this.setDirDerecha(false);
 					this.setDirIzquierda(true);
 				} else {
-					parteDeNave.getPosicion().setColumna(parteDeNave.getPosicion().getColumna()+1);
+					if (!darLaVuelta) parteDeNave.getPosicion().setColumna(parteDeNave.getPosicion().getColumna()+1);
 				}
 			}
 			
 			if(this.getDirIzquierda()){
 				if(parteDeNave.getPosicion().getColumna() == 1) {
+					darLaVuelta = true;
 					this.setDirDerecha(true);
 					this.setDirIzquierda(false);
 				} else {
-					parteDeNave.getPosicion().setColumna(parteDeNave.getPosicion().getColumna()-1);
+					if (!darLaVuelta) parteDeNave.getPosicion().setColumna(parteDeNave.getPosicion().getColumna()-1);
 				}
 			}
 		}
+		
 	}
 	
 	public boolean getDirArriba() { return this.dirArriba;}
@@ -185,17 +195,17 @@ public abstract class Nave extends ElementoDelJuego implements ObjetoMovil, Obje
 	
 	@Override
 	public int getX() {
-		// TODO Auto-generated method stub
-		return this.getPosicion().getColumna();
+		return (this.getPosicion().getColumna() + (this.getPosicion().getColumna()-1)*VentanaPrincipal.getAumentoVentana());
 	}
 
 	@Override
 	public int getY() {
-		// TODO Auto-generated method stub
-		return this.getPosicion().getFila();
+		return (this.getPosicion().getFila() + (this.getPosicion().getFila()-1)*VentanaPrincipal.getAumentoVentana()); 
+
 	}
 	
 	public void vivir () {
+		System.out.println("Estoy en x:" + this.getPosicion().getColumna() + " y:" +this.getPosicion().getFila());
 		this.mover();
 	}
 
