@@ -2,11 +2,13 @@ package model;
 
 import java.util.LinkedList;
 
+import view.ObservadorMouse;
+
 import fiuba.algo3.titiritero.modelo.ObjetoVivo;
 
 
 
-public class Partida implements ObjetoVivo{
+public class Partida implements ObjetoVivo,ObservadorMouse{
 
 	private Tablero tablero;
 	
@@ -46,6 +48,13 @@ public class Partida implements ObjetoVivo{
 		//System.out.println("La partida vive");
 		this.tablero.vivir();
 		//this.tablero.verificarSiHayExplosiones();
+	}
+
+	@Override
+	public void notificarEvento(int posicionX, int posicionY) {
+		// TODO Auto-generated method stub
+		//enviar disparo.
+		
 	}
 
 }
