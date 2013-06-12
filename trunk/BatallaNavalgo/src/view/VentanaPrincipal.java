@@ -9,6 +9,7 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
+import java.util.LinkedList;
 
 
 import javax.swing.JButton;
@@ -32,6 +33,7 @@ public class VentanaPrincipal implements ObservadorDeGameLoop{
         static int aumento = 50;
         static int relacionTableroVentanaX = (aumento*Tablero.getMaxColumna());
         static int relacionTableroVentanaY = (aumento*Tablero.getMaxFila());
+        private LinkedList<ObservadorMouse> observadoresMouse= new LinkedList<ObservadorMouse>();	
         
         /**
          * Launch the application.
@@ -136,6 +138,7 @@ public class VentanaPrincipal implements ObservadorDeGameLoop{
                 panel.addMouseListener(new MouseAdapter() {                    
                         @Override
                         public void mouseClicked(MouseEvent arg0) {
+                        	notificarEvento(arg0.getX(),arg0.getY());
                                 }});
         }
 
@@ -189,4 +192,8 @@ public class VentanaPrincipal implements ObservadorDeGameLoop{
         public static int getAumentoVentana() {
         	return aumento;
         }
+        public void notificarEvento(int x, int y){
+    		for(ObservadorMouse observador : observadoresMouse)
+    		observador.notificarEvento(x, y);
+    	}
 }
