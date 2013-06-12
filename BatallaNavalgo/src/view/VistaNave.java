@@ -1,10 +1,8 @@
 package view;
 
-import java.awt.Color;
-import java.util.List;
+
 import java.util.Observer;
 
-import model.Nave;
 import model.Tablero;
 
 import fiuba.algo3.titiritero.dibujables.Cuadrado;
