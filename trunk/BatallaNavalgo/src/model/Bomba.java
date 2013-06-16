@@ -5,6 +5,9 @@ public abstract class Bomba extends ElementoDelJuego {
 
 		protected int costo;
 
+		public Bomba(){
+			super();
+		}
 		public Bomba(Posicion posicion){
 			super(posicion);
 		}
