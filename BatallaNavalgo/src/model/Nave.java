@@ -20,9 +20,10 @@ public abstract class Nave extends ElementoDelJuego implements ObjetoMovil, Obje
 	public Nave(){
 		
 		super();
+		this.posicion = new Posicion();
 		this.ubicacion = RandomInt.generarRandomEntre(1, 2);
 		this.partes = new LinkedList<ParteDeNave>();
-		//Por defecto cada ParteDeNave tiene resisntecia 1
+		//Por defecto cada ParteDeNave tiene resistencia 1
 		this.partes.add(new ParteDeNave(getPosicion(), 1));
 		this.generarDireccion();
 	}

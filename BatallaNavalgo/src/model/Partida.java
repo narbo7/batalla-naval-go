@@ -11,11 +11,13 @@ import fiuba.algo3.titiritero.modelo.ObjetoVivo;
 public class Partida implements ObjetoVivo,ObservadorMouse{
 
 	private Tablero tablero;
+	private Jugador jugador;
 	
 	public Tablero getTablero() {return this.tablero;}
 	
 	public Partida() {
 		this.tablero = new Tablero();
+		this.jugador = new Jugador();
 		
 		Lancha nave1 = new Lancha();
 		Lancha nave2 = new Lancha();
@@ -52,9 +54,18 @@ public class Partida implements ObjetoVivo,ObservadorMouse{
 
 	@Override
 	public void notificarEvento(int posicionX, int posicionY) {
-		// TODO Auto-generated method stub
 		//enviar disparo.
+		Bomba bomba = this.getJugador().dispararBomba();
+		bomba.setPosicion(new Posicion(posicionX, posicionY));
+		this.agregarElementoAlTablero(bomba);
 		
+	}
+	public void agregarElementoAlTablero(ElementoDelJuego elementoDelJuego){
+		tablero.agregarElemento(elementoDelJuego);
+	}
+
+	public Jugador getJugador(){
+		return this.jugador;
 	}
 
 }

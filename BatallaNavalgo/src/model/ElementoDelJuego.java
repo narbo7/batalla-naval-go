@@ -10,7 +10,7 @@ public class ElementoDelJuego implements ObjetoVivo{
 	
 	public ElementoDelJuego(){
 		
-		this.posicion = new Posicion();
+//		this.posicion = new Posicion();
 	}
 	
 	public ElementoDelJuego(Posicion unaPosicion){

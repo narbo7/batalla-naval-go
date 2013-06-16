@@ -1,15 +1,17 @@
 package tests;
 
 import junit.framework.TestCase;
-import model.ElementoDelJuego;
+import model.Destructor;
+import model.Nave;
+
 import org.junit.Test;
 
 public class TestsElementoDelJuego extends TestCase {
 
 	@Test
-	public void testUnElemendoDelJuegoDeberiaCrearseDentroDeLosLimitesDelTablero() {
+	public void testUnaNaveDeberiaCrearseDentroDeLosLimitesDelTablero() {
 		
-		ElementoDelJuego unElemento = new ElementoDelJuego();
+		Nave unElemento = new Destructor();
 		
 		assertTrue(unElemento.getPosicion().getFila() <= 10);
 		assertTrue(unElemento.getPosicion().getColumna()<= 10);		

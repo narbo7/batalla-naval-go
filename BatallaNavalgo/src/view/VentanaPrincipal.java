@@ -177,6 +177,10 @@ public class VentanaPrincipal implements ObservadorDeGameLoop{
 
         @Override
         public void notificarCicloFinalizado() {
+        	System.out.println("Actualizando vistas... ");
+            //Aca tenemos que verificar el estado de los barcos y las bombas graficamente.
+        	// Si hubo un disparo, agregar bomba; actualizar elementos de la partida.
+        	//Si se estallo una parte de nave tambien deberia actualizar.
                
         }
 
