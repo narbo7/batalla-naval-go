@@ -1,6 +1,11 @@
 package model;
 
-public abstract class Bomba extends ElementoDelJuego {
+import fiuba.algo3.titiritero.modelo.ObjetoPosicionable;
+import view.VentanaPrincipal;
+import view.VistaBomba;
+import view.VistaNave;
+
+public abstract class Bomba extends ElementoDelJuego implements ObjetoPosicionable{
 
 
 		protected int costo;
@@ -27,5 +32,20 @@ public abstract class Bomba extends ElementoDelJuego {
 		public abstract void atacar(Rompehielo rompehielo);
 
 		public abstract Bomba copy();
+		
+		//TODO: Modificar esta llamada a otro paquete, deberia ser un observador.
+		public VistaBomba generarVista(){
+			return new VistaBomba(this);
+		}
+		@Override
+		public int getX() {
+			return (this.getPosicion().getColumna() + (this.getPosicion().getColumna()-1)*VentanaPrincipal.getAumentoVentana());
+		}
+
+		@Override
+		public int getY() {
+			return (this.getPosicion().getFila() + (this.getPosicion().getFila()-1)*VentanaPrincipal.getAumentoVentana()); 
+
+		}
 
 }
