@@ -9,9 +9,8 @@ import view.VentanaPrincipal;
 import view.VistaNave;
 
 import fiuba.algo3.titiritero.modelo.ObjetoPosicionable;
-import fiuba.algo3.titiritero.modelo.ObjetoVivo;
 
-public abstract class Nave extends ElementoDelJuego implements ObjetoMovil, ObjetoVivo, ObjetoPosicionable,Observer{
+public abstract class Nave extends ElementoDelJuego implements ObjetoMovil, ObjetoPosicionable,Observer{
 	
 	protected int ubicacion;
 	LinkedList<ParteDeNave> partes;
