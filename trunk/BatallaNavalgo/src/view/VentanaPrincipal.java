@@ -145,7 +145,7 @@ public class VentanaPrincipal implements ObservadorDeGameLoop{
         private JPanel addSuperficiePanel() {
                 JPanel panel = new SuperficiePanel();
                 panel.setBackground(new Color(0,0,0));
-                panel.setBounds(42, 53, relacionTableroVentanaX(),relacionTableroVentanaY());
+                panel.setBounds(42, 53, relacionTableroVentanaX()+10,relacionTableroVentanaY()+10);
                 frame.getContentPane().add(panel);
                 return panel;
         }
