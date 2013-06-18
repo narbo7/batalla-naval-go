@@ -38,5 +38,11 @@ public class MinaDobleConRetardo extends Bomba{
         return new MinaDobleConRetardo(this.getPosicion());
     }
 
+	@Override
+	public void vivir() {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }

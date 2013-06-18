@@ -1,9 +1,10 @@
 package model;
 
+import view.VistaElementoDelJuego;
 import fiuba.algo3.titiritero.modelo.ObjetoVivo;
 
 
-public class ElementoDelJuego implements ObjetoVivo{
+public abstract class ElementoDelJuego implements ObjetoVivo{
 	
 	
 	protected Posicion posicion;
@@ -26,8 +27,7 @@ public class ElementoDelJuego implements ObjetoVivo{
 		this.posicion = posicion;
 	}
 
-	public void vivir() {
-		
-	}
-
+	
+	public abstract VistaElementoDelJuego generarVista();
+	
 }

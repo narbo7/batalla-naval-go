@@ -29,8 +29,8 @@ public class Jugador {
 		// el jugador debe disparar una bomba seleccionada.
 		//setea la bomba en el tablero.
 		//TODO: Modificar esto, la vista va a indicar cual es la bomba seleccionada.
-//		Bomba unaBomba = new MinaPorContacto();
-//		this.seleccionarBomba(unaBomba);
+		Bomba unaBomba = new MinaPorContacto();
+		this.seleccionarBomba(unaBomba);
 		return bombaSeleccionada;
 	}
 	public void seleccionarBomba(Bomba unaBomba){

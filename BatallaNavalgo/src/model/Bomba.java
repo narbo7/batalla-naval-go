@@ -3,6 +3,7 @@ package model;
 import fiuba.algo3.titiritero.modelo.ObjetoPosicionable;
 import view.VentanaPrincipal;
 import view.VistaBomba;
+import view.VistaElementoDelJuego;
 import view.VistaNave;
 
 public abstract class Bomba extends ElementoDelJuego implements ObjetoPosicionable{
@@ -34,7 +35,7 @@ public abstract class Bomba extends ElementoDelJuego implements ObjetoPosicionab
 		public abstract Bomba copy();
 		
 		//TODO: Modificar esta llamada a otro paquete, deberia ser un observador.
-		public VistaBomba generarVista(){
+		public VistaElementoDelJuego generarVista(){
 			return new VistaBomba(this);
 		}
 		@Override

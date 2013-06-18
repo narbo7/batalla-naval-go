@@ -4,6 +4,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 import view.VentanaPrincipal;
+import view.VistaElementoDelJuego;
 
 import fiuba.algo3.titiritero.modelo.ObjetoPosicionable;
 import fiuba.algo3.titiritero.modelo.ObjetoVivo;
@@ -45,6 +46,20 @@ public class ParteDeNave extends ElementoDelJuego implements ObjetoVivo, ObjetoP
 	@Override
 	public int getY() {
 		return (this.getPosicion().getFila() + (this.getPosicion().getFila()-1)*VentanaPrincipal.getAumentoVentana()); 
+	}
+
+
+	@Override
+	public VistaElementoDelJuego generarVista() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public void vivir() {
+		// TODO Auto-generated method stub
+		
 	}
 
 

@@ -99,6 +99,7 @@ public class VentanaPrincipal implements ObservadorDeGameLoop{
         	
                 Partida miPartida = new Partida();
                 this.gameLoop.agregar(miPartida);
+                this.agregarObservador(miPartida);
 
                 for (Nave nave : miPartida.getNaves()) {
                 	this.gameLoop.agregar(nave.generarVista());
@@ -196,8 +197,12 @@ public class VentanaPrincipal implements ObservadorDeGameLoop{
         public static int getAumentoVentana() {
         	return aumento;
         }
+        private void agregarObservador(ObservadorMouse observador){
+    		this.observadoresMouse.add(observador);	
+    	}
         public void notificarEvento(int x, int y){
     		for(ObservadorMouse observador : observadoresMouse)
     		observador.notificarEvento(x, y);
+    		
     	}
 }
