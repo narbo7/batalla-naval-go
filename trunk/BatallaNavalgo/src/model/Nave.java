@@ -191,7 +191,7 @@ public abstract class Nave extends ElementoDelJuego implements ObjetoMovil, Obje
 		return nuevaPos;
 	}
 		
-	public abstract VistaNave generarVista();
+//	public abstract VistaNave generarVista();
 	
 	@Override
 	public int getX() {

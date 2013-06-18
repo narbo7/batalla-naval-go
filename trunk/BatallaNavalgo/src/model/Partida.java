@@ -15,6 +15,7 @@ public class Partida implements ObjetoVivo,ObservadorMouse{
 	
 	public Tablero getTablero() {return this.tablero;}
 	
+	
 	public Partida() {
 		this.tablero = new Tablero();
 		this.jugador = new Jugador();
@@ -44,6 +45,9 @@ public class Partida implements ObjetoVivo,ObservadorMouse{
 	public LinkedList<Nave> getNaves(){
 		return this.tablero.getNaves();
 	}
+	public LinkedList<ElementoDelJuego> getElementoDelJuego(){
+		return this.tablero.getElementos();
+	}
 	
 	@Override
 	public void vivir() {
@@ -58,7 +62,6 @@ public class Partida implements ObjetoVivo,ObservadorMouse{
 		Bomba bomba = this.getJugador().dispararBomba();
 		bomba.setPosicion(new Posicion(posicionX, posicionY));
 		this.agregarElementoAlTablero(bomba);
-		
 	}
 	public void agregarElementoAlTablero(ElementoDelJuego elementoDelJuego){
 		tablero.agregarElemento(elementoDelJuego);

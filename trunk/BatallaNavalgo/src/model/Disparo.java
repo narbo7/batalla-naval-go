@@ -41,5 +41,11 @@ public class Disparo extends Bomba{
         return new Disparo(this.getPosicion());
     }
 
+	@Override
+	public void vivir() {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }

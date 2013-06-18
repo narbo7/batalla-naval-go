@@ -1,7 +1,9 @@
 package model;
 
 
-public class MinaPorContacto extends Bomba{
+
+
+public class MinaPorContacto extends Bomba {
 	public MinaPorContacto(){
 		super();
 	}
@@ -39,5 +41,11 @@ public class MinaPorContacto extends Bomba{
 	public Bomba copy() {
         return new MinaPorContacto(this.getPosicion());
     }
+	@Override
+	public void vivir() {
+		// TODO Auto-generated method stub
+		System.out.println("Bomba viviendo");
+		
+	}
 
 }

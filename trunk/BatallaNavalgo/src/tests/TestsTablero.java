@@ -2,6 +2,7 @@ package tests;
 
 import junit.framework.TestCase;
 import model.ElementoDelJuego;
+import model.Lancha;
 import model.Posicion;
 import model.Tablero;
 
@@ -21,7 +22,7 @@ public class TestsTablero extends TestCase{
 	public void testAlAgregarDiezElementosAlTableroLaCantidadDeElementosDebeSerIgualADiez() {
 		
 		Tablero miTablero = new Tablero();
-		ElementoDelJuego elemento = new ElementoDelJuego();
+		ElementoDelJuego elemento = new Lancha();
 		
 		for (int i=0; i<10; i++) {miTablero.agregarElemento(elemento);}
 		
@@ -33,7 +34,7 @@ public class TestsTablero extends TestCase{
 		
 		Tablero miTablero = new Tablero();
 		Posicion posicion1 = new Posicion(3,5);
-		ElementoDelJuego elemento = new ElementoDelJuego(posicion1);
+		ElementoDelJuego elemento = new Lancha(posicion1);
 		
 		//Agrego un elemento en posicion1 y cuento
 		miTablero.agregarElemento(elemento);
@@ -41,7 +42,7 @@ public class TestsTablero extends TestCase{
 		
 		//Agrego otro elemento con distinta posicion y cuento
 		Posicion posicion2 = new Posicion(3,8);
-		ElementoDelJuego otroelemento = new ElementoDelJuego(posicion2);
+		ElementoDelJuego otroelemento = new Lancha(posicion2);
 		miTablero.agregarElemento(otroelemento);
 		assertTrue(miTablero.getCantidadDeElementos() == 2);
 		
