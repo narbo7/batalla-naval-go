@@ -1,9 +1,12 @@
 package model;
 
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.Observable;
 
 import view.VistaDestructor;
+import view.VistaElementoDelJuego;
+import view.VistaLancha;
 import view.VistaNave;
 
 public class Destructor extends Nave implements Atacable{
@@ -84,8 +87,12 @@ public class Destructor extends Nave implements Atacable{
 	}
 
 	@Override
-	public VistaNave generarVista() {
-		return new VistaDestructor(this);
+	public LinkedList<VistaElementoDelJuego> generarVista() {
+		LinkedList<VistaElementoDelJuego> listaVistas = new LinkedList<VistaElementoDelJuego>();
+		for (ParteDeNave unaParte : this.getPartes()){
+			listaVistas.add(new VistaDestructor(unaParte));
+		}
+		return listaVistas;
 	}
 
 

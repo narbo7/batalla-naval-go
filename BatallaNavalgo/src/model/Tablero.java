@@ -64,7 +64,6 @@ public class Tablero implements ObjetoVivo{
 
 	@Override
 	public void vivir() {
-		//System.out.println("El tablero vive");
 		for (ElementoDelJuego elemento: this.getElementos()){
 			elemento.vivir();
 		}

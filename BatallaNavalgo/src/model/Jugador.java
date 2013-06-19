@@ -14,11 +14,13 @@ public class Jugador {
 		this.descontarPuntaje(this.bombaSeleccionada.getCosto());
 		return bombaSeleccionada;
 	}
+	
 	public void seleccionarBomba(Bomba unaBomba){
 		System.out.println("La bomba seleccionada es ...");
 		this.bombaSeleccionada= unaBomba;
 		System.out.println(unaBomba.toString());
 	}
+	
 	public int getPuntaje() {
 		return puntaje;
 	}
@@ -26,6 +28,7 @@ public class Jugador {
 	private void setPuntaje(int unPuntaje) {
 		this.puntaje = unPuntaje;
 	}
+	
 	private void descontarPuntaje(int costo){
 		int nuevoPuntaje = getPuntaje();   
 		nuevoPuntaje -= costo;

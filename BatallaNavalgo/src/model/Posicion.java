@@ -1,5 +1,7 @@
 package model;
 
+import view.VentanaPrincipal;
+
 
 public class Posicion {
 	
@@ -12,7 +14,6 @@ public class Posicion {
 	}
 	
 	public Posicion(int fila, int columna){
-		
 		this.fila = fila;
 		this.columna = columna;
 	}
@@ -36,6 +37,27 @@ public class Posicion {
 	
 	public boolean esIgualA(Posicion otraPosicion){
 		return ((this.getFila() == otraPosicion.getFila()) && (this.getColumna() == otraPosicion.getColumna())); 
+	}
+
+	public int parametrizarX() {
+		return (this.getColumna() + (this.getColumna()-1)*VentanaPrincipal.getAumentoVentana());
+	}
+	
+	public int parametrizarY() {
+		return (this.getFila() + (this.getFila()-1)*VentanaPrincipal.getAumentoVentana());
+	}
+	
+	public int desparametrizarX() {
+		return (this.getColumna() - (this.getColumna()-1)*VentanaPrincipal.getAumentoVentana());
+	}
+	
+	public int desparametrizarY() {
+		return (this.getFila() - (this.getFila()-1)*VentanaPrincipal.getAumentoVentana());
+	}
+	
+	public Posicion desparametrizarPosicion() {
+		
+		return new Posicion(this.desparametrizarX(),this.desparametrizarY());
 	}
 
 }

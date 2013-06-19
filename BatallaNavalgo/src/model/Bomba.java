@@ -1,5 +1,7 @@
 package model;
 
+import java.util.LinkedList;
+
 import fiuba.algo3.titiritero.modelo.ObjetoPosicionable;
 import view.VentanaPrincipal;
 import view.VistaBomba;
@@ -49,8 +51,10 @@ public abstract class Bomba extends ElementoDelJuego implements ObjetoPosicionab
 		public abstract Bomba copy();
 		
 		//TODO: Modificar esta llamada a otro paquete, deberia ser un observador.
-		public VistaElementoDelJuego generarVista(){
-			return new VistaBomba(this);
+		public LinkedList<VistaElementoDelJuego> generarVista(){
+			LinkedList<VistaElementoDelJuego> miLista = new LinkedList<VistaElementoDelJuego>();
+			miLista.add(new VistaBomba(this));
+			return miLista;
 		}
 		@Override
 		public int getX() {

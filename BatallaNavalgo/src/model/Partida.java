@@ -54,18 +54,18 @@ public class Partida implements ObjetoVivo,ObservadorMouse,ObservadorTeclado{
 	
 	@Override
 	public void vivir() {
-		//System.out.println("La partida vive");
 		this.tablero.vivir();
-		//this.tablero.verificarSiHayExplosiones();
 	}
 
 	@Override
 	public void notificarEvento(int posicionX, int posicionY) {
 		//enviar disparo.
+		Posicion posicionEvento = new Posicion(posicionX,posicionY);
 		Bomba bomba = this.getJugador().dispararBomba();
-		bomba.setPosicion(new Posicion(posicionX, posicionY));
+		bomba.setPosicion(posicionEvento.desparametrizarPosicion());
 		this.agregarElementoAlTablero(bomba);
 	}
+	
 	public void agregarElementoAlTablero(ElementoDelJuego elementoDelJuego){
 		tablero.agregarElemento(elementoDelJuego);
 	}

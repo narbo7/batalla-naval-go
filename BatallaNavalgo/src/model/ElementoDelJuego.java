@@ -1,5 +1,7 @@
 package model;
 
+import java.util.LinkedList;
+
 import view.VistaElementoDelJuego;
 import fiuba.algo3.titiritero.modelo.ObjetoVivo;
 
@@ -26,8 +28,7 @@ public abstract class ElementoDelJuego implements ObjetoVivo{
 	public void setPosicion(Posicion posicion) {
 		this.posicion = posicion;
 	}
-
 	
-	public abstract VistaElementoDelJuego generarVista();
+	public abstract LinkedList<VistaElementoDelJuego> generarVista();
 	
 }

@@ -191,22 +191,24 @@ public abstract class Nave extends ElementoDelJuego implements ObjetoMovil, Obje
 		return nuevaPos;
 	}
 		
-//	public abstract VistaNave generarVista();
 	
 	@Override
 	public int getX() {
-		return (this.getPosicion().getColumna() + (this.getPosicion().getColumna()-1)*VentanaPrincipal.getAumentoVentana());
+		return this.getPosicion().parametrizarX();
 	}
 
 	@Override
 	public int getY() {
-		return (this.getPosicion().getFila() + (this.getPosicion().getFila()-1)*VentanaPrincipal.getAumentoVentana()); 
-
+		return this.getPosicion().parametrizarY();
 	}
 	
 	public void vivir () {
-		System.out.println("Estoy en x:" + this.getPosicion().getColumna() + " y:" +this.getPosicion().getFila());
-		this.mover();
+		//System.out.println("Estoy en x:" + this.getPosicion().getColumna() + " y:" +this.getPosicion().getFila());
+		//for(ParteDeNave unaParte : this.getPartes()){
+		//	System.out.println("Estoy en: " + unaParte.getPosicion().getFila() + " " + unaParte.getPosicion().getColumna());
+		//}
+		
+		//this.mover();
 	}
 
 }

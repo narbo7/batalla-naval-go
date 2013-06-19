@@ -105,9 +105,12 @@ public class VentanaPrincipal implements ObservadorDeGameLoop{
                 
 
                 for (Nave nave : miPartida.getNaves()) {
-                	this.gameLoop.agregar(nave.generarVista());
-                }
-                
+                	LinkedList<VistaElementoDelJuego> listaVistasNave = new LinkedList<VistaElementoDelJuego>();
+                	listaVistasNave = nave.generarVista();
+                	for (VistaElementoDelJuego unaVista : listaVistasNave){
+                		this.gameLoop.agregar(unaVista);
+                	}
+                }                
         }
 
        
