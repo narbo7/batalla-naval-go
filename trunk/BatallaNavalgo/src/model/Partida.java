@@ -2,6 +2,8 @@ package model;
 
 import java.util.LinkedList;
 
+import controller.ControladorTeclado;
+
 import view.ObservadorMouse;
 import view.ObservadorTeclado;
 
@@ -72,11 +74,11 @@ public class Partida implements ObjetoVivo,ObservadorMouse,ObservadorTeclado{
 		return this.jugador;
 	}
 
-
 	@Override
 	public void notificarEvento(char key) {
-		// TODO Auto-generated method stub
-		//controladorTeclado decime a q bomba estas relacionado.
+		ControladorTeclado controlador = new ControladorTeclado();
+		Bomba unaBomba = controlador.getBombaAsociadaATecla(key);
+		this.jugador.seleccionarBomba(unaBomba);
 	}
 
 }
