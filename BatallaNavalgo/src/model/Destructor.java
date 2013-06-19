@@ -58,22 +58,22 @@ public class Destructor extends Nave implements Atacable{
 	}
 
 	public void serAtacadoPor(MinaConRetardo minaConRetardo) {
-		//NO LE PROVOCA DAÑO
+		//NO LE PROVOCA DANIO
 		
 	}
 
 	public void serAtacadoPor(MinaDobleConRetardo minaDobleConRetardo) {
-		//NO LE PROVOCA DAÑO
+		//NO LE PROVOCA DANIO
 		
 	}
 
 	public void serAtacadoPor(MinaTripleConRetardo minaTripleConRetardo) {
-		//NO LE PROVOCA DAÑO
+		//NO LE PROVOCA DANIO
 		
 	}
 
 	public void serAtacadoPor(MinaPorContacto minaPorContacto) {
-		//NO LE PROVOCA DAÑO
+		//NO LE PROVOCA DANIO
 		
 	}
 
