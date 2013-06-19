@@ -3,7 +3,10 @@ package model;
 
 public class Disparo extends Bomba{
 
-
+	public Disparo() {
+		super();
+		this.costo = 200;
+	}
 
 	public Disparo(Posicion posicion) {
 		super(posicion);

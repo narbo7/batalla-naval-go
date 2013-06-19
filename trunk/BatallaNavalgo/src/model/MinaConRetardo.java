@@ -3,6 +3,11 @@ package model;
 
 
 public class MinaConRetardo extends Bomba{
+	
+	public MinaConRetardo() {
+		super();
+		this.costo = 50;
+	}
 
 	public MinaConRetardo(Posicion posicion) {
 		super(posicion);

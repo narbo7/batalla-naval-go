@@ -6,6 +6,7 @@ package model;
 public class MinaPorContacto extends Bomba {
 	public MinaPorContacto(){
 		super();
+		this.costo = 150;
 	}
 	public MinaPorContacto(Posicion posicion) {
 		super(posicion);
