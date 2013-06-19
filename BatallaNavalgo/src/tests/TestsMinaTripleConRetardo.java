@@ -10,7 +10,7 @@ import org.junit.Test;
 public class TestsMinaTripleConRetardo extends TestCase{
 
 	@Test
-	public void testUnaMinaDobleDeberiaTenerUnaOndaExpansivaDe25Posiciones() {
+	public void testUnaMinaTripleDeberiaTenerUnaOndaExpansivaDe25Posiciones() {
 		
 		MinaTripleConRetardo minaTriple = new MinaTripleConRetardo(new Posicion(4,4));
 		
