@@ -1,5 +1,6 @@
 package model;
 
+import java.util.LinkedList;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -39,18 +40,20 @@ public class ParteDeNave extends ElementoDelJuego implements ObjetoVivo, ObjetoP
 
 	@Override
 	public int getX() {
-		return (this.getPosicion().getColumna() + (this.getPosicion().getColumna()-1)*VentanaPrincipal.getAumentoVentana());
+		return this.posicion.parametrizarX();
+		//return (this.getPosicion().getColumna() + (this.getPosicion().getColumna()-1)*VentanaPrincipal.getAumentoVentana());
 	}
 
 
 	@Override
 	public int getY() {
-		return (this.getPosicion().getFila() + (this.getPosicion().getFila()-1)*VentanaPrincipal.getAumentoVentana()); 
+		return this.posicion.parametrizarY();
+		//return (this.getPosicion().getFila() + (this.getPosicion().getFila()-1)*VentanaPrincipal.getAumentoVentana()); 
 	}
 
 
 	@Override
-	public VistaElementoDelJuego generarVista() {
+	public LinkedList<VistaElementoDelJuego> generarVista() {
 		// TODO Auto-generated method stub
 		return null;
 	}

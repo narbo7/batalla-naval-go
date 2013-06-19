@@ -1,8 +1,11 @@
 package model;
 
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.Observable;
 
+import view.VistaElementoDelJuego;
+import view.VistaLancha;
 import view.VistaNave;
 import view.VistaPortaAvion;
 
@@ -94,8 +97,12 @@ public class Portaavion extends Nave implements Atacable{
 	}
 
 	@Override
-	public VistaNave generarVista() {
-		return new VistaPortaAvion(this);
+	public LinkedList<VistaElementoDelJuego> generarVista() {
+		LinkedList<VistaElementoDelJuego> listaVistas = new LinkedList<VistaElementoDelJuego>();
+		for (ParteDeNave unaParte : this.getPartes()){
+			listaVistas.add(new VistaPortaAvion(unaParte));
+		}
+		return listaVistas;
 	}
 
 }

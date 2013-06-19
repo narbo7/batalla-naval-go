@@ -1,8 +1,11 @@
 package model;
 
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.Observable;
 
+import view.VistaElementoDelJuego;
+import view.VistaLancha;
 import view.VistaNave;
 import view.VistaRompehielo;
 
@@ -87,8 +90,12 @@ public class Rompehielo extends Nave implements Atacable{
 	}
 
 	@Override
-	public VistaNave generarVista() {
-		return new VistaRompehielo(this);
+	public LinkedList<VistaElementoDelJuego> generarVista() {
+		LinkedList<VistaElementoDelJuego> listaVistas = new LinkedList<VistaElementoDelJuego>();
+		for (ParteDeNave unaParte : this.getPartes()){
+			listaVistas.add(new VistaRompehielo(unaParte));
+		}
+		return listaVistas;
 	}
 
 
