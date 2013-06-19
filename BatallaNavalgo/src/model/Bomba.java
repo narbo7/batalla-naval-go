@@ -10,10 +10,12 @@ public abstract class Bomba extends ElementoDelJuego implements ObjetoPosicionab
 
 
 		protected int costo;
+		protected int retardo;
 
 		public Bomba(){
 			super();
 		}
+		
 		public Bomba(Posicion posicion){
 			super(posicion);
 		}
@@ -22,6 +24,18 @@ public abstract class Bomba extends ElementoDelJuego implements ObjetoPosicionab
 			return this.costo;
 		}
 
+		public int getRetardo(){
+			return this.retardo;
+		}
+		
+		public void setRetardo(int retardo){
+			this.retardo = retardo;
+		}
+		
+		public void descontarRetardo(){
+			setRetardo((getRetardo()) - 1);
+		}
+		
 		public abstract void atacar(Lancha lancha);
 
 		public abstract void atacar(Destructor destrunctor);

@@ -12,7 +12,6 @@ public class Destructor extends Nave implements Atacable{
 	
 	public Destructor(){		
 		super();		
-		//this.resistencia = RESISTENCIA_MAXIMA;
 		determinarPosiciones();
 
 	}
@@ -20,7 +19,6 @@ public class Destructor extends Nave implements Atacable{
 	//Solo para tests
 	public Destructor(Posicion posicion){		
 		super(posicion);		
-		//this.resistencia = RESISTENCIA_MAXIMA;
 		determinarPosiciones();
 
 	}
@@ -60,22 +58,22 @@ public class Destructor extends Nave implements Atacable{
 	}
 
 	public void serAtacadoPor(MinaConRetardo minaConRetardo) {
-		// TODO Auto-generated method stub
+		//NO LE PROVOCA DAÑO
 		
 	}
 
 	public void serAtacadoPor(MinaDobleConRetardo minaDobleConRetardo) {
-		// TODO Auto-generated method stub
+		//NO LE PROVOCA DAÑO
 		
 	}
 
 	public void serAtacadoPor(MinaTripleConRetardo minaTripleConRetardo) {
-		// TODO Auto-generated method stub
+		//NO LE PROVOCA DAÑO
 		
 	}
 
 	public void serAtacadoPor(MinaPorContacto minaPorContacto) {
-		// TODO Auto-generated method stub
+		//NO LE PROVOCA DAÑO
 		
 	}
 

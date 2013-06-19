@@ -27,8 +27,8 @@ public class ParteDeNave extends ElementoDelJuego implements ObjetoVivo, ObjetoP
 		this.resistencia = resistencia;
 	}
 	
-	public void reducirResistencia(int resistencia){
-		this.resistencia -= resistencia;
+	public void reducirResistencia(int resistencia){;
+		setResistencia((getResistencia()) - resistencia);
 	}
 
 	@Override

@@ -7,11 +7,13 @@ public class MinaConRetardo extends Bomba{
 	public MinaConRetardo() {
 		super();
 		this.costo = 50;
+		this.retardo = 3;
 	}
 
 	public MinaConRetardo(Posicion posicion) {
 		super(posicion);
 		this.costo = 50;
+		this.retardo = 3;
 	}
 
 
@@ -48,7 +50,8 @@ public class MinaConRetardo extends Bomba{
 
 	@Override
 	public void vivir() {
-		// TODO Auto-generated method stub
+		if ((getRetardo()) != 0)
+			descontarRetardo();
 		
 	}
 

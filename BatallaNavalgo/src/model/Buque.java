@@ -12,13 +12,11 @@ public class Buque extends Nave implements Atacable{
 	
 	public Buque(){
 		super();
-		//this.resistencia = MAXIMA_RESISTENCIA;
 		determinarPosiciones();
 	}
 	
 	public Buque(Posicion posicion){
 		super(posicion);
-		//this.resistencia = MAXIMA_RESISTENCIA;
 		determinarPosiciones();
 	}
 	
@@ -61,13 +59,17 @@ public class Buque extends Nave implements Atacable{
 	}
 
 	public void serAtacadoPor(MinaConRetardo minaConRetardo) {
-		// TODO Auto-generated method stub
+		
+		if(minaConRetardo.getRetardo() == 0){
+			for (Iterator<ParteDeNave> it = getPartes().iterator(); it.hasNext();)
+				if ((minaConRetardo.getPosicion().esIgualA(it.next().getPosicion())))
+					it.next().reducirResistencia(MAXIMA_RESISTENCIA);
+		}
 		
 	}
 
 	public void serAtacadoPor(MinaDobleConRetardo minaDobleConRetardo) {
-		// TODO Auto-generated method stub
-		
+
 	}
 
 	public void serAtacadoPor(MinaTripleConRetardo minaTripleConRetardo) {
