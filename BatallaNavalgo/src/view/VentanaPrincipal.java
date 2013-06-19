@@ -34,6 +34,7 @@ public class VentanaPrincipal implements ObservadorDeGameLoop{
         static int relacionTableroVentanaX = (aumento*Tablero.getMaxColumna());
         static int relacionTableroVentanaY = (aumento*Tablero.getMaxFila());
         private LinkedList<ObservadorMouse> observadoresMouse= new LinkedList<ObservadorMouse>();	
+        private LinkedList<ObservadorTeclado> observadoresTeclado= new LinkedList<ObservadorTeclado>();
         
         /**
          * Launch the application.
@@ -99,7 +100,9 @@ public class VentanaPrincipal implements ObservadorDeGameLoop{
         	
                 Partida miPartida = new Partida();
                 this.gameLoop.agregar(miPartida);
-                this.agregarObservador(miPartida);
+                this.agregarObservadorMouse(miPartida);
+                this.agregarObservadorTeclado(miPartida);
+                
 
                 for (Nave nave : miPartida.getNaves()) {
                 	this.gameLoop.agregar(nave.generarVista());
@@ -121,6 +124,8 @@ public class VentanaPrincipal implements ObservadorDeGameLoop{
                         @Override
                         public void keyTyped(KeyEvent arg0) {
                                 System.out.println("Key pressed");
+                                System.out.println(arg0.toString());
+                                notificarEventoTeclado(arg0.getKeyChar());
                         }
                        
                         @Override
@@ -197,12 +202,19 @@ public class VentanaPrincipal implements ObservadorDeGameLoop{
         public static int getAumentoVentana() {
         	return aumento;
         }
-        private void agregarObservador(ObservadorMouse observador){
+        private void agregarObservadorMouse(ObservadorMouse observador){
     		this.observadoresMouse.add(observador);	
+    	}
+        private void agregarObservadorTeclado(ObservadorTeclado observador){
+    		this.observadoresTeclado.add(observador);	
     	}
         public void notificarEvento(int x, int y){
     		for(ObservadorMouse observador : observadoresMouse)
     		observador.notificarEvento(x, y);
     		
     	}
+        private void notificarEventoTeclado(char key){
+        	for(ObservadorTeclado observador : observadoresTeclado)
+        		observador.notificarEvento(key);
+        }
 }

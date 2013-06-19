@@ -3,12 +3,13 @@ package model;
 import java.util.LinkedList;
 
 import view.ObservadorMouse;
+import view.ObservadorTeclado;
 
 import fiuba.algo3.titiritero.modelo.ObjetoVivo;
 
 
 
-public class Partida implements ObjetoVivo,ObservadorMouse{
+public class Partida implements ObjetoVivo,ObservadorMouse,ObservadorTeclado{
 
 	private Tablero tablero;
 	private Jugador jugador;
@@ -69,6 +70,13 @@ public class Partida implements ObjetoVivo,ObservadorMouse{
 
 	public Jugador getJugador(){
 		return this.jugador;
+	}
+
+
+	@Override
+	public void notificarEvento(char key) {
+		// TODO Auto-generated method stub
+		//controladorTeclado decime a q bomba estas relacionado.
 	}
 
 }
