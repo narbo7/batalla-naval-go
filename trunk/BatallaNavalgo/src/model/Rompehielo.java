@@ -57,8 +57,12 @@ public class Rompehielo extends Nave implements Atacable{
 	}
 
 	public void serAtacadoPor(MinaConRetardo minaConRetardo) {
-		// TODO Auto-generated method stub
-		
+
+		if(minaConRetardo.getRetardo() == 0){
+			for (Iterator<ParteDeNave> it = getPartes().iterator(); it.hasNext();)
+				if ((minaConRetardo.getPosicion().esIgualA(it.next().getPosicion())))
+					it.next().reducirResistencia(1);
+		}
 	}
 
 	public void serAtacadoPor(MinaDobleConRetardo minaDobleConRetardo) {

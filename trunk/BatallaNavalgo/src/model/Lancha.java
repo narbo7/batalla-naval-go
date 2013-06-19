@@ -13,7 +13,6 @@ public class Lancha extends Nave implements Atacable{
 	
 	public Lancha(){		
 		super();
-		//this.resistencia = MAXIMA_RESISTENCIA;
 		determinarPosiciones();
 
 	}
@@ -21,7 +20,6 @@ public class Lancha extends Nave implements Atacable{
 	//Solo para test
 	public Lancha(Posicion posicion){		
 		super(posicion);
-		//this.resistencia = MAXIMA_RESISTENCIA;
 		determinarPosiciones();
 	}
 	
@@ -54,8 +52,12 @@ public class Lancha extends Nave implements Atacable{
 	}
 
 	public void serAtacadoPor(MinaConRetardo minaConRetardo) {
-		// TODO Auto-generated method stub
-		
+
+		if(minaConRetardo.getRetardo() == 0){
+			for (Iterator<ParteDeNave> it = getPartes().iterator(); it.hasNext();)
+				if ((minaConRetardo.getPosicion().esIgualA(it.next().getPosicion())))
+					it.next().reducirResistencia(1);
+		}
 	}
 
 	public void serAtacadoPor(MinaDobleConRetardo minaDobleConRetardo) {
