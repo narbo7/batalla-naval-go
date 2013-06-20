@@ -6,8 +6,7 @@ import java.util.Observable;
 
 import view.VistaBuque;
 import view.VistaElementoDelJuego;
-import view.VistaLancha;
-import view.VistaNave;
+
 
 public class Buque extends Nave implements Atacable{
 
@@ -57,27 +56,63 @@ public class Buque extends Nave implements Atacable{
 	@Override
 	public void serAtacadoPor(Disparo disparo) {
 		for (Iterator<ParteDeNave> it = getPartes().iterator(); it.hasNext();)
-			if ((disparo.getPosicion().esIgualA(it.next().getPosicion())))
+			if ((disparo.getPosicion().esIgualA(it.next().getPosicion()))){
 				it.next().reducirResistencia(MAXIMA_RESISTENCIA);
+				disparo.explotar();
+			}
+		
 	}
 
 	public void serAtacadoPor(MinaConRetardo minaConRetardo) {
 		
 		if(minaConRetardo.getRetardo() == 0){
 			for (Iterator<ParteDeNave> it = getPartes().iterator(); it.hasNext();)
-				if ((minaConRetardo.getPosicion().esIgualA(it.next().getPosicion())))
+				if ((minaConRetardo.getPosicion().esIgualA(it.next().getPosicion()))){
 					it.next().reducirResistencia(MAXIMA_RESISTENCIA);
+					minaConRetardo.explotar();
+				}	
 		}
 		
 	}
 
 	public void serAtacadoPor(MinaDobleConRetardo minaDobleConRetardo) {
-
+		
+		LinkedList<Posicion> ondaExpansiva = minaDobleConRetardo.getOndaExpansiva();
+		Iterator<Posicion> it = ondaExpansiva.iterator();
+		
+		if(minaDobleConRetardo.getRetardo() == 0){
+			while(!(minaDobleConRetardo.estaExplotada()) && (it.hasNext())){
+			
+				Iterator<ParteDeNave> it2 = getPartes().iterator();
+			
+				while(!(minaDobleConRetardo.estaExplotada()) && (it2.hasNext())){				
+					if (it.next().esIgualA(it2.next().getPosicion()) && (it2.hasNext())){
+						it2.next().reducirResistencia(MAXIMA_RESISTENCIA);
+						minaDobleConRetardo.explotar();
+					}
+				}
+			}
+		}
 	}
 
 	public void serAtacadoPor(MinaTripleConRetardo minaTripleConRetardo) {
-		// TODO Auto-generated method stub
 		
+		LinkedList<Posicion> ondaExpansiva = minaTripleConRetardo.getOndaExpansiva();
+		Iterator<Posicion> it = ondaExpansiva.iterator();
+		
+		if(minaTripleConRetardo.getRetardo() == 0){
+			while(!(minaTripleConRetardo.estaExplotada()) && (it.hasNext())){
+			
+				Iterator<ParteDeNave> it2 = getPartes().iterator();
+			
+				while(!(minaTripleConRetardo.estaExplotada()) && (it2.hasNext())){				
+					if (it.next().esIgualA(it2.next().getPosicion()) && (it2.hasNext())){
+						it2.next().reducirResistencia(MAXIMA_RESISTENCIA);
+						minaTripleConRetardo.explotar();
+					}
+				}
+			}
+		}
 	}
 	
 	public void serAtacadoPor(MinaPorContacto minaPorContacto) {

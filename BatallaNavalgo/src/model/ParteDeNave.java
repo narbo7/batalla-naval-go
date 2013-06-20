@@ -4,7 +4,6 @@ import java.util.LinkedList;
 import java.util.Observable;
 import java.util.Observer;
 
-import view.VentanaPrincipal;
 import view.VistaElementoDelJuego;
 
 import fiuba.algo3.titiritero.modelo.ObjetoPosicionable;

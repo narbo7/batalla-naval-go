@@ -7,10 +7,12 @@ public class MinaPorContacto extends Bomba {
 	public MinaPorContacto(){
 		super();
 		this.costo = 150;
+		this.estaExplotada = false;
 	}
 	public MinaPorContacto(Posicion posicion) {
 		super(posicion);
 		this.costo = 150;
+		this.estaExplotada = false;
 	}
 
 	@Override

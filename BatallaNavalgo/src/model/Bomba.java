@@ -6,11 +6,11 @@ import fiuba.algo3.titiritero.modelo.ObjetoPosicionable;
 import view.VentanaPrincipal;
 import view.VistaBomba;
 import view.VistaElementoDelJuego;
-import view.VistaNave;
 
 public abstract class Bomba extends ElementoDelJuego implements ObjetoPosicionable{
 
 
+		protected boolean estaExplotada;
 		protected int costo;
 		protected int retardo;
 
@@ -36,6 +36,14 @@ public abstract class Bomba extends ElementoDelJuego implements ObjetoPosicionab
 		
 		public void descontarRetardo(){
 			setRetardo((getRetardo()) - 1);
+		}
+		
+		public void explotar(){
+			this.estaExplotada = true;
+		}
+		
+		public boolean estaExplotada(){
+			return this.estaExplotada;
 		}
 		
 		public abstract void atacar(Lancha lancha);

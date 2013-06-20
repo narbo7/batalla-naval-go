@@ -6,11 +6,13 @@ public class Disparo extends Bomba{
 	public Disparo() {
 		super();
 		this.costo = 200;
+		this.estaExplotada = false;
 	}
 
 	public Disparo(Posicion posicion) {
 		super(posicion);
 		this.costo = 200;
+		this.estaExplotada = false;
 	}
 
 	@Override

@@ -8,12 +8,14 @@ public class MinaConRetardo extends Bomba{
 		super();
 		this.costo = 50;
 		this.retardo = 3;
+		this.estaExplotada = false;
 	}
 
 	public MinaConRetardo(Posicion posicion) {
 		super(posicion);
 		this.costo = 50;
 		this.retardo = 3;
+		this.estaExplotada = false;
 	}
 
 
