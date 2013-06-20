@@ -12,6 +12,7 @@ public class MinaDobleConRetardo extends Bomba implements Expandible{
 		this.costo = 100;
 		this.retardo = 3;
 		this.ondaExpansiva = new LinkedList<Posicion>();
+		this.estaExplotada = false;
 		generarOndaExpansiva(getPosicion());
 	}
 
@@ -21,6 +22,7 @@ public class MinaDobleConRetardo extends Bomba implements Expandible{
 		this.costo = 100;
 		this.retardo = 3;
 		this.ondaExpansiva = new LinkedList<Posicion>();
+		this.estaExplotada = false;
 		generarOndaExpansiva(posicion);		
 	}
 

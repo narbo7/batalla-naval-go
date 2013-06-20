@@ -5,8 +5,6 @@ import java.util.LinkedList;
 import java.util.Observable;
 
 import view.VistaElementoDelJuego;
-import view.VistaLancha;
-import view.VistaNave;
 import view.VistaRompehielo;
 
 public class Rompehielo extends Nave implements Atacable{

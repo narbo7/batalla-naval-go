@@ -5,8 +5,6 @@ import java.util.LinkedList;
 import java.util.Observer;
 import java.util.Random;
 
-import view.VentanaPrincipal;
-import view.VistaNave;
 
 import fiuba.algo3.titiritero.modelo.ObjetoPosicionable;
 

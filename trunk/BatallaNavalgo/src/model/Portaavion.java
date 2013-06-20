@@ -5,8 +5,6 @@ import java.util.LinkedList;
 import java.util.Observable;
 
 import view.VistaElementoDelJuego;
-import view.VistaLancha;
-import view.VistaNave;
 import view.VistaPortaAvion;
 
 public class Portaavion extends Nave implements Atacable{
@@ -62,16 +60,20 @@ public class Portaavion extends Nave implements Atacable{
 	@Override
 	public void serAtacadoPor(Disparo disparo) {
 		for (Iterator<ParteDeNave> it = getPartes().iterator(); it.hasNext();)
-			if ((disparo.getPosicion().esIgualA(it.next().getPosicion())))
+			if ((disparo.getPosicion().esIgualA(it.next().getPosicion()))){
 				it.next().reducirResistencia(1);
+				disparo.explotar();
+			}
 	}
 
 	public void serAtacadoPor(MinaConRetardo minaConRetardo) {
 		
 		if(minaConRetardo.getRetardo() == 0){
 			for (Iterator<ParteDeNave> it = getPartes().iterator(); it.hasNext();)
-				if ((minaConRetardo.getPosicion().esIgualA(it.next().getPosicion())))
+				if ((minaConRetardo.getPosicion().esIgualA(it.next().getPosicion()))){
 					it.next().reducirResistencia(1);
+					minaConRetardo.explotar();
+				}
 		}
 	}
 
