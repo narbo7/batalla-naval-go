@@ -59,11 +59,17 @@ public class Portaavion extends Nave implements Atacable{
 
 	@Override
 	public void serAtacadoPor(Disparo disparo) {
+		
+		boolean huboContacto = false;
 		for (Iterator<ParteDeNave> it = getPartes().iterator(); it.hasNext();)
 			if ((disparo.getPosicion().esIgualA(it.next().getPosicion()))){
 				it.next().reducirResistencia(1);
 				disparo.explotar();
+				huboContacto = true;
 			}
+		//explota aunque no haya contacto
+		if(!(huboContacto))
+			disparo.explotar();
 	}
 
 	public void serAtacadoPor(MinaConRetardo minaConRetardo) {
@@ -78,17 +84,40 @@ public class Portaavion extends Nave implements Atacable{
 	}
 
 	public void serAtacadoPor(MinaDobleConRetardo minaDobleConRetardo) {
-		// TODO Auto-generated method stub
 		
+		if(minaDobleConRetardo.getRetardo() == 0){
+			for (Posicion posicion : minaDobleConRetardo.getOndaExpansiva()){
+				for (ParteDeNave parte : this.getPartes()){
+					if (posicion.esIgualA(parte.getPosicion())){
+						parte.reducirResistencia(1);
+						minaDobleConRetardo.explotar();
+					}
+				}
+			}
+		}
 	}
 
 	public void serAtacadoPor(MinaTripleConRetardo minaTripleConRetardo) {
-		// TODO Auto-generated method stub
-		
+
+		if(minaTripleConRetardo.getRetardo() == 0){
+			for (Posicion posicion : minaTripleConRetardo.getOndaExpansiva()){
+				for (ParteDeNave parte : this.getPartes()){
+					if (posicion.esIgualA(parte.getPosicion())){
+						parte.reducirResistencia(1);
+						minaTripleConRetardo.explotar();
+					}
+				}
+			}
+		}
 	}
 
 	public void serAtacadoPor(MinaPorContacto minaPorContacto) {
-		// TODO Auto-generated method stub
+
+		for (Iterator<ParteDeNave> it = getPartes().iterator(); it.hasNext();)
+			if ((minaPorContacto.getPosicion().esIgualA(it.next().getPosicion()))){
+				it.next().reducirResistencia(1);
+				minaPorContacto.explotar();
+			}
 		
 	}
 

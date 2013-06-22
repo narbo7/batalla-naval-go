@@ -2,8 +2,10 @@ package tests;
 
 import junit.framework.TestCase;
 
-import model.Disparo;
 import model.Lancha;
+import model.Disparo;
+import model.MinaDobleConRetardo;
+import model.MinaTripleConRetardo;
 import model.Posicion;
 
 
@@ -82,5 +84,37 @@ public class TestsLancha extends TestCase{
 		
 		assertTrue((fila == 8) && (columna == 8));
 			
+	}
+	
+	@Test
+	public void testLaOndaExpansivaDeUnaMinaDobleDeberiaAtacarALaLancha(){
+		
+		Lancha lancha = new Lancha(new Posicion(4,4));
+		MinaDobleConRetardo minaDoble = new MinaDobleConRetardo(new Posicion(5,5));
+		
+		minaDoble.descontarRetardo();
+		minaDoble.descontarRetardo();
+		minaDoble.descontarRetardo();
+		
+		
+		minaDoble.atacar(lancha);
+		
+		assertTrue((lancha.getResistenciaTotal()) == 1);	
+	}
+	
+	@Test
+	public void testLaOndaExpansivaDeUnaMinaTripleDeberiaAtacarALaLancha(){
+		
+		Lancha lancha = new Lancha(new Posicion(4,5));
+		MinaTripleConRetardo minaTriple = new MinaTripleConRetardo(new Posicion(5,5));
+		
+		minaTriple.descontarRetardo();
+		minaTriple.descontarRetardo();
+		minaTriple.descontarRetardo();
+		
+		
+		minaTriple.atacar(lancha);
+		
+		assertTrue((lancha.getResistenciaTotal()) == 0);	
 	}
 }

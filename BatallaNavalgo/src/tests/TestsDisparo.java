@@ -2,6 +2,7 @@ package tests;
 
 import junit.framework.TestCase;
 
+import model.Buque;
 import model.Disparo;
 import model.Posicion;
 
@@ -17,6 +18,17 @@ public class TestsDisparo extends TestCase {
 		
 		assertTrue((disparo.getCosto()) == 200);
 		
+	}
+	
+	@Test
+	public void testUnDisparoDeberiaExplotarAunqueNoHayaColisionadoConAlgunaNave(){
+		
+		Buque buque = new Buque(new Posicion(5,5));
+		Disparo disparo = new Disparo(new Posicion(2,2));
+		
+		disparo.atacar(buque);
+		
+		assertTrue(disparo.estaExplotada());
 	}
 
 }

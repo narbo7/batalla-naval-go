@@ -55,11 +55,18 @@ public class Buque extends Nave implements Atacable{
 
 	@Override
 	public void serAtacadoPor(Disparo disparo) {
+		
+		boolean huboContacto = false;
+		
 		for (Iterator<ParteDeNave> it = getPartes().iterator(); it.hasNext();)
 			if ((disparo.getPosicion().esIgualA(it.next().getPosicion()))){
 				it.next().reducirResistencia(MAXIMA_RESISTENCIA);
 				disparo.explotar();
+				huboContacto = true;
 			}
+		//explota aunque no haya contacto
+		if(!(huboContacto))
+			disparo.explotar();
 		
 	}
 
@@ -77,17 +84,12 @@ public class Buque extends Nave implements Atacable{
 
 	public void serAtacadoPor(MinaDobleConRetardo minaDobleConRetardo) {
 		
-		LinkedList<Posicion> ondaExpansiva = minaDobleConRetardo.getOndaExpansiva();
-		Iterator<Posicion> it = ondaExpansiva.iterator();
-		
 		if(minaDobleConRetardo.getRetardo() == 0){
-			while(!(minaDobleConRetardo.estaExplotada()) && (it.hasNext())){
-			
-				Iterator<ParteDeNave> it2 = getPartes().iterator();
-			
-				while(!(minaDobleConRetardo.estaExplotada()) && (it2.hasNext())){				
-					if (it.next().esIgualA(it2.next().getPosicion()) && (it2.hasNext())){
-						it2.next().reducirResistencia(MAXIMA_RESISTENCIA);
+			for (Posicion posicion : minaDobleConRetardo.getOndaExpansiva()){
+				for (ParteDeNave parte : this.getPartes()){
+					if (!(minaDobleConRetardo.estaExplotada()) && 
+						posicion.esIgualA(parte.getPosicion())){
+						parte.reducirResistencia(MAXIMA_RESISTENCIA);
 						minaDobleConRetardo.explotar();
 					}
 				}
@@ -97,17 +99,12 @@ public class Buque extends Nave implements Atacable{
 
 	public void serAtacadoPor(MinaTripleConRetardo minaTripleConRetardo) {
 		
-		LinkedList<Posicion> ondaExpansiva = minaTripleConRetardo.getOndaExpansiva();
-		Iterator<Posicion> it = ondaExpansiva.iterator();
-		
 		if(minaTripleConRetardo.getRetardo() == 0){
-			while(!(minaTripleConRetardo.estaExplotada()) && (it.hasNext())){
-			
-				Iterator<ParteDeNave> it2 = getPartes().iterator();
-			
-				while(!(minaTripleConRetardo.estaExplotada()) && (it2.hasNext())){				
-					if (it.next().esIgualA(it2.next().getPosicion()) && (it2.hasNext())){
-						it2.next().reducirResistencia(MAXIMA_RESISTENCIA);
+			for (Posicion posicion : minaTripleConRetardo.getOndaExpansiva()){
+				for (ParteDeNave parte : this.getPartes()){
+					if (!(minaTripleConRetardo.estaExplotada()) && 
+						posicion.esIgualA(parte.getPosicion())){
+						parte.reducirResistencia(MAXIMA_RESISTENCIA);
 						minaTripleConRetardo.explotar();
 					}
 				}
@@ -116,7 +113,13 @@ public class Buque extends Nave implements Atacable{
 	}
 	
 	public void serAtacadoPor(MinaPorContacto minaPorContacto) {
-		// TODO Auto-generated method stub
+		
+		for (Iterator<ParteDeNave> it = getPartes().iterator(); it.hasNext();)
+			if ((minaPorContacto.getPosicion().esIgualA(it.next().getPosicion()))){
+				it.next().reducirResistencia(MAXIMA_RESISTENCIA);
+				minaPorContacto.explotar();
+			}
+		
 		
 	}
 
