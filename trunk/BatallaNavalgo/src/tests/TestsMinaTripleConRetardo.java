@@ -8,6 +8,16 @@ import model.Posicion;
 import org.junit.Test;
 
 public class TestsMinaTripleConRetardo extends TestCase{
+	
+	@Test
+	public void testUnaMinaTriplePoseeUnCostoDe125Puntos() {
+		
+		Posicion posicion = new Posicion();
+		MinaTripleConRetardo minaTriple = new MinaTripleConRetardo(posicion);
+		
+		assertTrue((minaTriple.getCosto()) == 125);
+		
+	}
 
 	@Test
 	public void testUnaMinaTripleDeberiaTenerUnaOndaExpansivaDe25Posiciones() {

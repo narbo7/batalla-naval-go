@@ -51,7 +51,7 @@ public class TestsBuque extends TestCase{
 	@Test
 	public void testLaOndaExpansivaDeUnaMinaTripleDeberiaDestruirElBuque(){
 		
-		Buque buque = new Buque(new Posicion(3,3));
+		Buque buque = new Buque(new Posicion(6,4));
 		MinaTripleConRetardo minaTriple = new MinaTripleConRetardo(new Posicion(5,5));
 		
 		minaTriple.descontarRetardo();

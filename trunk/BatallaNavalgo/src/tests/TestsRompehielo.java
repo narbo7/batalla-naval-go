@@ -3,6 +3,8 @@ package tests;
 import junit.framework.TestCase;
 
 import model.Disparo;
+import model.MinaDobleConRetardo;
+import model.MinaTripleConRetardo;
 import model.Rompehielo;
 import model.Posicion;
 
@@ -81,5 +83,37 @@ public class TestsRompehielo extends TestCase {
 		
 		assertTrue((fila == 8) && (columna == 8));
 			
+	}
+	
+	@Test
+	public void testLaOndaExpansivaDeUnaMinaDobleDeberiaAtacarAlRompehielo(){
+		
+		Rompehielo rompehielo = new Rompehielo(new Posicion(4,4));
+		MinaDobleConRetardo minaDoble = new MinaDobleConRetardo(new Posicion(5,5));
+		
+		minaDoble.descontarRetardo();
+		minaDoble.descontarRetardo();
+		minaDoble.descontarRetardo();
+		
+		
+		minaDoble.atacar(rompehielo);
+		
+		assertTrue((rompehielo.getResistenciaTotal()) == 4);	
+	}
+	
+	@Test
+	public void testLaOndaExpansivaDeUnaMinaTripleDeberiaAtacarAlRompehielo(){
+		
+		Rompehielo rompehielo = new Rompehielo(new Posicion(3,3));
+		MinaTripleConRetardo minaTriple = new MinaTripleConRetardo(new Posicion(5,5));
+		
+		minaTriple.descontarRetardo();
+		minaTriple.descontarRetardo();
+		minaTriple.descontarRetardo();
+		
+		
+		minaTriple.atacar(rompehielo);
+		
+		assertTrue((rompehielo.getResistenciaTotal()) == 4);	
 	}
 }
