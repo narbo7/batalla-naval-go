@@ -27,9 +27,11 @@ public class Posicion {
 	public int getColumna() {
 		return columna;
 	}
+	
 	public void setColumna(int columna) {
 		this.columna = columna;
 	}
+	
 	
 	public int generarCoordenadaEntre(int valorInicial, int valorFinal){
 		return (RandomInt.generarRandomEntre(valorInicial, valorFinal));

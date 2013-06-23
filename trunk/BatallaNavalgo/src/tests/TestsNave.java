@@ -43,6 +43,8 @@ public class TestsNave {
 		unaNave.mover();
 		unaNave.mover();
 		unaNave.mover();
+		unaNave.mover();
+		unaNave.mover();
 		
 		assertTrue(unaNave.getDirAbajo());
 		assertTrue(!unaNave.getDirArriba());
@@ -56,6 +58,8 @@ public class TestsNave {
 		unaNave.setDirArriba(false);
 		unaNave.setDirAbajo(true);
 		
+		unaNave.mover();
+		unaNave.mover();
 		unaNave.mover();
 		unaNave.mover();
 		unaNave.mover();
@@ -73,6 +77,7 @@ public class TestsNave {
 		unaNave.setDirDerecha(true);
 		unaNave.setDirIzquierda(false);
 		
+	
 		unaNave.mover();
 		unaNave.mover();
 		unaNave.mover();
@@ -91,6 +96,7 @@ public class TestsNave {
 		unaNave.setDirDerecha(false);
 		unaNave.setDirIzquierda(true);
 		
+
 		unaNave.mover();
 		unaNave.mover();
 		unaNave.mover();
@@ -99,4 +105,5 @@ public class TestsNave {
 		assertTrue(unaNave.getDirDerecha());
 		assertTrue(!unaNave.getDirIzquierda());
 	}
+	
 }
