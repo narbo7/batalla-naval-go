@@ -87,56 +87,89 @@ public abstract class Nave extends ElementoDelJuego implements ObjetoMovil, Obje
 	
 	public abstract void serAtacadoPor(Disparo disparo);
 	
+	public boolean hayChoqueContraBordeIzquierdo() {
+		boolean flag = false;
+		for (ParteDeNave unaParte : this.getPartes()) {
+			if(unaParte.getPosicion().getColumna() == 1) {  flag = true;}
+		}
+		return flag;
+	}
 	
-	public void mover(){
-		
-		boolean darLaVuelta = false;
-		
-		for(ParteDeNave parteDeNave: this.partes){
-		
-			if(this.getDirArriba()) {
-				if(parteDeNave.getPosicion().getFila() == 1) {
-					darLaVuelta = true;
-					this.setDirArriba(false);
-					this.setDirAbajo(true);
-					} else {
-						if (!darLaVuelta)parteDeNave.getPosicion().setFila(parteDeNave.getPosicion().getFila()-1);
-					}
-			}
-			
-			if(this.getDirAbajo()) {
-				if(parteDeNave.getPosicion().getFila() == Tablero.getMaxFila()) {
-					darLaVuelta = true;
-					this.setDirArriba(true);
-					this.setDirAbajo(false);
-				} else {
-					if (!darLaVuelta) parteDeNave.getPosicion().setFila(parteDeNave.getPosicion().getFila()+1);
-				}
-			}
-			
-			if(this.getDirDerecha()){
-				if(parteDeNave.getPosicion().getColumna() == Tablero.getMaxColumna()) {
-					darLaVuelta = true;
-					this.setDirDerecha(false);
-					this.setDirIzquierda(true);
-				} else {
-					if (!darLaVuelta) parteDeNave.getPosicion().setColumna(parteDeNave.getPosicion().getColumna()+1);
-				}
-			}
-			
-			if(this.getDirIzquierda()){
-				if(parteDeNave.getPosicion().getColumna() == 1) {
-					darLaVuelta = true;
-					this.setDirDerecha(true);
-					this.setDirIzquierda(false);
-				} else {
-					if (!darLaVuelta) parteDeNave.getPosicion().setColumna(parteDeNave.getPosicion().getColumna()-1);
-				}
-			}
+	public boolean hayChoqueContraBordeDerecho() {
+		boolean flag = false;
+		for (ParteDeNave unaParte : this.getPartes()) {
+			if(unaParte.getPosicion().getColumna() == Tablero.getMaxColumna()) {flag = true;}
+		}
+		return flag;
+	}
+	
+	public boolean hayChoqueContraBordeInferior() {
+		boolean flag = false;
+		for (ParteDeNave unaParte : this.getPartes()) {
+			if(unaParte.getPosicion().getFila() == Tablero.getMaxFila()) {  flag = true;}
+		}
+		return flag;
+	}
+	
+	public boolean hayChoqueContraBordeSuperior() {
+		boolean flag = false;
+		for (ParteDeNave unaParte : this.getPartes()) {
+			if(unaParte.getPosicion().getFila() == 1) {  flag = true;}
+		}
+		return flag;
+	}
+	
+	
+	public synchronized void mover(){
+		if(this.hayQueCambiarDireccion()) { 
+			this.cambiarDireccion();
+			this.moverse();
+		} else {
+			this.moverse();
 		}
 		
 	}
 	
+	private void moverse() {
+		if(this.getDirAbajo()){
+			for (ParteDeNave unaParte : this.getPartes()) {
+				unaParte.getPosicion().setFila(unaParte.getPosicion().getFila()+1);
+			}
+		}
+		if(this.getDirArriba()){
+			for (ParteDeNave unaParte : this.getPartes()) {
+				unaParte.getPosicion().setFila(unaParte.getPosicion().getFila()-1);
+			}
+		}
+		if(this.getDirDerecha()){
+			for (ParteDeNave unaParte : this.getPartes()) {
+				unaParte.getPosicion().setColumna(unaParte.getPosicion().getColumna()+1);
+			}
+		}
+		if(this.getDirIzquierda()){
+			for (ParteDeNave unaParte : this.getPartes()) {
+				unaParte.getPosicion().setColumna(unaParte.getPosicion().getColumna()-1);
+			}
+		}
+	}
+
+	private void cambiarDireccion() {
+		if (this.hayChoqueContraBordeDerecho()){this.setDirDerecha(false); this.setDirIzquierda(true);}
+		if (this.hayChoqueContraBordeInferior()){this.setDirAbajo(false); this.setDirArriba(true);}
+		if (this.hayChoqueContraBordeIzquierdo()){this.setDirIzquierda(false); this.setDirDerecha(true);}
+		if (this.hayChoqueContraBordeSuperior()){this.setDirArriba(false); this.setDirAbajo(true);}
+		
+	}
+
+	private boolean hayQueCambiarDireccion() {
+		boolean flag = false;
+		if (hayChoqueContraBordeDerecho()) flag = true;
+		if (hayChoqueContraBordeInferior()) flag = true;
+		if (hayChoqueContraBordeIzquierdo()) flag = true;
+		if (hayChoqueContraBordeSuperior()) flag = true;
+		return flag;
+	}
+
 	public boolean getDirArriba() { return this.dirArriba;}
 	
 	public void setDirArriba(boolean x) { this.dirArriba = x;}
@@ -202,11 +235,17 @@ public abstract class Nave extends ElementoDelJuego implements ObjetoMovil, Obje
 	
 	public void vivir () {
 		//System.out.println("Estoy en x:" + this.getPosicion().getColumna() + " y:" +this.getPosicion().getFila());
-		//for(ParteDeNave unaParte : this.getPartes()){
-		//	System.out.println("Estoy en: " + unaParte.getPosicion().getFila() + " " + unaParte.getPosicion().getColumna());
-		//}
+		/*
+		for(ParteDeNave unaParte : this.getPartes()){
+			System.out.println("Estoy en: " + unaParte.getPosicion().getFila() + " " + unaParte.getPosicion().getColumna());
+		}
 		
-		//this.mover();
+		if (this.getDirAbajo()) System.out.println("Voy para abajo");
+		if (this.getDirArriba()) System.out.println("Voy para arriba");
+		if (this.getDirIzquierda()) System.out.println("Voy para la izquierda");
+		if (this.getDirDerecha()) System.out.println("Voy para la derecha");
+		*/
+		this.mover();
 	}
 
 }
