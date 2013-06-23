@@ -161,20 +161,20 @@ public abstract class Nave extends ElementoDelJuego implements ObjetoMovil, Obje
 		int miFila = nuevaPos.getFila();
 		int miColumna = nuevaPos.getColumna();
 		
-		if ((miFila) == 1){
+		if (((miFila) == 1) || ((miFila) == 2)){
 			nuevaPos.setFila(miFila + 2);
 			huboCambioFil = true;
 		} else {
-			if ((miFila) == Tablero.maxFila)
+			if (((miFila) == Tablero.maxFila) || ((miFila) == (Tablero.maxFila) - 1 ))
 				nuevaPos.setFila(miFila - 2);
 				huboCambioFil = true;
 		}
 		
-		if ((miColumna) == 1){
+		if (((miColumna) == 1) || ((miColumna) == 2)){
 			nuevaPos.setColumna(miColumna + 2);
 			huboCambioCol = true;
 		} else {
-			if((miColumna) == Tablero.maxColumna)
+			if(((miColumna) == Tablero.maxColumna) || ((miColumna) == (Tablero.maxColumna) - 1))
 				nuevaPos.setColumna(miColumna - 2);
 				huboCambioCol = true;
 		}

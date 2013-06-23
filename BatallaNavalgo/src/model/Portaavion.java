@@ -13,13 +13,11 @@ public class Portaavion extends Nave implements Atacable{
 	
 	public Portaavion(){
 		super();
-		//this.resistencia = MAXIMA_RESISTENCIA;
 		determinarPosiciones();
 	}
 
 	public Portaavion(Posicion posicion){
 		super(posicion);
-		//this.resistencia = MAXIMA_RESISTENCIA;
 		determinarPosiciones();
 	}
 
