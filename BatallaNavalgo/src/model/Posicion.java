@@ -50,11 +50,13 @@ public class Posicion {
 	}
 	
 	public int desparametrizarX() {
-		return (this.getColumna() - (this.getColumna()-1)*VentanaPrincipal.getAumentoVentana());
+		//return (this.getColumna() - (this.getColumna()-1)*VentanaPrincipal.getAumentoVentana());
+		return (this.getColumna()/VentanaPrincipal.getAumentoVentana() +1);
 	}
 	
 	public int desparametrizarY() {
-		return (this.getFila() - (this.getFila()-1)*VentanaPrincipal.getAumentoVentana());
+		//return (this.getFila() - (this.getFila()-1)*VentanaPrincipal.getAumentoVentana());
+		return (this.getFila()/VentanaPrincipal.getAumentoVentana() +1);
 	}
 	
 	public Posicion desparametrizarPosicion() {

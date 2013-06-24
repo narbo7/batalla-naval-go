@@ -29,6 +29,6 @@ public abstract class ElementoDelJuego implements ObjetoVivo{
 		this.posicion = posicion;
 	}
 	
-	public abstract LinkedList<VistaElementoDelJuego> generarVista();
+
 	
 }

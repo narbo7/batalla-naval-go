@@ -52,11 +52,6 @@ public class MinaDobleConRetardo extends Bomba implements Expandible{
 	}
 
 	@Override
-	public Bomba copy() {
-        return new MinaDobleConRetardo(this.getPosicion());
-    }
-
-	@Override
 	public void vivir() {
 		if ((getRetardo()) != 0)
 			descontarRetardo();

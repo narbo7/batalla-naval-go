@@ -41,10 +41,6 @@ public class MinaPorContacto extends Bomba {
 	}
 
 	@Override
-	public Bomba copy() {
-        return new MinaPorContacto(this.getPosicion());
-    }
-	@Override
 	public void vivir() {
 		// TODO Auto-generated method stub
 		System.out.println("Bomba viviendo");

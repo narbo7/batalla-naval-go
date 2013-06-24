@@ -9,6 +9,8 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.LinkedList;
 
 
@@ -16,13 +18,16 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import model.Bomba;
 import model.Nave;
 import model.Partida;
 import model.Tablero;
 
 
+import fiuba.algo3.titiritero.dibujables.Imagen;
 import fiuba.algo3.titiritero.dibujables.SuperficiePanel;
 import fiuba.algo3.titiritero.modelo.GameLoop;
+import fiuba.algo3.titiritero.modelo.ObjetoPosicionable;
 import fiuba.algo3.titiritero.modelo.ObservadorDeGameLoop;
 import fiuba.algo3.titiritero.modelo.SuperficieDeDibujo;
 
@@ -35,6 +40,7 @@ public class VentanaPrincipal implements ObservadorDeGameLoop{
         static int relacionTableroVentanaY = (aumento*Tablero.getMaxFila());
         private LinkedList<ObservadorMouse> observadoresMouse= new LinkedList<ObservadorMouse>();	
         private LinkedList<ObservadorTeclado> observadoresTeclado= new LinkedList<ObservadorTeclado>();
+        private Partida miPartida = new Partida();
         
         /**
          * Launch the application.
@@ -69,7 +75,7 @@ public class VentanaPrincipal implements ObservadorDeGameLoop{
          */
         private void initialize() throws IOException {
                 frame = new JFrame();
-                frame.setForeground(new Color(0, 0, 0));
+                frame.setForeground(new Color(0,0,0));
                 frame.setBounds(100, 100, 600, 600);
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame.getContentPane().setLayout(null);
@@ -94,12 +100,12 @@ public class VentanaPrincipal implements ObservadorDeGameLoop{
 
                 
         }
-
+        
         private void inicializarModelo() throws IOException {
         		
         	
-                Partida miPartida = new Partida();
-                this.gameLoop.agregar(miPartida);
+                //Partida miPartida = new Partida();
+                this.gameLoop.agregar(this.getPartida());
                 this.agregarObservadorMouse(miPartida);
                 this.agregarObservadorTeclado(miPartida);
                 
@@ -186,11 +192,11 @@ public class VentanaPrincipal implements ObservadorDeGameLoop{
 
         @Override
         public void notificarCicloFinalizado() {
-        	System.out.println("Actualizando vistas... ");
-            //Aca tenemos que verificar el estado de los barcos y las bombas graficamente.
-        	// Si hubo un disparo, agregar bomba; actualizar elementos de la partida.
-        	//Si se estallo una parte de nave tambien deberia actualizar.
-               
+        	for (Bomba unaBomba : this.getPartida().getBombas()) {
+        		this.gameLoop.agregar(unaBomba);
+        		this.gameLoop.agregar(unaBomba.generarVistaBomba());
+        	}
+              
         }
 
 		public static int relacionTableroVentanaX() {
@@ -205,6 +211,9 @@ public class VentanaPrincipal implements ObservadorDeGameLoop{
         public static int getAumentoVentana() {
         	return aumento;
         }
+        
+        public Partida getPartida() {return this.miPartida;}
+        
         private void agregarObservadorMouse(ObservadorMouse observador){
     		this.observadoresMouse.add(observador);	
     	}

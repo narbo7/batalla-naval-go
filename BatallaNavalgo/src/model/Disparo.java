@@ -1,5 +1,9 @@
 package model;
 
+import java.util.LinkedList;
+
+import view.VistaElementoDelJuego;
+
 
 public class Disparo extends Bomba{
 
@@ -41,10 +45,6 @@ public class Disparo extends Bomba{
 
 	}
 
-	@Override
-	public Bomba copy() {
-        return new Disparo(this.getPosicion());
-    }
 
 	@Override
 	public void vivir() {

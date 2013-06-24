@@ -52,13 +52,6 @@ public class ParteDeNave extends ElementoDelJuego implements ObjetoVivo, ObjetoP
 
 
 	@Override
-	public LinkedList<VistaElementoDelJuego> generarVista() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-	@Override
 	public void vivir() {
 		// TODO Auto-generated method stub
 		

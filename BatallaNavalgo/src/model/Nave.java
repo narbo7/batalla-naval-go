@@ -5,6 +5,8 @@ import java.util.LinkedList;
 import java.util.Observer;
 import java.util.Random;
 
+import view.VistaElementoDelJuego;
+
 
 import fiuba.algo3.titiritero.modelo.ObjetoPosicionable;
 
@@ -234,18 +236,12 @@ public abstract class Nave extends ElementoDelJuego implements ObjetoMovil, Obje
 	}
 	
 	public void vivir () {
-		//System.out.println("Estoy en x:" + this.getPosicion().getColumna() + " y:" +this.getPosicion().getFila());
-		/*
-		for(ParteDeNave unaParte : this.getPartes()){
-			System.out.println("Estoy en: " + unaParte.getPosicion().getFila() + " " + unaParte.getPosicion().getColumna());
-		}
-		
-		if (this.getDirAbajo()) System.out.println("Voy para abajo");
-		if (this.getDirArriba()) System.out.println("Voy para arriba");
-		if (this.getDirIzquierda()) System.out.println("Voy para la izquierda");
-		if (this.getDirDerecha()) System.out.println("Voy para la derecha");
-		*/
 		this.mover();
 	}
 
+	public boolean estaHundida() {
+		return (this.getResistenciaTotal()==0);
+	}
+
+	public abstract LinkedList<VistaElementoDelJuego> generarVista();
 }
