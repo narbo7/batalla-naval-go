@@ -7,7 +7,7 @@ public class Jugador {
 	private Bomba bombaSeleccionada;
 
 	public Jugador(){
-        this.puntaje = 100;
+        this.puntaje = 10000;
 	}
 
 	public Bomba dispararBomba() {
