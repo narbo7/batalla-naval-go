@@ -48,26 +48,58 @@ public class Partida implements ObjetoVivo,ObservadorMouse,ObservadorTeclado{
 	public LinkedList<Nave> getNaves(){
 		return this.tablero.getNaves();
 	}
+	
+	public LinkedList<Bomba> getBombas() {
+		return this.tablero.getBombas();
+	}
+	
 	public LinkedList<ElementoDelJuego> getElementoDelJuego(){
 		return this.tablero.getElementos();
 	}
 	
 	@Override
 	public void vivir() {
+		//this.limpiar();
 		this.tablero.vivir();
 	}
+
+	private void limpiar() {
+		LinkedList<Nave> listaNaves = new LinkedList<Nave>();
+		for (Nave unaNave : this.getNaves()) {
+			if (unaNave.estaHundida()) {listaNaves.add(unaNave);}
+		}
+		for (Nave unaNave : listaNaves) {
+			this.getNaves().remove(unaNave);
+		}
+		
+		LinkedList<Bomba> listaBombas = new LinkedList<Bomba>();
+		for (Bomba unaBomba : this.getBombas()) {
+			if (unaBomba.estaExplotada()) {listaBombas.add(unaBomba);}
+		}
+		for (Bomba unaBomba: listaBombas) {
+			this.getBombas().remove(unaBomba);
+		}
+		
+	}
+
 
 	@Override
 	public void notificarEvento(int posicionX, int posicionY) {
 		//enviar disparo.
-		Posicion posicionEvento = new Posicion(posicionX,posicionY);
+		Posicion posicionEvento = new Posicion(posicionY,posicionX);
 		Bomba bomba = this.getJugador().dispararBomba();
 		bomba.setPosicion(posicionEvento.desparametrizarPosicion());
+		System.out.println("Bomba en posicion " + bomba.getPosicion().getFila()+ " " + bomba.getPosicion().getColumna());
 		this.agregarElementoAlTablero(bomba);
+		this.agregarBomba(bomba);
 	}
 	
 	public void agregarElementoAlTablero(ElementoDelJuego elementoDelJuego){
 		tablero.agregarElemento(elementoDelJuego);
+	}
+	
+	public void agregarBomba(Bomba bomba) {
+		tablero.agregarBomba(bomba);
 	}
 
 	public Jugador getJugador(){

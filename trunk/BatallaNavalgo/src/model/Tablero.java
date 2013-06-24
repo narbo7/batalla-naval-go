@@ -12,10 +12,12 @@ public class Tablero implements ObjetoVivo{
 	
 	private LinkedList<ElementoDelJuego> elementos;
 	private LinkedList<Nave> naves;
+	private LinkedList<Bomba> bombas;
 	
 	public Tablero(){
 		this.elementos = new LinkedList<ElementoDelJuego>();
 		this.naves = new LinkedList<Nave>();
+		this.bombas = new LinkedList<Bomba>();
 	}
 	
 	public static int getMaxFila(){
@@ -32,6 +34,10 @@ public class Tablero implements ObjetoVivo{
 	
 	public void agregarNave(Nave nave) {
 		this.naves.add(nave);
+	}
+	
+	public void agregarBomba(Bomba bomba) {
+		this.bombas.add(bomba);
 	}
 	
 	public void quitarElemento(Posicion posicion) {
@@ -61,7 +67,15 @@ public class Tablero implements ObjetoVivo{
 	public void setNaves(LinkedList<Nave> naves) {
 		this.naves = naves;
 	}
+	
+	public LinkedList<Bomba> getBombas() {
+		return bombas;
+	}
 
+	public void setBombas(LinkedList<Bomba> bombas) {
+		this.bombas = bombas;
+	}
+	
 	@Override
 	public void vivir() {
 		for (ElementoDelJuego elemento: this.getElementos()){

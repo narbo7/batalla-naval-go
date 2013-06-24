@@ -45,12 +45,6 @@ public class MinaConRetardo extends Bomba{
 	}
 
 	@Override
-	public Bomba copy() {
-        return new MinaConRetardo(this.getPosicion());
-    }
-
-
-	@Override
 	public void vivir() {
 		if ((getRetardo()) != 0)
 			descontarRetardo();

@@ -1,5 +1,8 @@
 package model;
 
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.LinkedList;
 
 import fiuba.algo3.titiritero.modelo.ObjetoPosicionable;
@@ -55,24 +58,20 @@ public abstract class Bomba extends ElementoDelJuego implements ObjetoPosicionab
 		public abstract void atacar(Portaavion portaavion);
 
 		public abstract void atacar(Rompehielo rompehielo);
-
-		public abstract Bomba copy();
 		
 		//TODO: Modificar esta llamada a otro paquete, deberia ser un observador.
-		public LinkedList<VistaElementoDelJuego> generarVista(){
-			LinkedList<VistaElementoDelJuego> miLista = new LinkedList<VistaElementoDelJuego>();
-			miLista.add(new VistaBomba(this));
-			return miLista;
+		public VistaBomba generarVistaBomba() {
+			return (new VistaBomba(50, this));
 		}
+		
 		@Override
 		public int getX() {
-			return (this.getPosicion().getColumna() + (this.getPosicion().getColumna()-1)*VentanaPrincipal.getAumentoVentana());
+			return (this.getPosicion().getFila() + (this.getPosicion().getFila()-1)*VentanaPrincipal.getAumentoVentana()); 
 		}
 
 		@Override
 		public int getY() {
-			return (this.getPosicion().getFila() + (this.getPosicion().getFila()-1)*VentanaPrincipal.getAumentoVentana()); 
-
+			return (this.getPosicion().getColumna() + (this.getPosicion().getColumna()-1)*VentanaPrincipal.getAumentoVentana());
 		}
 
 }
