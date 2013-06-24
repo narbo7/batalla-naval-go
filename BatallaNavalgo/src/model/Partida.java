@@ -72,7 +72,7 @@ public class Partida implements ObjetoVivo,ObservadorMouse,ObservadorTeclado{
 		//this.limpiar();
 		this.tablero.vivir();
 		this.getJugador().descontarPuntaje(10);
-		if (this.getJugador().getPuntaje() == 0){
+		if (this.getJugador().getPuntaje() <= 0){
 			this.juegoTermiado();
 		}
 		
