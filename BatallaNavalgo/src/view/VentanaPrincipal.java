@@ -2,6 +2,7 @@ package view;
 
 import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.PopupMenu;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -192,11 +193,15 @@ public class VentanaPrincipal implements ObservadorDeGameLoop{
 
         @Override
         public void notificarCicloFinalizado() {
-        	for (Bomba unaBomba : this.getPartida().getBombas()) {
-        		this.gameLoop.agregar(unaBomba);
-        		this.gameLoop.agregar(unaBomba.generarVistaBomba());
+        	
+        	if (!(this.getPartida().getEstadoDelJuego())){
+        		this.gameLoop.detenerEjecucion();
+        	} else {
+        		for (Bomba unaBomba : this.getPartida().getBombas()) {
+        			this.gameLoop.agregar(unaBomba);
+        			this.gameLoop.agregar(unaBomba.generarVistaBomba());
+        		}
         	}
-              
         }
 
 		public static int relacionTableroVentanaX() {

@@ -7,7 +7,7 @@ public class Jugador {
 	private Bomba bombaSeleccionada;
 
 	public Jugador(){
-        this.puntaje = 10000;
+        this.puntaje = 100;
 	}
 
 	public Bomba dispararBomba() {
@@ -29,7 +29,7 @@ public class Jugador {
 		this.puntaje = unPuntaje;
 	}
 	
-	private void descontarPuntaje(int costo){
+	public void descontarPuntaje(int costo){
 		int nuevoPuntaje = getPuntaje();   
 		nuevoPuntaje -= costo;
 		setPuntaje(nuevoPuntaje);

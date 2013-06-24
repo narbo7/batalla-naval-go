@@ -15,11 +15,13 @@ public class Partida implements ObjetoVivo,ObservadorMouse,ObservadorTeclado{
 
 	private Tablero tablero;
 	private Jugador jugador;
+	private boolean enJuego;
 	
 	public Tablero getTablero() {return this.tablero;}
 	
 	
 	public Partida() {
+		this.enJuego = true;
 		this.tablero = new Tablero();
 		this.jugador = new Jugador();
 		
@@ -39,6 +41,14 @@ public class Partida implements ObjetoVivo,ObservadorMouse,ObservadorTeclado{
 		tablero.agregarElemento(nave6); tablero.agregarNave(nave6);
 		tablero.agregarElemento(nave7); tablero.agregarNave(nave7);
 		
+	}
+	
+	public void juegoTermiado(){
+		this.enJuego = false;
+	}
+	
+	public boolean getEstadoDelJuego(){
+		return this.enJuego;
 	}
 	
 	public int getCantidadDeElementosEnTablero(){
@@ -61,6 +71,12 @@ public class Partida implements ObjetoVivo,ObservadorMouse,ObservadorTeclado{
 	public void vivir() {
 		//this.limpiar();
 		this.tablero.vivir();
+		this.getJugador().descontarPuntaje(10);
+		if (this.getJugador().getPuntaje() == 0){
+			this.juegoTermiado();
+		}
+		
+		System.out.println(this.getJugador().getPuntaje());
 	}
 
 	private void limpiar() {
