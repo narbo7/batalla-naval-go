@@ -54,9 +54,7 @@ public abstract class Bomba extends ElementoDelJuego implements ObjetoPosicionab
 		public abstract void atacar(Rompehielo rompehielo);
 		
 		//TODO: Modificar esta llamada a otro paquete, deberia ser un observador.
-		public VistaBomba generarVistaBomba() {
-			return (new VistaBomba(50, this));
-		}
+		public abstract VistaBomba generarVistaBomba();
 		
 		@Override
 		public int getX() {

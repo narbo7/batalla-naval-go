@@ -1,5 +1,10 @@
 package model;
 
+import java.io.IOException;
+
+import view.VistaBomba;
+import view.VistaDisparo;
+
 public class Disparo extends Bomba{
 
 	public Disparo() {
@@ -45,6 +50,17 @@ public class Disparo extends Bomba{
 	public void vivir() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public VistaBomba generarVistaBomba() {
+		VistaDisparo vista = null;
+		try{
+			vista = new VistaDisparo(this);
+		}catch(IOException e ){
+			System.out.println(e.getMessage());
+		}
+		return vista;
 	}
 
 
