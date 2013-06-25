@@ -99,7 +99,7 @@ public class Destructor extends Nave implements Atacable{
 		LinkedList<VistaElementoDelJuego> listaVistas = new LinkedList<VistaElementoDelJuego>();
 		try{
 		for (ParteDeNave unaParte : this.getPartes()){
-			listaVistas.add(new VistaDestructor(unaParte));
+			listaVistas.add(new VistaDestructor(unaParte,this.getUbicacion()));
 		}
 		}catch(IOException e){
 			System.out.println(e.getMessage());

@@ -122,7 +122,7 @@ public class Lancha extends Nave implements Atacable{
 		LinkedList<VistaElementoDelJuego> listaVistas = new LinkedList<VistaElementoDelJuego>();
 		try{
 		for (ParteDeNave unaParte : this.getPartes()){
-			listaVistas.add(new VistaLancha(unaParte));
+			listaVistas.add(new VistaLancha(unaParte,this.getUbicacion()));
 		}
 		}catch(IOException e){
 			System.out.println(e.getMessage());
