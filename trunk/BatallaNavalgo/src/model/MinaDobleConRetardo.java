@@ -1,6 +1,10 @@
 package model;
 
+import java.io.IOException;
 import java.util.LinkedList;
+
+import view.VistaBomba;
+import view.VistaMina;
 
 
 public class MinaDobleConRetardo extends Bomba implements Expandible{
@@ -77,6 +81,19 @@ public class MinaDobleConRetardo extends Bomba implements Expandible{
 	
 	public int getTamanioOndaExpansiva(){
 		return this.ondaExpansiva.size();
+	}
+
+
+	@Override
+	public VistaBomba generarVistaBomba() {
+		VistaMina vista = null;
+		try{
+			vista = new VistaMina(this);
+		}catch(IOException e ){
+			System.out.println(e.getMessage());
+		}
+		return vista;
+
 	}
 
 

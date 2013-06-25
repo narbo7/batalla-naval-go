@@ -1,5 +1,11 @@
 package model;
 
+import java.io.IOException;
+
+import view.VistaBomba;
+import view.VistaDisparo;
+import view.VistaMina;
+
 
 
 public class MinaConRetardo extends Bomba{
@@ -49,6 +55,17 @@ public class MinaConRetardo extends Bomba{
 		if ((getRetardo()) != 0)
 			descontarRetardo();
 		
+	}
+
+	@Override
+	public VistaBomba generarVistaBomba() {
+		VistaMina vista = null;
+		try{
+			vista = new VistaMina(this);
+		}catch(IOException e ){
+			System.out.println(e.getMessage());
+		}
+		return vista;
 	}
 
 }

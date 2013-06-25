@@ -1,5 +1,10 @@
 package model;
 
+import java.io.IOException;
+
+import view.VistaBomba;
+import view.VistaMina;
+
 
 
 
@@ -45,6 +50,17 @@ public class MinaPorContacto extends Bomba {
 		// TODO Auto-generated method stub
 		System.out.println("Bomba viviendo");
 		
+	}
+	@Override
+	public VistaBomba generarVistaBomba() {
+		VistaMina vista = null;
+		try{
+			vista = new VistaMina(this);
+		}catch(IOException e ){
+			System.out.println(e.getMessage());
+		}
+		return vista;
+
 	}
 
 }
