@@ -7,6 +7,8 @@ import controller.ControladorTeclado;
 import view.ObservadorMouse;
 import view.ObservadorTeclado;
 
+
+import fiuba.algo3.titiritero.modelo.GameLoop;
 import fiuba.algo3.titiritero.modelo.ObjetoVivo;
 
 
@@ -71,22 +73,26 @@ public class Partida implements ObjetoVivo,ObservadorMouse,ObservadorTeclado{
 	public void vivir() {
 		//this.limpiar();
 		this.tablero.vivir();
+		System.out.println("Cantidad de bombas = " +this.getBombas().size());
+
 		this.getJugador().descontarPuntaje(10);
 		if (this.getJugador().getPuntaje() <= 0){
 			this.juegoTermiado();
 		}
 		
 		System.out.println(this.getJugador().getPuntaje());
+
 	}
 
-	@SuppressWarnings("unused")
-	private void limpiar() {
+
+	private void limpiar(GameLoop gameloop) {
 		LinkedList<Nave> listaNaves = new LinkedList<Nave>();
 		for (Nave unaNave : this.getNaves()) {
 			if (unaNave.estaHundida()) {listaNaves.add(unaNave);}
 		}
 		for (Nave unaNave : listaNaves) {
 			this.getNaves().remove(unaNave);
+			gameloop.remover(unaNave);
 		}
 		
 		LinkedList<Bomba> listaBombas = new LinkedList<Bomba>();
@@ -95,6 +101,7 @@ public class Partida implements ObjetoVivo,ObservadorMouse,ObservadorTeclado{
 		}
 		for (Bomba unaBomba: listaBombas) {
 			this.getBombas().remove(unaBomba);
+			gameloop.remover(unaBomba);
 		}
 		
 	}
@@ -106,7 +113,6 @@ public class Partida implements ObjetoVivo,ObservadorMouse,ObservadorTeclado{
 		Posicion posicionEvento = new Posicion(posicionY,posicionX);
 		Bomba bomba = this.getJugador().dispararBomba();
 		bomba.setPosicion(posicionEvento.desparametrizarPosicion());
-		System.out.println("Bomba en posicion " + bomba.getPosicion().getFila()+ " " + bomba.getPosicion().getColumna());
 		this.agregarElementoAlTablero(bomba);
 		this.agregarBomba(bomba);
 	}
