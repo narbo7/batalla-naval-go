@@ -128,7 +128,7 @@ public class Rompehielo extends Nave implements Atacable{
 		LinkedList<VistaElementoDelJuego> listaVistas = new LinkedList<VistaElementoDelJuego>();
 		try{
 		for (ParteDeNave unaParte : this.getPartes()){
-			listaVistas.add(new VistaRompehielo(unaParte));
+			listaVistas.add(new VistaRompehielo(unaParte,this.getUbicacion()));
 		}
 		}catch(IOException e){
 			e.getMessage();
