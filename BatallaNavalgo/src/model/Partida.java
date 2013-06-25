@@ -79,6 +79,7 @@ public class Partida implements ObjetoVivo,ObservadorMouse,ObservadorTeclado{
 		System.out.println(this.getJugador().getPuntaje());
 	}
 
+	@SuppressWarnings("unused")
 	private void limpiar() {
 		LinkedList<Nave> listaNaves = new LinkedList<Nave>();
 		for (Nave unaNave : this.getNaves()) {

@@ -1,12 +1,8 @@
 package view;
 
 import java.awt.Color;
-import java.io.IOException;
-import java.net.URL;
 
 import fiuba.algo3.titiritero.dibujables.Circulo;
-import fiuba.algo3.titiritero.dibujables.Cuadrado;
-import fiuba.algo3.titiritero.dibujables.Imagen;
 import fiuba.algo3.titiritero.modelo.ObjetoPosicionable;
 
 public class VistaBomba extends Circulo {

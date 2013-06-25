@@ -1,26 +1,22 @@
 package view;
 
-import java.awt.Color;
+import java.io.File;
+import java.io.IOException;
 import java.util.Observable;
 
 import fiuba.algo3.titiritero.modelo.ObjetoPosicionable;
 
 public class VistaRompehielo extends VistaNave{
+	private static int number;
 
-	public VistaRompehielo(ObjetoPosicionable modelo) {
-		super(modelo);
-		// TODO Auto-generated constructor stub
+	public VistaRompehielo(ObjetoPosicionable modelo) throws IOException{
+		super(new File("./imagenes/naves/rh/horizontal/rh"+(number+1)+".png").toURI().toURL(),modelo);
+		number++;
 	}
 
 	@Override
 	public void update(Observable o, Object arg) {
 		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setColor() {
-		this.setColor(Color.CYAN);
 		
 	}
 

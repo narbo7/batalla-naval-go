@@ -1,10 +1,5 @@
 package model;
 
-import java.util.LinkedList;
-
-import view.VistaElementoDelJuego;
-
-
 public class Disparo extends Bomba{
 
 	public Disparo() {
