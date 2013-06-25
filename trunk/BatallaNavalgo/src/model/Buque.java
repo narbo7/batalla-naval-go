@@ -1,5 +1,6 @@
 package model;
 
+import java.io.IOException;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Observable;
@@ -132,8 +133,12 @@ public class Buque extends Nave implements Atacable{
 	@Override
 	public LinkedList<VistaElementoDelJuego> generarVista() {
 		LinkedList<VistaElementoDelJuego> listaVistas = new LinkedList<VistaElementoDelJuego>();
+		try{
 		for (ParteDeNave unaParte : this.getPartes()){
 			listaVistas.add(new VistaBuque(unaParte));
+		}
+		}catch(IOException e){
+			System.out.println(e.getMessage());
 		}
 		return listaVistas;
 	}

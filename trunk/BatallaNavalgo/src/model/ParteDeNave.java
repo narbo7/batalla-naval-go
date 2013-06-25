@@ -1,10 +1,7 @@
 package model;
 
-import java.util.LinkedList;
 import java.util.Observable;
 import java.util.Observer;
-
-import view.VistaElementoDelJuego;
 
 import fiuba.algo3.titiritero.modelo.ObjetoPosicionable;
 import fiuba.algo3.titiritero.modelo.ObjetoVivo;

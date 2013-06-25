@@ -2,16 +2,16 @@ package view;
 
 
 
-import fiuba.algo3.titiritero.dibujables.Cuadrado;
+import java.io.IOException;
+import java.net.URL;
+
+import fiuba.algo3.titiritero.dibujables.Imagen;
 import fiuba.algo3.titiritero.modelo.ObjetoPosicionable;
 
-public abstract class VistaElementoDelJuego extends Cuadrado {
+public abstract class VistaElementoDelJuego extends Imagen {
 	
-	public VistaElementoDelJuego(int entero1, int entero2, ObjetoPosicionable modelo) {
-		super(entero1, entero2, modelo);
-		setColor();
-	}
-	
-	public abstract void setColor();
-	
+	public VistaElementoDelJuego(URL imgURL, ObjetoPosicionable modelo) throws IOException{
+		//super(entero1, entero2, modelo);
+		super(imgURL,modelo);
+	}	
 }

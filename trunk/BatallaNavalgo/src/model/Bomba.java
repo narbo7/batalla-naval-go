@@ -1,14 +1,8 @@
 package model;
 
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.LinkedList;
-
 import fiuba.algo3.titiritero.modelo.ObjetoPosicionable;
 import view.VentanaPrincipal;
 import view.VistaBomba;
-import view.VistaElementoDelJuego;
 
 public abstract class Bomba extends ElementoDelJuego implements ObjetoPosicionable{
 

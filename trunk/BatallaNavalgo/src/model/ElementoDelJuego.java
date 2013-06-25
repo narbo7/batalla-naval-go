@@ -1,8 +1,5 @@
 package model;
 
-import java.util.LinkedList;
-
-import view.VistaElementoDelJuego;
 import fiuba.algo3.titiritero.modelo.ObjetoVivo;
 
 

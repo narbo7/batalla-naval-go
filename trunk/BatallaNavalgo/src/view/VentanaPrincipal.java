@@ -2,7 +2,6 @@ package view;
 
 import java.awt.Color;
 import java.awt.EventQueue;
-import java.awt.PopupMenu;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -10,8 +9,6 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.LinkedList;
 
 
@@ -25,10 +22,8 @@ import model.Partida;
 import model.Tablero;
 
 
-import fiuba.algo3.titiritero.dibujables.Imagen;
 import fiuba.algo3.titiritero.dibujables.SuperficiePanel;
 import fiuba.algo3.titiritero.modelo.GameLoop;
-import fiuba.algo3.titiritero.modelo.ObjetoPosicionable;
 import fiuba.algo3.titiritero.modelo.ObservadorDeGameLoop;
 import fiuba.algo3.titiritero.modelo.SuperficieDeDibujo;
 

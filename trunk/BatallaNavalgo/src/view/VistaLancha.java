@@ -1,15 +1,17 @@
 package view;
 
-import java.awt.Color;
+import java.io.File;
+import java.io.IOException;
 import java.util.Observable;
 
 import fiuba.algo3.titiritero.modelo.ObjetoPosicionable;
 
 public class VistaLancha extends VistaNave{
+	private static int number;
 
-	public VistaLancha(ObjetoPosicionable modelo) {
-		super(modelo);
-		// TODO Auto-generated constructor stub
+	public VistaLancha(ObjetoPosicionable modelo) throws IOException{
+		super(new File("./imagenes/naves/lancha/vertical/lancha"+(number+1)+".png").toURI().toURL(),modelo);
+		number++;
 	}
 
 	@Override
@@ -17,10 +19,4 @@ public class VistaLancha extends VistaNave{
 		// TODO Auto-generated method stub
 		
 	}
-
-	@Override
-	public void setColor() {
-		this.setColor(Color.YELLOW);
-	}
-
 }
