@@ -18,6 +18,14 @@ public class Partida implements ObjetoVivo,ObservadorMouse,ObservadorTeclado{
 	private Tablero tablero;
 	private Jugador jugador;
 	private boolean enJuego;
+	private Lancha lancha1; 
+	private Lancha lancha2;
+	private Destructor destructor1;
+	private Destructor destructor2;
+	private Buque buque;
+	private Rompehielo rompehielo;
+	private Portaavion portaavion;
+	
 	
 	public Tablero getTablero() {return this.tablero;}
 	
@@ -27,13 +35,14 @@ public class Partida implements ObjetoVivo,ObservadorMouse,ObservadorTeclado{
 		this.tablero = new Tablero();
 		this.jugador = new Jugador();
 		
-		Lancha nave1 = new Lancha();
+		/*Lancha nave1 = new Lancha();
 		Lancha nave2 = new Lancha();
 		Destructor nave3 = new Destructor();
 		Destructor nave4 = new Destructor();
 		Buque nave5 = new Buque();
 		Rompehielo nave6 = new Rompehielo();
 		Portaavion nave7 = new Portaavion();
+		
 		
 		tablero.agregarElemento(nave1); tablero.agregarNave(nave1);
 		tablero.agregarElemento(nave2); tablero.agregarNave(nave2);
@@ -42,6 +51,23 @@ public class Partida implements ObjetoVivo,ObservadorMouse,ObservadorTeclado{
 		tablero.agregarElemento(nave5); tablero.agregarNave(nave5);
 		tablero.agregarElemento(nave6); tablero.agregarNave(nave6);
 		tablero.agregarElemento(nave7); tablero.agregarNave(nave7);
+		*/
+		
+		this.lancha1 = new Lancha();
+		this.lancha2 = new Lancha();
+		this.destructor1 = new Destructor();
+		this.destructor2 = new Destructor();
+		this.buque = new Buque();
+		this.rompehielo = new Rompehielo();
+		this.portaavion = new Portaavion();
+		
+		tablero.agregarElemento(this.lancha1); tablero.agregarNave(this.lancha1);
+		tablero.agregarElemento(this.lancha2); tablero.agregarNave(this.lancha2);
+		tablero.agregarElemento(this.destructor1); tablero.agregarNave(this.destructor1);
+		tablero.agregarElemento(this.destructor2); tablero.agregarNave(this.destructor2);
+		tablero.agregarElemento(this.buque); tablero.agregarNave(this.buque);
+		tablero.agregarElemento(this.rompehielo); tablero.agregarNave(this.rompehielo);
+		tablero.agregarElemento(this.portaavion); tablero.agregarNave(this.portaavion);
 		
 	}
 	
@@ -81,7 +107,7 @@ public class Partida implements ObjetoVivo,ObservadorMouse,ObservadorTeclado{
 		}
 		
 		System.out.println(this.getJugador().getPuntaje());
-
+		
 	}
 
 
@@ -116,7 +142,15 @@ public class Partida implements ObjetoVivo,ObservadorMouse,ObservadorTeclado{
 		bomba.setPosicion(posicionEvento.desparametrizarPosicion());
 		this.agregarElementoAlTablero(bomba);
 		this.agregarBomba(bomba);
+		bomba.atacar(this.lancha1);
+		bomba.atacar(this.lancha2);
+		bomba.atacar(this.destructor1);
+		bomba.atacar(this.destructor2);
+		bomba.atacar(this.buque);
+		bomba.atacar(this.rompehielo);
+		bomba.atacar(this.portaavion);
 		}
+
 	}
 	
 	public void agregarElementoAlTablero(ElementoDelJuego elementoDelJuego){
