@@ -20,9 +20,7 @@ public class Partida implements ObjetoVivo,ObservadorMouse,ObservadorTeclado{
 	private Jugador jugador;
 	private boolean enJuego;
 	
-	
 	public Tablero getTablero() {return this.tablero;}
-	
 	
 	public Partida() {
 		this.enJuego = true;
@@ -97,28 +95,29 @@ public class Partida implements ObjetoVivo,ObservadorMouse,ObservadorTeclado{
 				gameloop.remover(unaVista);
 				gameloop.remover(unaNave);
 				this.getNaves().remove(unaNave);
+				this.getElementoDelJuego().remove(unaNave);
 			}
 		}
 		
 		//Saco del gameLoop y de la partida las bombas que estan explotadas
 		LinkedList<Bomba> listaBombas = new LinkedList<Bomba>();
 		for (Bomba unaBomba : this.getBombas()) {
-			if (unaBomba.estaExplotada()) {listaBombas.add(unaBomba);}
-		}
-		for (Bomba unaBomba: listaBombas) {
-			gameloop.remover(unaBomba);
-			this.getBombas().remove(unaBomba);
-		}
-		
-		//Agrego al gameLoop las bombas que se encuentran en el tablero
-		for (Bomba unaBomba : this.getBombas()) {
-			if (!unaBomba.estaExplotada()){
+			if (unaBomba.estaExplotada()) {
+				listaBombas.add(unaBomba);
+			} else {
+				unaBomba.setObservadorBomba(unaBomba.generarVistaBomba());
     			gameloop.agregar(unaBomba);
-    			gameloop.agregar(unaBomba.generarVistaBomba());
+    			gameloop.agregar(unaBomba.getObservadorBomba());
 			}
 		}
-	}
+		for (Bomba unaBomba: listaBombas) {
+			gameloop.remover(unaBomba.getObservadorBomba());
+			gameloop.remover(unaBomba);
+			this.getBombas().remove(unaBomba);
+			this.getElementoDelJuego().remove(unaBomba);
 
+		}
+	}
 
 	@Override
 	public void notificarEvento(int posicionX, int posicionY) {
@@ -151,7 +150,6 @@ public class Partida implements ObjetoVivo,ObservadorMouse,ObservadorTeclado{
 		Bomba unaBomba = controlador.getBombaAsociadaATecla(key);
 		if(unaBomba!=null)
 			this.jugador.seleccionarBomba(unaBomba);
-		
 	}
 
 }

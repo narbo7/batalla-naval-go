@@ -47,8 +47,7 @@ public class MinaPorContacto extends Bomba {
 
 	@Override
 	public void vivir() {
-		// TODO Auto-generated method stub
-		System.out.println("Bomba viviendo");
+		System.out.println("Mina por contacto activada");
 		
 	}
 	@Override

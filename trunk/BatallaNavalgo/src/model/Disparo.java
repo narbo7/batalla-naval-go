@@ -49,7 +49,7 @@ public class Disparo extends Bomba{
 	@Override
 	public void vivir() {
 		// TODO Auto-generated method stub
-		
+		this.explotar();
 	}
 
 	@Override

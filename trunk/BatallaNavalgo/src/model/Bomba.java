@@ -10,6 +10,7 @@ public abstract class Bomba extends ElementoDelJuego implements ObjetoPosicionab
 		protected boolean estaExplotada;
 		protected int costo;
 		protected int retardo;
+		private VistaBomba observadorBomba = null;
 
 		public Bomba(){
 			super();
@@ -64,6 +65,14 @@ public abstract class Bomba extends ElementoDelJuego implements ObjetoPosicionab
 		@Override
 		public int getY() {
 			return (this.getPosicion().getColumna() + (this.getPosicion().getColumna()-1)*VentanaPrincipal.getAumentoVentana());
+		}
+
+		public VistaBomba getObservadorBomba() {
+			return observadorBomba;
+		}
+
+		public void setObservadorBomba(VistaBomba vistaBomba) {
+			this.observadorBomba = vistaBomba;
 		}
 
 }

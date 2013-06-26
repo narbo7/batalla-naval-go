@@ -78,6 +78,7 @@ public class Tablero implements ObjetoVivo{
 	
 	@Override
 	public void vivir() {
+		System.out.println("Cantidad de elementos del juego en lista " + this.getElementos().size());
 		for (ElementoDelJuego elemento: this.getElementos()){
 			elemento.vivir();
 		}
