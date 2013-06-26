@@ -97,16 +97,16 @@ public class Partida implements ObjetoVivo,ObservadorMouse,ObservadorTeclado{
 	
 	@Override
 	public void vivir() {
-		//this.limpiar();
 		this.tablero.vivir();
-		System.out.println("Cantidad de bombas = " +this.getBombas().size());
+		System.out.println("Cantidad de bombas = " + this.getBombas().size());
+		System.out.println("Cantidad de naves = " + this.getNaves().size());
 
 		this.getJugador().descontarPuntaje(10);
-		if (this.getJugador().getPuntaje() <= 0){
+		if (this.getJugador().getPuntaje() <= 0 || this.getNaves().size() == 0){
 			this.juegoTermiado();
 		}
 		
-		System.out.println(this.getJugador().getPuntaje());
+		System.out.println("PUNTAJE = " + this.getJugador().getPuntaje());
 		
 	}
 
