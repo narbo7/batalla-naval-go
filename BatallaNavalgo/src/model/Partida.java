@@ -112,9 +112,11 @@ public class Partida implements ObjetoVivo,ObservadorMouse,ObservadorTeclado{
 		//enviar disparo.
 		Posicion posicionEvento = new Posicion(posicionY,posicionX);
 		Bomba bomba = this.getJugador().dispararBomba();
+		if(bomba!=null){
 		bomba.setPosicion(posicionEvento.desparametrizarPosicion());
 		this.agregarElementoAlTablero(bomba);
 		this.agregarBomba(bomba);
+		}
 	}
 	
 	public void agregarElementoAlTablero(ElementoDelJuego elementoDelJuego){
@@ -133,7 +135,8 @@ public class Partida implements ObjetoVivo,ObservadorMouse,ObservadorTeclado{
 	public void notificarEvento(char key) {
 		ControladorTeclado controlador = new ControladorTeclado();
 		Bomba unaBomba = controlador.getBombaAsociadaATecla(key);
-		this.jugador.seleccionarBomba(unaBomba);
+		if(unaBomba!=null)
+			this.jugador.seleccionarBomba(unaBomba);
 	}
 
 }

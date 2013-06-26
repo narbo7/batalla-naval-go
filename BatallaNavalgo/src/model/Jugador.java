@@ -11,8 +11,13 @@ public class Jugador {
 	}
 
 	public Bomba dispararBomba() {
-		this.descontarPuntaje(this.bombaSeleccionada.getCosto());
-		return bombaSeleccionada;
+		Bomba bomba2 = bombaSeleccionada;
+		if(bombaSeleccionada!=null){
+			this.descontarPuntaje(this.bombaSeleccionada.getCosto());
+			bomba2 = bombaSeleccionada;
+			this.bombaSeleccionada=null;
+		}
+		return bomba2;
 	}
 	
 	public void seleccionarBomba(Bomba unaBomba){
