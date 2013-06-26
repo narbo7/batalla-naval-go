@@ -15,6 +15,7 @@ public abstract class Nave extends ElementoDelJuego implements ObjetoMovil, Obje
 	protected int ubicacion;
 	LinkedList<ParteDeNave> partes;
 	private boolean dirArriba, dirAbajo, dirIzquierda, dirDerecha;
+	private LinkedList<VistaElementoDelJuego> observadoresDeNave = null;
 	
 	public Nave(){
 		
@@ -244,4 +245,12 @@ public abstract class Nave extends ElementoDelJuego implements ObjetoMovil, Obje
 	}
 
 	public abstract LinkedList<VistaElementoDelJuego> generarVista();
+
+	public LinkedList<VistaElementoDelJuego> getObservadorNave() {
+		return observadoresDeNave;
+	}
+
+	public void setObservadorNave(LinkedList<VistaElementoDelJuego> observadorNave) {
+		this.observadoresDeNave = observadorNave;
+	}
 }

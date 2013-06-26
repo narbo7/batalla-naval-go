@@ -6,6 +6,7 @@ import controller.ControladorTeclado;
 
 import view.ObservadorMouse;
 import view.ObservadorTeclado;
+import view.VistaElementoDelJuego;
 
 
 import fiuba.algo3.titiritero.modelo.GameLoop;
@@ -92,8 +93,11 @@ public class Partida implements ObjetoVivo,ObservadorMouse,ObservadorTeclado{
 			if (unaNave.estaHundida()) {listaNaves.add(unaNave);}
 		}
 		for (Nave unaNave : listaNaves) {
-			gameloop.remover(unaNave);
-			this.getNaves().remove(unaNave);
+			for (VistaElementoDelJuego unaVista : unaNave.getObservadorNave()) {
+				gameloop.remover(unaVista);
+				gameloop.remover(unaNave);
+				this.getNaves().remove(unaNave);
+			}
 		}
 		
 		//Saco del gameLoop y de la partida las bombas que estan explotadas
