@@ -81,8 +81,10 @@ public class Tablero implements ObjetoVivo{
 		
 		for (Bomba unaBomba : this.getBombas()) {
 			for (Nave unaNave : this.getNaves()) {
-				if (unaBomba.getPosicion().esIgualA(unaNave.getPosicion())) {
-					unaBomba.atacar(unaNave);
+				for (ParteDeNave unaParte : unaNave.getPartes()) {
+					if (unaBomba.getPosicion().esIgualA(unaParte.getPosicion())) {
+						unaBomba.atacar(unaNave);
+					}
 				}
 			}
 		}
