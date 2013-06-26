@@ -110,9 +110,9 @@ public class Partida implements ObjetoVivo,ObservadorMouse,ObservadorTeclado{
 		}
 		for (Bomba unaBomba: listaBombas) {
 			gameloop.remover(unaBomba.getObservadorBomba());
-			gameloop.remover(unaBomba);
-			this.getBombas().remove(unaBomba);
-			this.getElementoDelJuego().remove(unaBomba);
+			//gameloop.remover(unaBomba);
+			//this.getBombas().remove(unaBomba);
+			//this.getElementoDelJuego().remove(unaBomba);
 
 		}
 	}
