@@ -9,11 +9,9 @@ import java.util.Observable;
 import fiuba.algo3.titiritero.modelo.ObjetoPosicionable;
 
 public class VistaPortaAvion extends VistaNave{
-	private static int number;
 
-	public VistaPortaAvion(ObjetoPosicionable modelo,int ubicacion) throws IOException{
-		super(getUrl(ubicacion),modelo);
-		number++;
+	public VistaPortaAvion(ObjetoPosicionable modelo,int ubicacion,int posicionEnBarco) throws IOException{
+		super(getUrl(ubicacion,posicionEnBarco),modelo);
 	}
 
 	@Override
@@ -21,7 +19,7 @@ public class VistaPortaAvion extends VistaNave{
 		// TODO Auto-generated method stub
 		
 	}
-	private static URL getUrl(int ubicacion) throws MalformedURLException{
+	private static URL getUrl(int ubicacion,int posicionEnBarco) throws MalformedURLException{
 		String u = "horizontal";
 		switch(ubicacion){
 		case 1: 
@@ -31,6 +29,6 @@ public class VistaPortaAvion extends VistaNave{
 			u = "vertical";
 			break;
 		}
-		return new File("./imagenes/naves/pa/"+u+"/pa"+(number+1)+".png").toURI().toURL();
+		return new File("./imagenes/naves/pa/"+u+"/pa"+posicionEnBarco+".png").toURI().toURL();
 	}
 }
