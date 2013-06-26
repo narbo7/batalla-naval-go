@@ -55,17 +55,19 @@ public class Destructor extends Nave {
 	@Override
 	public void serAtacadoPor(Disparo disparo) {
 		
-		boolean huboContacto = false;
-		for (Iterator<ParteDeNave> it = getPartes().iterator(); it.hasNext();)
-			if ((disparo.getPosicion().esIgualA(it.next().getPosicion()))){
-				it.next().reducirResistencia(1);
+boolean huboContacto = false;
+		
+		for(ParteDeNave parte : this.getPartes()){
+			if(disparo.getPosicion().esIgualA(parte.getPosicion())){
+				parte.reducirResistencia(1);
 				disparo.explotar();
 				huboContacto = true;
 			}
-		
+		}
 		//explota aunque no haya contacto
 		if(!(huboContacto))
 			disparo.explotar();
+		
 	}
 
 	public void serAtacadoPor(MinaConRetardo minaConRetardo) {

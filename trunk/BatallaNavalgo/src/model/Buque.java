@@ -59,12 +59,13 @@ public class Buque extends Nave {
 		
 		boolean huboContacto = false;
 		
-		for (Iterator<ParteDeNave> it = getPartes().iterator(); it.hasNext();)
-			if ((disparo.getPosicion().esIgualA(it.next().getPosicion()))){
-				it.next().reducirResistencia(MAXIMA_RESISTENCIA);
+		for(ParteDeNave parte : this.getPartes()){
+			if(disparo.getPosicion().esIgualA(parte.getPosicion())){
+				parte.reducirResistencia(MAXIMA_RESISTENCIA);
 				disparo.explotar();
 				huboContacto = true;
 			}
+		}
 		//explota aunque no haya contacto
 		if(!(huboContacto))
 			disparo.explotar();
@@ -74,11 +75,12 @@ public class Buque extends Nave {
 	public void serAtacadoPor(MinaConRetardo minaConRetardo) {
 		
 		if(minaConRetardo.getRetardo() == 0){
-			for (Iterator<ParteDeNave> it = getPartes().iterator(); it.hasNext();)
-				if ((minaConRetardo.getPosicion().esIgualA(it.next().getPosicion()))){
-					it.next().reducirResistencia(MAXIMA_RESISTENCIA);
+			for(ParteDeNave parte : this.getPartes()){
+				if(minaConRetardo.getPosicion().esIgualA(parte.getPosicion())){
+					parte.reducirResistencia(MAXIMA_RESISTENCIA);
 					minaConRetardo.explotar();
-				}	
+				}
+			}
 		}
 		
 	}
@@ -115,12 +117,14 @@ public class Buque extends Nave {
 	
 	public void serAtacadoPor(MinaPorContacto minaPorContacto) {
 		
-		for (Iterator<ParteDeNave> it = getPartes().iterator(); it.hasNext();)
-			if ((minaPorContacto.getPosicion().esIgualA(it.next().getPosicion()))){
-				it.next().reducirResistencia(MAXIMA_RESISTENCIA);
-				minaPorContacto.explotar();
+		if(minaPorContacto.getRetardo() == 0){
+			for(ParteDeNave parte : this.getPartes()){
+				if(minaPorContacto.getPosicion().esIgualA(parte.getPosicion())){
+					parte.reducirResistencia(MAXIMA_RESISTENCIA);
+					minaPorContacto.explotar();
+				}
 			}
-		
+		}
 		
 	}
 
