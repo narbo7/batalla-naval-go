@@ -2,7 +2,10 @@ package tests;
 
 import junit.framework.TestCase;
 
+import model.Portaavion;
 import model.Disparo;
+import model.MinaConRetardo;
+import model.MinaPorContacto;
 import model.Portaavion;
 import model.MinaDobleConRetardo;
 import model.MinaTripleConRetardo;
@@ -33,6 +36,31 @@ public class TestsPortaavion extends TestCase {
 		assertTrue((portaavion.getResistenciaTotal()) == 4);
 	}
 	
+	@Test
+	public void testAlSerAtacadoPorUnaMinaConRetardoDeberiaReducirSuResistencia(){
+		
+		Portaavion portaavion = new Portaavion();
+		MinaConRetardo mina = new MinaConRetardo(portaavion.getPosicion());
+		
+		mina.descontarRetardo();
+		mina.descontarRetardo();
+		mina.descontarRetardo();
+		
+		mina.atacar(portaavion);
+		
+		assertTrue((portaavion.getResistenciaTotal()) == 4);
+	}
+	
+	@Test
+	public void testAlserAtacadoPorUnaMinaPorContactoDeberiaReducirSuResistencia(){
+		
+		Portaavion portaavion = new Portaavion();
+		MinaPorContacto mina = new MinaPorContacto(portaavion.getPosicion());
+		
+		mina.atacar(portaavion);
+		
+		assertTrue((portaavion.getResistenciaTotal()) == 4);
+	}
 	
 	@Test
 	public void testBordeSuperiorIzquierdo(){

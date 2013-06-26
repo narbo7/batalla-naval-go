@@ -3,8 +3,11 @@ package tests;
 import junit.framework.TestCase;
 
 import model.Lancha;
+import model.Lancha;
 import model.Disparo;
+import model.MinaConRetardo;
 import model.MinaDobleConRetardo;
+import model.MinaPorContacto;
 import model.MinaTripleConRetardo;
 import model.Posicion;
 
@@ -32,6 +35,32 @@ public class TestsLancha extends TestCase{
 	
 		assertTrue((lancha.getResistenciaTotal()) == 1);
 		
+	}
+	
+	@Test
+	public void testAlSerAtacadoPorUnaMinaConRetardoDeberiaReducirSuResistencia(){
+		
+		Lancha lancha = new Lancha();
+		MinaConRetardo mina = new MinaConRetardo(lancha.getPosicion());
+		
+		mina.descontarRetardo();
+		mina.descontarRetardo();
+		mina.descontarRetardo();
+		
+		mina.atacar(lancha);
+		
+		assertTrue((lancha.getResistenciaTotal()) == 1);
+	}
+	
+	@Test
+	public void testAlserAtacadoPorUnaMinaPorContactoDeberiaReducirSuResistencia(){
+		
+		Lancha lancha = new Lancha();
+		MinaPorContacto mina = new MinaPorContacto(lancha.getPosicion());
+		
+		mina.atacar(lancha);
+		
+		assertTrue((lancha.getResistenciaTotal()) == 1);
 	}
 	
 	@Test

@@ -3,8 +3,11 @@ package tests;
 import junit.framework.TestCase;
 
 import model.Destructor;
+import model.Destructor;
 import model.Disparo;
+import model.MinaConRetardo;
 import model.MinaDobleConRetardo;
+import model.MinaPorContacto;
 import model.MinaTripleConRetardo;
 import model.Posicion;
 
@@ -34,6 +37,32 @@ public class TestsDestructor extends TestCase {
 		assertTrue((destructor.getResistenciaTotal()) == 2);
 	}
 
+	@Test
+	public void testAlSerAtacadoPorUnaMinaConRetardoDeberiaSufrirDaño(){
+		
+		Destructor destructor = new Destructor();
+		MinaConRetardo mina = new MinaConRetardo(destructor.getPosicion());
+		
+		mina.descontarRetardo();
+		mina.descontarRetardo();
+		mina.descontarRetardo();
+		
+		mina.atacar(destructor);
+		
+		assertTrue((destructor.getResistenciaTotal()) == 3);
+	}
+	
+	@Test
+	public void testAlserAtacadoPorUnaMinaPorContactoNoDeberiaSufrirDaño(){
+		
+		Destructor destructor = new Destructor();
+		MinaPorContacto mina = new MinaPorContacto(destructor.getPosicion());
+		
+		mina.atacar(destructor);
+		
+		assertTrue((destructor.getResistenciaTotal()) == 3);
+	}
+	
 	@Test
 	public void testBordeSuperiorIzquierdo(){
 		
