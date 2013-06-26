@@ -194,11 +194,10 @@ public class VentanaPrincipal implements ObservadorDeGameLoop{
         	
         	if (!(this.getPartida().getEstadoDelJuego())){
         		this.gameLoop.detenerEjecucion();
+        		//sacar la ventana del tablero
+        		//imprimir un gameOver con el puntaje
         	} else {
-        		for (Bomba unaBomba : this.getPartida().getBombas()) {
-        			this.gameLoop.agregar(unaBomba);
-        			this.gameLoop.agregar(unaBomba.generarVistaBomba());
-        		}
+        		this.getPartida().limpiar(this.gameLoop);
         	}
         }
 
@@ -207,7 +206,6 @@ public class VentanaPrincipal implements ObservadorDeGameLoop{
 		}
     
         public static int relacionTableroVentanaY() {
-			// TODO Auto-generated method stub
 			return relacionTableroVentanaY;
 		}
         
