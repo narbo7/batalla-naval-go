@@ -9,11 +9,9 @@ import java.util.Observable;
 import fiuba.algo3.titiritero.modelo.ObjetoPosicionable;
 
 public class VistaDestructor extends VistaNave{
-	private static int number;
 
-	public VistaDestructor(ObjetoPosicionable modelo, int ubicacion)throws IOException {
-		super(getUrl(ubicacion),modelo);
-		number++;
+	public VistaDestructor(ObjetoPosicionable modelo, int ubicacion, int posicionEnBarco)throws IOException {
+		super(getUrl(ubicacion,posicionEnBarco),modelo);
 	}
 
 	@Override
@@ -22,7 +20,7 @@ public class VistaDestructor extends VistaNave{
 		
 	}
 	
-	private static URL getUrl(int ubicacion) throws MalformedURLException{
+	private static URL getUrl(int ubicacion,int posicionEnBarco) throws MalformedURLException{
 		String u = "horizontal";
 		switch(ubicacion){
 		case 1: 
@@ -32,7 +30,7 @@ public class VistaDestructor extends VistaNave{
 			u = "vertical";
 			break;
 		}
-		return new File("./imagenes/naves/destructor/"+u+"/destructor"+(number+1)+".png").toURI().toURL();
+		return new File("./imagenes/naves/destructor/"+u+"/destructor"+posicionEnBarco+".png").toURI().toURL();
 	}
 
 }

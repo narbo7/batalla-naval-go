@@ -129,9 +129,10 @@ public class Portaavion extends Nave implements Atacable{
 	@Override
 	public LinkedList<VistaElementoDelJuego> generarVista() {
 		LinkedList<VistaElementoDelJuego> listaVistas = new LinkedList<VistaElementoDelJuego>();
-		try{
+		try{int i = 1;
 		for (ParteDeNave unaParte : this.getPartes()){
-			listaVistas.add(new VistaPortaAvion(unaParte,this.getUbicacion()));
+			listaVistas.add(new VistaPortaAvion(unaParte,this.getUbicacion(),i));
+			i++;
 		}
 		}catch(IOException e ){
 			System.out.println(e.getMessage());

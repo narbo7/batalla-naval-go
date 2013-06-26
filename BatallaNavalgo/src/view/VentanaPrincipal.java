@@ -14,6 +14,7 @@ import java.util.LinkedList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import model.Bomba;
@@ -47,6 +48,8 @@ public class VentanaPrincipal implements ObservadorDeGameLoop{
                                 try {
                                         VentanaPrincipal window = new VentanaPrincipal();
                                         window.frame.setVisible(true);
+                                        VentanaBombas unaVentana = new VentanaBombas();
+                                        unaVentana.frame.setVisible(true);
                                 } catch (Exception e) {
                                         e.printStackTrace();
                                 }
@@ -76,7 +79,7 @@ public class VentanaPrincipal implements ObservadorDeGameLoop{
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame.getContentPane().setLayout(null);
                 frame.setTitle("BATALLA NAVALGO");
-               
+                
                 JButton btnIniciar = this.addBotonIniciar();
                 JButton btnDetener = this.addBotonDetener();
                
