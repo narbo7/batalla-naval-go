@@ -9,7 +9,7 @@ import view.VistaDestructor;
 import view.VistaElementoDelJuego;
 
 
-public class Destructor extends Nave implements Atacable{
+public class Destructor extends Nave {
 
 	static final int RESISTENCIA_MAXIMA = 3;
 	

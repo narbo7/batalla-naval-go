@@ -10,7 +10,7 @@ import view.VistaLancha;
 
 
 
-public class Lancha extends Nave implements Atacable{
+public class Lancha extends Nave {
 	
 	static final int MAXIMA_RESISTENCIA = 2;
 	
