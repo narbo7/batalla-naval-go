@@ -3,7 +3,6 @@ package model;
 import java.io.IOException;
 
 import view.VistaBomba;
-import view.VistaDisparo;
 import view.VistaMina;
 
 
@@ -52,8 +51,7 @@ public class MinaConRetardo extends Bomba{
 
 	@Override
 	public void vivir() {
-		if ((getRetardo()) != 0)
-			descontarRetardo();
+		if ((getRetardo()) != 0) {descontarRetardo();} else {this.explotar();}
 		
 	}
 

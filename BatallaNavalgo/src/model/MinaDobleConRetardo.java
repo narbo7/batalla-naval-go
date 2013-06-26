@@ -57,8 +57,7 @@ public class MinaDobleConRetardo extends Bomba implements Expandible{
 
 	@Override
 	public void vivir() {
-		if ((getRetardo()) != 0)
-			descontarRetardo();
+		if ((getRetardo()) != 0) { descontarRetardo();} else {this.explotar();}
 	}
 
 	public LinkedList<Posicion> getOndaExpansiva(){
