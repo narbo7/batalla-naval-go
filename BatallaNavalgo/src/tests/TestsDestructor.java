@@ -38,7 +38,7 @@ public class TestsDestructor extends TestCase {
 	}
 
 	@Test
-	public void testAlSerAtacadoPorUnaMinaConRetardoDeberiaSufrirDaño(){
+	public void testAlSerAtacadoPorUnaMinaConRetardoDeberiaSufrirDanioo(){
 		
 		Destructor destructor = new Destructor();
 		MinaConRetardo mina = new MinaConRetardo(destructor.getPosicion());
@@ -53,7 +53,7 @@ public class TestsDestructor extends TestCase {
 	}
 	
 	@Test
-	public void testAlserAtacadoPorUnaMinaPorContactoNoDeberiaSufrirDaño(){
+	public void testAlserAtacadoPorUnaMinaPorContactoNoDeberiaSufrirDanio(){
 		
 		Destructor destructor = new Destructor();
 		MinaPorContacto mina = new MinaPorContacto(destructor.getPosicion());
