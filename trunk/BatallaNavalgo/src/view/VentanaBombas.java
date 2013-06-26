@@ -1,8 +1,6 @@
 package view;
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
-import java.awt.TextField;
 import java.io.IOException;
 
 import javax.swing.JFrame;
