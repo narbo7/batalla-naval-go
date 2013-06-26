@@ -10,10 +10,11 @@ public abstract class Bomba extends ElementoDelJuego implements ObjetoPosicionab
 		protected boolean estaExplotada;
 		protected int costo;
 		protected int retardo;
-		private VistaBomba observadorBomba = null;
+		protected VistaBomba observadorBomba = null;
 
 		public Bomba(){
 			super();
+			this.observadorBomba = this.generarVistaBomba();
 		}
 		
 		public Bomba(Posicion posicion){
