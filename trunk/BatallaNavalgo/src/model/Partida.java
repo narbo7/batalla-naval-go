@@ -82,7 +82,7 @@ public class Partida implements ObjetoVivo,ObservadorMouse,ObservadorTeclado{
 	}
 
 
-	public void limpiar(GameLoop gameloop) {
+	public synchronized void limpiar(GameLoop gameloop) {
 		//Saco del gameLoop y de la partida las naves que estan hundidas
 		LinkedList<Nave> listaNaves = new LinkedList<Nave>();
 		for (Nave unaNave : this.getNaves()) {
@@ -103,16 +103,15 @@ public class Partida implements ObjetoVivo,ObservadorMouse,ObservadorTeclado{
 			if (unaBomba.estaExplotada()) {
 				listaBombas.add(unaBomba);
 			} else {
-				unaBomba.setObservadorBomba(unaBomba.generarVistaBomba());
     			gameloop.agregar(unaBomba);
     			gameloop.agregar(unaBomba.getObservadorBomba());
 			}
 		}
 		for (Bomba unaBomba: listaBombas) {
 			gameloop.remover(unaBomba.getObservadorBomba());
-			//gameloop.remover(unaBomba);
-			//this.getBombas().remove(unaBomba);
-			//this.getElementoDelJuego().remove(unaBomba);
+			gameloop.remover(unaBomba);
+			this.getBombas().remove(unaBomba);
+			this.getElementoDelJuego().remove(unaBomba);
 
 		}
 	}
