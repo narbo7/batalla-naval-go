@@ -33,31 +33,6 @@ public class MinaTripleConRetardo extends Bomba implements Expandible{
 	public LinkedList<Posicion> getOndaExpansiva(){
 		return this.ondaExpansiva;
 	}
-	
-	@Override
-	public void atacar(Lancha lancha) {
-		lancha.serAtacadoPor(this);
-	}
-
-	@Override
-	public void atacar(Destructor destructor) {
-		destructor.serAtacadoPor(this);
-	}
-
-	@Override
-	public void atacar(Buque buque) {
-		buque.serAtacadoPor(this);
-	}
-
-	@Override
-	public void atacar(Portaavion portaavion) {
-		portaavion.serAtacadoPor(this);
-	}
-
-	@Override
-	public void atacar(Rompehielo rompehielo) {
-		rompehielo.serAtacadoPor(this);
-	}
 
 	@Override
 	public void vivir() {
@@ -90,6 +65,11 @@ public class MinaTripleConRetardo extends Bomba implements Expandible{
 			System.out.println(e.getMessage());
 		}
 		return vista;
-
+	}
+	
+	@Override
+	public void atacar(Nave unaNave) {
+		unaNave.serAtacadoPor(this);
+		
 	}
 }

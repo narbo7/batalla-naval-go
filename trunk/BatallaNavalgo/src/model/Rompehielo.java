@@ -8,7 +8,7 @@ import java.util.Observable;
 import view.VistaElementoDelJuego;
 import view.VistaRompehielo;
 
-public class Rompehielo extends Nave implements Atacable{
+public class Rompehielo extends Nave {
 
 	static final int MAXIMA_RESISTENCIA = 6;
 	

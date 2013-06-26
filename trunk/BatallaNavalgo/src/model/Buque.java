@@ -9,7 +9,7 @@ import view.VistaBuque;
 import view.VistaElementoDelJuego;
 
 
-public class Buque extends Nave implements Atacable{
+public class Buque extends Nave {
 
 	static final int MAXIMA_RESISTENCIA = 4;
 	

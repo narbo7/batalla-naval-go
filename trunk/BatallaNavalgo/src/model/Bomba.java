@@ -44,17 +44,8 @@ public abstract class Bomba extends ElementoDelJuego implements ObjetoPosicionab
 			return this.estaExplotada;
 		}
 		
-		public abstract void atacar(Lancha lancha);
-
-		public abstract void atacar(Destructor destrunctor);
-
-		public abstract void atacar(Buque buque);
-
-		public abstract void atacar(Portaavion portaavion);
-
-		public abstract void atacar(Rompehielo rompehielo);
+		public abstract void atacar(Nave unaNave);
 		
-		//TODO: Modificar esta llamada a otro paquete, deberia ser un observador.
 		public abstract VistaBomba generarVistaBomba();
 		
 		@Override

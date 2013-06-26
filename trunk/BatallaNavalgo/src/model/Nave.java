@@ -10,7 +10,7 @@ import view.VistaElementoDelJuego;
 
 import fiuba.algo3.titiritero.modelo.ObjetoPosicionable;
 
-public abstract class Nave extends ElementoDelJuego implements ObjetoMovil, ObjetoPosicionable,Observer{
+public abstract class Nave extends ElementoDelJuego implements Atacable, ObjetoMovil, ObjetoPosicionable,Observer{
 	
 	protected int ubicacion;
 	LinkedList<ParteDeNave> partes;
@@ -88,7 +88,15 @@ public abstract class Nave extends ElementoDelJuego implements ObjetoMovil, Obje
 	
 	public abstract void determinarPosiciones();
 	
-	public abstract void serAtacadoPor(Disparo disparo);
+	public abstract void serAtacadoPor(Disparo disparo) ;
+
+	public abstract void serAtacadoPor(MinaConRetardo minaConRetardo) ;
+
+	public abstract void serAtacadoPor(MinaDobleConRetardo minaDobleConRetardo) ;
+
+	public abstract void serAtacadoPor(MinaTripleConRetardo minaTripleConRetardo);
+
+	public abstract void serAtacadoPor(MinaPorContacto minaPorContacto) ;
 	
 	public boolean hayChoqueContraBordeIzquierdo() {
 		boolean flag = false;

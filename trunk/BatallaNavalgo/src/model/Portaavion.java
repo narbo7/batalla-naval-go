@@ -8,7 +8,7 @@ import java.util.Observable;
 import view.VistaElementoDelJuego;
 import view.VistaPortaAvion;
 
-public class Portaavion extends Nave implements Atacable{
+public class Portaavion extends Nave {
 	
 	static final int MAXIMA_RESISTENCIA = 5;
 	
