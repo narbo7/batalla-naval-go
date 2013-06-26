@@ -4,7 +4,9 @@ import junit.framework.TestCase;
 
 import model.Buque;
 import model.Disparo;
+import model.MinaConRetardo;
 import model.MinaDobleConRetardo;
+import model.MinaPorContacto;
 import model.MinaTripleConRetardo;
 import model.Posicion;
 
@@ -32,6 +34,32 @@ public class TestsBuque extends TestCase{
 		assertTrue((buque.getResistenciaTotal()) == 0);	
 	}
 
+	@Test
+	public void testAlSerAtacadoPorUnaMinaConRetardoDeberiaReducirSuResistencia(){
+		
+		Buque buque = new Buque();
+		MinaConRetardo mina = new MinaConRetardo(buque.getPosicion());
+		
+		mina.descontarRetardo();
+		mina.descontarRetardo();
+		mina.descontarRetardo();
+		
+		mina.atacar(buque);
+		
+		assertTrue((buque.getResistenciaTotal()) == 0);
+	}
+	
+	@Test
+	public void testAlserAtacadoPorUnaMinaPorContactoDeberiaReducirSuResistencia(){
+		
+		Buque buque = new Buque();
+		MinaPorContacto mina = new MinaPorContacto(buque.getPosicion());
+		
+		mina.atacar(buque);
+		
+		assertTrue((buque.getResistenciaTotal()) == 0);
+	}
+	
 	@Test
 	public void testLaOndaExpansivaDeUnaMinaDobleDeberiaDestruirElBuque(){
 		

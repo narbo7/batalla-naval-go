@@ -14,5 +14,9 @@ public class TestsPartida {
 		assertTrue(unaPartida.getCantidadDeElementosEnTablero() == 7);
 	}
 	
-
+	@Test
+	public void testUnaPartidaDeberiaComenzarEnJuego(){
+		Partida unaPartida = new Partida();
+		assertTrue(unaPartida.getEstadoDelJuego());
+	}
 }

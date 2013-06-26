@@ -2,8 +2,11 @@ package tests;
 
 import junit.framework.TestCase;
 
+import model.Rompehielo;
 import model.Disparo;
+import model.MinaConRetardo;
 import model.MinaDobleConRetardo;
+import model.MinaPorContacto;
 import model.MinaTripleConRetardo;
 import model.Rompehielo;
 import model.Posicion;
@@ -32,6 +35,31 @@ public class TestsRompehielo extends TestCase {
 		assertTrue((rompehielo.getResistenciaTotal()) == 5);
 	}
 
+	@Test
+	public void testAlSerAtacadoPorUnaMinaConRetardoDeberiaReducirSuResistencia(){
+		
+		Rompehielo rompehielo = new Rompehielo();
+		MinaConRetardo mina = new MinaConRetardo(rompehielo.getPosicion());
+		
+		mina.descontarRetardo();
+		mina.descontarRetardo();
+		mina.descontarRetardo();
+		
+		mina.atacar(rompehielo);
+		
+		assertTrue((rompehielo.getResistenciaTotal()) == 5);
+	}
+	
+	@Test
+	public void testAlserAtacadoPorUnaMinaPorContactoDeberiaReducirSuResistencia(){
+		
+		Rompehielo rompehielo = new Rompehielo();
+		MinaPorContacto mina = new MinaPorContacto(rompehielo.getPosicion());
+		
+		mina.atacar(rompehielo);
+		
+		assertTrue((rompehielo.getResistenciaTotal()) == 5);
+	}
 	
 	@Test
 	public void testBordeSuperiorIzquierdo(){
