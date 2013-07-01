@@ -122,11 +122,6 @@ boolean huboContacto = false;
 		}
 	}
 
-	@Override
-	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public LinkedList<VistaElementoDelJuego> generarVista() {
@@ -141,7 +136,4 @@ boolean huboContacto = false;
 		}
 		return listaVistas;
 	}
-
-
-
 }

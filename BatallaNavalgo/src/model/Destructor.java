@@ -91,12 +91,6 @@ boolean huboContacto = false;
 	}
 
 	@Override
-	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public LinkedList<VistaElementoDelJuego> generarVista() {
 		LinkedList<VistaElementoDelJuego> listaVistas = new LinkedList<VistaElementoDelJuego>();
 		try{int i =1;

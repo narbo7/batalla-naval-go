@@ -9,7 +9,7 @@ import model.Tablero;
 
 import fiuba.algo3.titiritero.modelo.ObjetoPosicionable;
 
-public abstract class VistaNave extends VistaElementoDelJuego implements Observer {
+public abstract class VistaNave extends VistaElementoDelJuego {
 
 	public static int AnchoNave() { return VentanaPrincipal.relacionTableroVentanaX / Tablero.getMaxColumna();}
 	
