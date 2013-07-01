@@ -86,6 +86,8 @@ public class VentanaPrincipal implements ObservadorDeGameLoop{
                 this.gameLoop = new GameLoop((SuperficieDeDibujo) panel);
                               
                 this.gameLoop.agregarObservador(this);
+                
+                this.gameLoop.setFrecuencia(1000);
                               
                 this.inicializarModelo();
                
