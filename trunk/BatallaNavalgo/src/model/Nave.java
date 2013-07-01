@@ -5,12 +5,13 @@ import java.util.LinkedList;
 import java.util.Observer;
 import java.util.Random;
 
+import view.Observable;
 import view.VistaElementoDelJuego;
 
 
 import fiuba.algo3.titiritero.modelo.ObjetoPosicionable;
 
-public abstract class Nave extends ElementoDelJuego implements Atacable, ObjetoMovil, ObjetoPosicionable,Observer{
+public abstract class Nave extends ElementoDelJuego implements Atacable, ObjetoMovil, ObjetoPosicionable, Observable {
 	
 	protected int ubicacion;
 	LinkedList<ParteDeNave> partes;
@@ -254,11 +255,18 @@ public abstract class Nave extends ElementoDelJuego implements Atacable, ObjetoM
 
 	public abstract LinkedList<VistaElementoDelJuego> generarVista();
 
+
 	public LinkedList<VistaElementoDelJuego> getObservadorNave() {
 		return observadoresDeNave;
 	}
 
 	public void setObservadorNave(LinkedList<VistaElementoDelJuego> observadorNave) {
 		this.observadoresDeNave = observadorNave;
+	}
+	
+	public void notifyObservers() {
+		for (VistaElementoDelJuego unaVista : this.getObservadorNave()) {
+			//unaVista.update(arg0, arg1)
+		}
 	}
 }
