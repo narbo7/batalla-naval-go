@@ -14,11 +14,6 @@ public class VistaDestructor extends VistaNave{
 		super(getUrl(ubicacion,posicionEnBarco),modelo);
 	}
 
-	@Override
-	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
-		
-	}
 	
 	private static URL getUrl(int ubicacion,int posicionEnBarco) throws MalformedURLException{
 		String u = "horizontal";

@@ -6,7 +6,10 @@ import java.util.LinkedList;
 import java.util.Observable;
 
 import view.VistaElementoDelJuego;
+import view.VistaLancha;
+import view.VistaLanchaExplotada;
 import view.VistaRompehielo;
+import view.VistaRompehieloExplotada;
 
 public class Rompehielo extends Nave {
 
@@ -133,6 +136,26 @@ boolean huboContacto = false;
 		}
 		}catch(IOException e){
 			e.getMessage();
+		}
+		return listaVistas;
+	}
+
+	@Override
+	public LinkedList<VistaElementoDelJuego> generarVistaExplotada() {
+		LinkedList<VistaElementoDelJuego> listaVistas = new LinkedList<VistaElementoDelJuego>();
+		try{int i = 1;
+		for (ParteDeNave unaParte : this.getPartes()){
+			if (unaParte.getResistencia() == 0) {
+				listaVistas.add(new VistaRompehieloExplotada(unaParte,this.getUbicacion(),i));
+				i++;
+			} else {
+				listaVistas.add(new VistaRompehielo(unaParte,this.getUbicacion(),i));
+				i++;
+			}
+			
+		}
+		}catch(IOException e){
+			System.out.println(e.getMessage());
 		}
 		return listaVistas;
 	}

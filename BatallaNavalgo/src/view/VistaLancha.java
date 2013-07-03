@@ -11,14 +11,10 @@ import fiuba.algo3.titiritero.modelo.ObjetoPosicionable;
 public class VistaLancha extends VistaNave{
 
 	public VistaLancha(ObjetoPosicionable modelo, int ubicacion,int posicionEnBarco) throws IOException{
-		super(getUrl(ubicacion,posicionEnBarco),modelo);		
+		super(getUrl(ubicacion,posicionEnBarco),modelo);
 	}
 
-	@Override
-	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
-		
-	}
+
 	private static URL getUrl(int ubicacion,int posicionEnBarco) throws MalformedURLException{
 		String u = "horizontal";
 		switch(ubicacion){
@@ -31,5 +27,6 @@ public class VistaLancha extends VistaNave{
 		}
 		return new File("./imagenes/naves/lancha/"+u+"/lancha"+posicionEnBarco+".png").toURI().toURL();
 	}
+
 	
 }

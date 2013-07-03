@@ -6,7 +6,10 @@ import java.util.LinkedList;
 import java.util.Observable;
 
 import view.VistaElementoDelJuego;
+import view.VistaLancha;
+import view.VistaLanchaExplotada;
 import view.VistaPortaAvion;
+import view.VistaPortaAvionExplotada;
 
 public class Portaavion extends Nave {
 	
@@ -135,6 +138,26 @@ boolean huboContacto = false;
 			i++;
 		}
 		}catch(IOException e ){
+			System.out.println(e.getMessage());
+		}
+		return listaVistas;
+	}
+
+	@Override
+	public LinkedList<VistaElementoDelJuego> generarVistaExplotada() {
+		LinkedList<VistaElementoDelJuego> listaVistas = new LinkedList<VistaElementoDelJuego>();
+		try{int i = 1;
+		for (ParteDeNave unaParte : this.getPartes()){
+			if (unaParte.getResistencia() == 0) {
+				listaVistas.add(new VistaPortaAvionExplotada(unaParte,this.getUbicacion(),i));
+				i++;
+			} else {
+				listaVistas.add(new VistaPortaAvion(unaParte,this.getUbicacion(),i));
+				i++;
+			}
+			
+		}
+		}catch(IOException e){
 			System.out.println(e.getMessage());
 		}
 		return listaVistas;
