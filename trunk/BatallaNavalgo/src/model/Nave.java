@@ -269,4 +269,6 @@ public abstract class Nave extends ElementoDelJuego implements Atacable, ObjetoM
 			//unaVista.update(arg0, arg1)
 		}
 	}
+
+	public abstract  LinkedList<VistaElementoDelJuego> generarVistaExplotada() ;
 }

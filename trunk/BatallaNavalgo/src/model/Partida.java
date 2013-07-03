@@ -97,6 +97,26 @@ public class Partida implements ObjetoVivo,ObservadorMouse,ObservadorTeclado{
 			}
 		}
 		
+		//Saco del gameLoop las vistas de las naves que tienen un disparo y agrego vistas nuevas
+		for (Nave unaNave : this.getNaves()) {
+			boolean tag = false;
+			for (ParteDeNave unaParte : unaNave.getPartes()) {
+				if (unaParte.getResistencia() == 0) {
+					tag = true;
+				}
+			}
+			if (tag) { 
+				for(VistaElementoDelJuego unaVista : unaNave.getObservadorNave()){
+					gameloop.remover(unaVista);
+				}
+			}
+		LinkedList<VistaElementoDelJuego> listaVistas = new LinkedList<VistaElementoDelJuego>();
+		listaVistas = unaNave.generarVistaExplotada();
+		for ( VistaElementoDelJuego unaVista : listaVistas) {
+			gameloop.agregar(unaVista);
+		}
+		}
+		
 		//Saco del gameLoop y de la partida las bombas que estan explotadas
 		LinkedList<Bomba> listaBombas = new LinkedList<Bomba>();
 		for (Bomba unaBomba : this.getBombas()) {

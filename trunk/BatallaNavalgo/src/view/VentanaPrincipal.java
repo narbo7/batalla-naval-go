@@ -8,6 +8,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
 import java.io.IOException;
 import java.util.LinkedList;
 
@@ -169,6 +170,7 @@ public class VentanaPrincipal implements ObservadorDeGameLoop{
                 btnDetener.addActionListener(new ActionListener() {
                         public void actionPerformed(ActionEvent e) {
                                 gameLoop.detenerEjecucion();
+                                
                         }
                 });
                 btnDetener.setBounds(425, 16, 92, 25);
