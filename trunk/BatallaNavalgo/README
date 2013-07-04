@@ -1,0 +1,43 @@
+Trabajo Practico - Batalla Navalgo - Algoritmos III
+================================================================
+
+
+Como correr la aplicacion
+-------------------------
+Para poder correr la aplicacion, es necesario tener instalado un compilador Java y la aplicación Ant.
+Una vez instaladas ambas cosas, dentro de la carpeta del proyecto, abrimos una terminal,
+tecleamos "ant correr" y presionamos Enter.
+Si se desean ver las demas opciones, simplemente hay que escribir "ant" y se desplegará un menu de opciones
+disponibles.
+
+
+
+Modo de juego
+-------------
+
+Utilizando las teclas 1-5 se seleccionan las diferentes bombas a lanzar.
+Cada vez que se desea lanzar una bomba, se debe seleccionar previamente.
+Las bombas se lanzan con un click izquierdo del mouse.
+
+El juego termina una vez que no queden naves en la pantalla y/o que el puntaje sea menor a cero.
+
+
+
+Direccion del proyecto
+-------------------------
+
+http://code.google.com/p/batalla-naval-go/
+
+Si se quiere hacer un check out de una copia del proyecto para solo lectura:
+
+svn checkout http://batalla-naval-go.googlecode.com/svn/trunk/ batalla-naval-go-read-only 
+
+
+Creadores
+---------
+
+Duarte Matias - matiasarielduarte@gmail.com
+Orive Sol - sol.orive@gmail.com
+Segui Joaquin - segui.joaquin@gmail.com
+
+
