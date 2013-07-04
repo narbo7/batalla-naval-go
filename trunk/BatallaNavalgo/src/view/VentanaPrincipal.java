@@ -18,6 +18,7 @@ import java.util.LinkedList;
 import javax.sound.sampled.*;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import model.Nave;
@@ -33,6 +34,7 @@ import fiuba.algo3.titiritero.modelo.SuperficieDeDibujo;
 public class VentanaPrincipal implements ObservadorDeGameLoop{
 
         private JFrame frame;
+        private JLabel puntos;
         private GameLoop gameLoop;
         static int aumento = 50;
         static int relacionTableroVentanaX = (aumento*Tablero.getMaxColumna());
@@ -41,6 +43,8 @@ public class VentanaPrincipal implements ObservadorDeGameLoop{
         private LinkedList<ObservadorTeclado> observadoresTeclado= new LinkedList<ObservadorTeclado>();
         private Partida miPartida = new Partida();
         private Clip sonidoDeFondo;
+        private Integer puntaje;
+        
         
         /**
          * Launch the application.
@@ -90,13 +94,14 @@ public class VentanaPrincipal implements ObservadorDeGameLoop{
         private void initialize() throws IOException {
                 frame = new JFrame();
                 frame.setForeground(new Color(0,0,0));
-                frame.setBounds(100, 100, 600, 600);
+                frame.setBounds(100, 100, 800, 700);
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame.getContentPane().setLayout(null);
                 frame.setTitle("BATALLA NAVALGO");
                 
                 JButton btnIniciar = this.addBotonIniciar();
                 JButton btnDetener = this.addBotonDetener();
+         
                
                 JPanel panel = this.addSuperficiePanel();
                
@@ -119,11 +124,17 @@ public class VentanaPrincipal implements ObservadorDeGameLoop{
         
         private void inicializarModelo() throws IOException {
         		
-        	
-                //Partida miPartida = new Partida();
                 this.gameLoop.agregar(this.getPartida());
                 this.agregarObservadorMouse(miPartida);
                 this.agregarObservadorTeclado(miPartida);
+                puntaje = miPartida.getJugador().getPuntaje();
+                puntos = new JLabel((String) puntaje.toString());
+                JLabel lblPuntaje = new JLabel("PUNTAJE : ");
+                puntos.setBounds(700,5,500,300);
+                lblPuntaje.setBounds(600,5,500,300);
+                frame.getContentPane().add(puntos);
+                frame.getContentPane().add(lblPuntaje);
+                
                 
 
                 for (Nave nave : miPartida.getNaves()) {
@@ -208,7 +219,9 @@ public class VentanaPrincipal implements ObservadorDeGameLoop{
 
         @Override
         public void notificarCicloFinalizado() {
-        	
+        	puntaje = miPartida.getJugador().getPuntaje();
+        	puntos.setText(puntaje.toString());
+            
         	if (!(this.getPartida().getEstadoDelJuego())){
         		this.gameLoop.detenerEjecucion();
         		//sacar la ventana del tablero
@@ -216,6 +229,7 @@ public class VentanaPrincipal implements ObservadorDeGameLoop{
         	} else {
         		this.getPartida().limpiar(this.gameLoop);
         	}
+        	 
         }
 
 		public static int relacionTableroVentanaX() {
