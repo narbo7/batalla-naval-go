@@ -44,6 +44,7 @@ public class VentanaPrincipal implements ObservadorDeGameLoop{
         private Partida miPartida = new Partida();
         private Clip sonidoDeFondo;
         private Integer puntaje;
+        static VentanaGameOver unaVentana;
         
         
         /**
@@ -67,6 +68,8 @@ public class VentanaPrincipal implements ObservadorDeGameLoop{
                                         window.getSonidoDeFondo().loop(Clip.LOOP_CONTINUOUSLY);
                                         while(window.getSonidoDeFondo().isRunning()){Thread.yield();}
                                         window.frame.setVisible(true);
+                                        unaVentana = new VentanaGameOver();
+                                        unaVentana.frame.setVisible(false);
                                 } catch (Exception e) {
                                         e.printStackTrace();
                                 }
@@ -92,7 +95,7 @@ public class VentanaPrincipal implements ObservadorDeGameLoop{
         private void initialize() throws IOException {
                 frame = new JFrame();
                 frame.setForeground(new Color(0,0,0));
-                frame.setBounds(100, 100, 1100, 700);
+                frame.setBounds(100, 100, 800, 700);
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame.getContentPane().setLayout(null);
                 frame.setTitle("BATALLA NAVALGO");
@@ -133,7 +136,7 @@ public class VentanaPrincipal implements ObservadorDeGameLoop{
              JLabel bombaCuatro = new JLabel("4. Mina por contacto");
              bombaCuatro.setBounds(600,180,400,300);
              JLabel bombaCinco = new JLabel("5. Mina con triple retardo");
-             bombaCinco.setBounds(600,200,400,300);
+             bombaCinco.setBounds(600,200,100,300);
              JLabel texto = new JLabel("Seleccione bomba a lanzar:");
              
              JLabel nave1 = new JLabel("Lancha");
@@ -270,6 +273,7 @@ public class VentanaPrincipal implements ObservadorDeGameLoop{
         		this.gameLoop.detenerEjecucion();
         		//sacar la ventana del tablero
         		//imprimir un gameOver con el puntaje
+        		unaVentana.frame.setVisible(true);
         	} else {
         		this.getPartida().limpiar(this.gameLoop);
         	}
