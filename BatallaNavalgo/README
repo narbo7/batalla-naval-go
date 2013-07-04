@@ -2,6 +2,15 @@ Trabajo Practico - Batalla Navalgo - Algoritmos III
 ================================================================
 
 
+Informe
+=======
+
+El informe del trabajo practico se encuentra en la carpeta "informe" del proyecto.
+Dentro de la misma se adjuntan las imagenes de los diagramas de clases y secuencias,
+para mayor comodidad.
+
+
+
 Como correr la aplicacion
 -------------------------
 Para poder correr la aplicacion, es necesario tener instalado un compilador Java y la aplicación Ant.
