@@ -21,10 +21,11 @@ public class VentanaBombas {
     	frame = new JFrame();
     	frame.setLayout(new FlowLayout());
 		frame.setForeground(new Color(0, 0, 0));
-        frame.setBounds(100, 100, 180, 220);
+        frame.setBounds(100, 100, 400, 280);
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setTitle("BOMBAS Y NAVES");
+        JLabel recuerde = new JLabel("Cada vez que quiera lanzar una bomba, debe antes seleccionar el tipo.");
         JLabel bombaUno = new JLabel("1. Disparo directo");
         bombaUno.setBounds(10,20,10,30);
         JLabel bombaDos = new JLabel("2. Mina con retardo");
@@ -53,7 +54,7 @@ public class VentanaBombas {
         nave5.setForeground(new Color(195,195,195));
         nave5.setBounds(10,390,100,90);
        
-        
+        frame.getContentPane().add(recuerde);
         frame.getContentPane().add(texto);
         frame.getContentPane().add(bombaUno);
         frame.getContentPane().add(bombaDos);
