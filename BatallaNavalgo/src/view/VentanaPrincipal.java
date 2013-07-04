@@ -67,8 +67,6 @@ public class VentanaPrincipal implements ObservadorDeGameLoop{
                                         window.getSonidoDeFondo().loop(Clip.LOOP_CONTINUOUSLY);
                                         while(window.getSonidoDeFondo().isRunning()){Thread.yield();}
                                         window.frame.setVisible(true);
-                                        VentanaBombas unaVentana = new VentanaBombas();
-                                        unaVentana.frame.setVisible(true);
                                 } catch (Exception e) {
                                         e.printStackTrace();
                                 }
@@ -94,7 +92,7 @@ public class VentanaPrincipal implements ObservadorDeGameLoop{
         private void initialize() throws IOException {
                 frame = new JFrame();
                 frame.setForeground(new Color(0,0,0));
-                frame.setBounds(100, 100, 800, 700);
+                frame.setBounds(100, 100, 1100, 700);
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame.getContentPane().setLayout(null);
                 frame.setTitle("BATALLA NAVALGO");
@@ -110,6 +108,8 @@ public class VentanaPrincipal implements ObservadorDeGameLoop{
                 this.gameLoop.agregarObservador(this);
                 
                 this.gameLoop.setFrecuencia(1000);
+                
+                this.agregarDatos();
                               
                 this.inicializarModelo();
                
@@ -120,6 +120,50 @@ public class VentanaPrincipal implements ObservadorDeGameLoop{
                 this.setComponentsFocus(btnIniciar, btnDetener);
 
                 
+        }
+        private void agregarDatos(){
+        	 JLabel recuerde = new JLabel("Cada vez que quiera lanzar una bomba, debe antes seleccionar el tipo.");
+        	 recuerde.setBounds(600,100,400,300);
+             JLabel bombaUno = new JLabel("1. Disparo directo");
+             bombaUno.setBounds(600,120,400,300);
+             JLabel bombaDos = new JLabel("2. Mina con retardo");
+             bombaDos.setBounds(600,140,400,300);
+             JLabel bombaTres = new JLabel("3. Mina con doble retardo");
+             bombaTres.setBounds(600,160,400,300);
+             JLabel bombaCuatro = new JLabel("4. Mina por contacto");
+             bombaCuatro.setBounds(600,180,400,300);
+             JLabel bombaCinco = new JLabel("5. Mina con triple retardo");
+             bombaCinco.setBounds(600,200,400,300);
+             JLabel texto = new JLabel("Seleccione bomba a lanzar:");
+             
+             JLabel nave1 = new JLabel("Lancha");
+             nave1.setForeground(new Color(255,0,0));
+             nave1.setBounds(600,220,100,300);
+             JLabel nave2 = new JLabel("Buque");
+             nave2.setForeground(new Color(34,177,76));
+             nave2.setBounds(600,240,200,300);
+             JLabel nave3 = new JLabel("Destructor");
+             nave3.setForeground(new Color(0,162,232));
+             nave3.setBounds(600,260,100,300);
+             JLabel nave4 = new JLabel("Rompehielo");
+             nave4.setForeground(new Color(185,122,87));
+             nave4.setBounds(600,280,100,300);
+             JLabel nave5 = new JLabel("Portaavion");
+             nave5.setForeground(new Color(195,195,195));
+             nave5.setBounds(600,300,100,300);
+            
+             frame.getContentPane().add(recuerde);
+             frame.getContentPane().add(texto);
+             frame.getContentPane().add(bombaUno);
+             frame.getContentPane().add(bombaDos);
+             frame.getContentPane().add(bombaTres);
+             frame.getContentPane().add(bombaCuatro);
+             frame.getContentPane().add(bombaCinco);
+             frame.getContentPane().add(nave1);
+             frame.getContentPane().add(nave2);
+             frame.getContentPane().add(nave3);
+             frame.getContentPane().add(nave4);
+             frame.getContentPane().add(nave5);
         }
         
         private void inicializarModelo() throws IOException {
