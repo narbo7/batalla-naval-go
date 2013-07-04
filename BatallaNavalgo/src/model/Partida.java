@@ -85,16 +85,10 @@ public class Partida implements ObjetoVivo,ObservadorMouse,ObservadorTeclado{
 	public synchronized void limpiar(GameLoop gameloop) {
 		//Saco del gameLoop y de la partida las naves que estan hundidas
 		LinkedList<Nave> listaNaves = new LinkedList<Nave>();
-		LinkedList<Nave> listaNavesNuevas = new LinkedList<Nave>();
 		for (Nave unaNave : this.getNaves()) {
-			if (unaNave.estaHundida()) {
-				listaNaves.add(unaNave);
-				} else {
-					for (ParteDeNave unaParte : unaNave.getPartes()) {
-						if (unaParte.getResistencia() == 0) { listaNavesNuevas.add(unaNave);}
-				}
-			}
+			if (unaNave.estaHundida()) {listaNaves.add(unaNave);} 
 		}
+		
 		for (Nave unaNave : listaNaves) {
 			for (VistaElementoDelJuego unaVista : unaNave.getObservadorNave()) {
 				gameloop.remover(unaVista);
@@ -103,21 +97,6 @@ public class Partida implements ObjetoVivo,ObservadorMouse,ObservadorTeclado{
 				this.getElementoDelJuego().remove(unaNave);
 			}
 		}
-		//Saco las naves que tienen restistencia cero en alguna parte
-		for (Nave unaNave : listaNavesNuevas) {
-			for (VistaElementoDelJuego unaVista : unaNave.getObservadorNave()) {
-				gameloop.remover(unaVista);
-			}
-		}
-		
-		//Agrego las vistas nuevas de las naves con resistencia cero en algunas partes y vista nueva
-				LinkedList<VistaElementoDelJuego> listaVistas = new LinkedList<VistaElementoDelJuego>();
-				for (Nave unaNave :this.getNaves()) {
-					listaVistas = unaNave.generarVistaExplotada();
-					for ( VistaElementoDelJuego unaVista : listaVistas) {
-						gameloop.agregar(unaVista);
-					}
-				}
 		
 		//Saco del gameLoop y de la partida las bombas que estan explotadas
 		LinkedList<Bomba> listaBombas = new LinkedList<Bomba>();
