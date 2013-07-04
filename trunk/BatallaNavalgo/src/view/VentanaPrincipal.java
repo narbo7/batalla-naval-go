@@ -1,5 +1,6 @@
 package view;
 
+
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
@@ -9,10 +10,12 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.LinkedList;
 
 
+import javax.sound.sampled.*;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -37,15 +40,28 @@ public class VentanaPrincipal implements ObservadorDeGameLoop{
         private LinkedList<ObservadorMouse> observadoresMouse= new LinkedList<ObservadorMouse>();	
         private LinkedList<ObservadorTeclado> observadoresTeclado= new LinkedList<ObservadorTeclado>();
         private Partida miPartida = new Partida();
+        private Clip sonidoDeFondo;
         
         /**
          * Launch the application.
+         * @throws UnsupportedAudioFileException 
+         * @throws LineUnavailableException 
+         * @throws IOException 
          */
-        public static void main(String[] args) {
+        public static void main(String[] args) throws LineUnavailableException, IOException, UnsupportedAudioFileException {
+        	 File soundFile = new File("./sounds/piratas.wav");
+             final AudioInputStream soundIn = AudioSystem.getAudioInputStream(soundFile);
+             AudioFormat format = soundIn.getFormat();
+             final DataLine.Info info = new DataLine.Info(Clip.class, format);
+        	
                 EventQueue.invokeLater(new Runnable() {
                         public void run() {
                                 try {
                                         VentanaPrincipal window = new VentanaPrincipal();
+                                        window.setSonidoDeFondo((Clip)AudioSystem.getLine(info));
+                                        window.getSonidoDeFondo().open(soundIn);
+                                        window.getSonidoDeFondo().loop(Clip.LOOP_CONTINUOUSLY);
+                                        while(window.getSonidoDeFondo().isRunning()){Thread.yield();}
                                         window.frame.setVisible(true);
                                         VentanaBombas unaVentana = new VentanaBombas();
                                         unaVentana.frame.setVisible(true);
@@ -231,4 +247,12 @@ public class VentanaPrincipal implements ObservadorDeGameLoop{
         	for(ObservadorTeclado observador : observadoresTeclado)
         		observador.notificarEvento(key);
         }
+
+		public Clip getSonidoDeFondo() {
+			return sonidoDeFondo;
+		}
+
+		public void setSonidoDeFondo(Clip sonidoDeFondo) {
+			this.sonidoDeFondo = sonidoDeFondo;
+		}
 }
